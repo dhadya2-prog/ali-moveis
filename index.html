@@ -41,14 +41,14 @@
         </div>
     </nav>
 
-    <!-- Secção Principal (Hero Slideshow) -->
+    <!-- Secção Principal (Hero - Carrossel Local) -->
     <header class="relative bg-slate-900 overflow-hidden">
         <section class="relative h-[65vh] md:h-[75vh] w-full flex items-center justify-center bg-slate-900">
             <div id="slider-container" class="absolute inset-0 w-full h-full">
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1574269664601-e574b8686118?q=80&w=1200');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=1200');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('canape.jpg');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('lit chambre bebe.jpeg');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('micro-onde.jpeg');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('friteuse8l.jpeg');"></div>
             </div>
 
             <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white space-y-6">
@@ -108,7 +108,7 @@
         </div>
     </section>
 
-    <!-- SECÇÃO TESTEMUNHOS (FEEDBACK) -->
+    <!-- SECÇÃO TESTEMUNHOS -->
     <section id="testemunhos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="text-center max-w-3xl mx-auto mb-12">
             <span class="text-indigo-600 font-bold text-sm tracking-wider uppercase bg-indigo-50 px-3 py-1 rounded-full">Clientes Satisfeitos</span>
@@ -148,7 +148,7 @@
         </div>
     </section>
 
-    <!-- SECÇÃO PERGUNTAS FREQUENTES (FAQ ACCORDÉON) -->
+    <!-- SECÇÃO PERGUNTAS FREQUENTES (FAQ) -->
     <section id="faq" class="bg-slate-900 text-white py-16">
         <div class="max-w-4xl mx-auto px-4">
             <div class="text-center mb-12">
@@ -187,7 +187,7 @@
         </div>
     </section>
 
-    <!-- Painel Lateral do Carrinho Avançado -->
+    <!-- Painel Lateral do Carrinho -->
     <div id="carrinho-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
         <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
             <div>
@@ -196,17 +196,16 @@
                     <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
                 </div>
                 
-                <!-- Lista de Itens do Panier -->
                 <div id="itens-carrinho" class="space-y-4 max-h-[35vh] overflow-y-auto pr-1">
                     <!-- Gerado Dinamicamente -->
                 </div>
                 
-                <!-- FORMULÁRIO DE ENTREGA INTEGRADO -->
+                <!-- FORMULÁRIO DE ENTREGA -->
                 <div id="form-entrega" class="border-t pt-4 mt-6 space-y-3 hidden">
                     <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-truck-ramp-box text-indigo-600 mr-1"></i> Dados de Envio</h4>
                     <div>
                         <label class="block text-xs font-semibold text-gray-500 mb-1">Seu Nome *</label>
-                        <input type="text" id="cliente-nome" placeholder="Ex: Maria Antónia" class="w-full text-sm border p-2.5 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                        <input text="text" id="cliente-nome" placeholder="Ex: Maria Antónia" class="w-full text-sm border p-2.5 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-500 mb-1">Bairro / Zona de Luanda *</label>
@@ -228,17 +227,17 @@
         </div>
     </div>
 
-    <!-- Botão Flutuante Voltar ao Topo -->
+    <!-- Botão Voltar ao Topo -->
     <button onclick="window.scrollTo(0,0)" id="back-to-top" class="fixed bottom-6 left-6 bg-slate-900 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 invisible z-30 hover:bg-indigo-600">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Contactos e Rodapé -->
+    <!-- Rodapé -->
     <footer id="contacto" class="bg-slate-950 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
                 <h4 class="text-xl font-bold mb-4">ALI MOVEIS</h4>
-                <p class="text-gray-400 text-sm">A sua loja de referencia em Luanda para artigos eletrónicos modernos e móveis de qualidade para a sua casa ou escritório.</p>
+                <p class="text-gray-400 text-sm">A sua loja de referência em Luanda para artigos eletrónicos modernos e móveis de qualidade para a sua casa ou escritório.</p>
                 <div class="mt-4">
                     <a href="https://wa.me/244945633379" target="_blank" class="text-gray-400 hover:text-green-500 text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
@@ -259,20 +258,25 @@
         </div>
     </footer>
 
-    <!-- LÓGICA E BANCO DE DADOS LOCAL -->
+    <!-- INTERFACE DO ZOOM (LIGHTBOX) -->
+    <div id="image-lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center p-4 cursor-zoom-out" style="backdrop-filter: blur(5px);">
+        <span class="absolute top-6 right-6 text-white text-5xl font-light cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoom produto" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- LÓGICA LOCAL CORRIGIDA -->
     <script>
-        // Imagens web genéricas ultra-profissionais substituídas para garantir exibição imediata
         const PRODUTOS_DATA = [
-            { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Mais vendido", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 90000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1585338107529-13afc5f02586?q=80&w=600" },
-            { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "Destaque", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 45000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600" },
-            { id: 3, nome: "Smartwatch Series X", badge: "Novidade", descricao: "Notificações, monitor de saúde e bateria de longa duração.", preco: 68000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600" },
-            { id: 4, nome: "Cadeira de Escritório Ergonómica", badge: "Conforto Pro", descricao: "Máximo conforto com suporte lombar para longas horas de trabalho.", preco: 85000, categoria: "moveis", imagem: "https://images.unsplash.com/photo-1505797149-43b0069ec26b?q=80&w=600" },
-            { id: 5, nome: "Secretária Moderna Slim", badge: "Design Minimal", descricao: "Design elegante e otimizado para o seu computador e documentos.", preco: 120000, categoria: "moveis", imagem: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600" },
-            { id: 6, nome: "Cama Beliche Infantil com Escrivaninha", badge: "✨ Kit Quarto", descricao: "Conjunto completo e moderno para quarto de criança com gavetas embutidas.", preco: 120000, categoria: "moveis", imagem: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600" },
-            { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "🔥 850W", descricao: "Modelo FZMW-25LM8E. Design moderno com múltiplos níveis de energia.", preco: 85000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1574269664601-e574b8686118?q=80&w=600" },
-            { id: 8, nome: "Auscultadores Bluetooth Pro", badge: "Premium", descricao: "Som de alta definição com cancelamento de ruído ativo.", preco: 45000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600" },
-            { id: 9, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas curvas contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600" },
-            { id: 10, nome: "Fritadeira sem Óleo Air Fryer XXL 8.0L", badge: "⚡ Saudável", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 80000, categoria: "eletronico", imagem: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=600" }
+            { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Mais vendido", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 90000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg" },
+            { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "Destaque", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 45000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg" },
+            { id: 3, nome: "Smartwatch Series X", badge: "Novidade", descricao: "Notificações, monitor de saúde e bateria de longa duração.", preco: 68000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg" }, 
+            { id: 4, nome: "Cadeira de Escritório Ergonómica", badge: "Conforto Pro", descricao: "Máximo conforto com suporte lombar para longas horas de trabalho.", preco: 85000, categoria: "moveis", imagem: "canape.jpg" }, 
+            { id: 5, nome: "Secretária Moderna Slim", badge: "Design Minimal", descricao: "Design elegante e otimizado para o seu computador e documentos.", preco: 120000, categoria: "moveis", imagem: "canape.jpg" }, 
+            { id: 6, nome: "Cama Beliche Infantil com Escrivaninha e Arrumação", badge: "✨ Kit Quarto", descricao: "Conjunto completo e moderno para quarto de criança com gavetas embutidas.", preco: 120000, categoria: "moveis", imagem: "lit chambre bebe.jpeg" },
+            { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "🔥 850W", descricao: "Modelo FZMW-25LM8E. Design moderno com múltiplos níveis de energia.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg" },
+            { id: 8, nome: "Auscultadores Bluetooth Pro", badge: "Premium", descricao: "Som de alta definição com cancelamento de ruído ativo.", preco: 45000, categoria: "eletronico", imagem: "micro-onde.jpeg" }, 
+            { id: 9, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas curvas contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "canape.jpg" },
+            { id: 10, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "⚡ so fica 2", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 80000, categoria: "eletronico", imagem: "friteuse 8l.jpeg" }
         ];
 
         let carrinho = {}; 
@@ -282,6 +286,8 @@
             const containerEletronicos = document.getElementById('container-eletronicos');
             const containerMoveis = document.getElementById('container-moveis');
             
+            if(!containerEletronicos || !containerMoveis) return;
+
             containerEletronicos.innerHTML = '';
             containerMoveis.innerHTML = '';
 
@@ -293,7 +299,7 @@
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition duration-300 relative group">
                         ${prod.badge ? `<span class="absolute top-3 left-3 bg-indigo-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide z-10 shadow-sm">${prod.badge}</span>` : ''}
                         <div class="overflow-hidden bg-gray-100 h-64">
-                            <img src="${prod.imagem}" alt="${prod.nome}" class="clickable-image h-full w-full object-cover cursor-zoom-in group-hover:scale-105 transition duration-500">
+                            <img src="${prod.imagem}" alt="${prod.nome}" class="clickable-image h-full w-full object-cover cursor-zoom-in group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Imagem+Nao+Encontrada';">
                         </div>
                         <div class="p-6">
                             <h3 class="font-bold text-lg text-slate-900 mb-2 truncate">${prod.nome}</h3>
@@ -320,6 +326,7 @@
             document.getElementById('empty-eletronicos').classList.toggle('hidden', contEletr > 0);
             document.getElementById('empty-moveis').classList.toggle('hidden', contMoveis > 0);
 
+            // On lance le zoom uniquement APRÈS que les images existent à l'écran
             inicializarZoomGlobal();
         }
 
@@ -461,8 +468,42 @@
             }
         }
 
+        function inicializarZoomGlobal() {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const images = document.querySelectorAll('.clickable-image');
+            
+            if(!lightbox || !lightboxImg || images.length === 0) return;
+            
+            images.forEach(img => {
+                // On clone l'élément pour éviter les doublons d'écouteurs d'événements
+                const newImg = img.cloneNode(true);
+                img.parentNode.replaceChild(newImg, img);
+
+                newImg.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    setTimeout(() => {
+                        lightboxImg.classList.remove('scale-95');
+                        lightboxImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+            
+            lightbox.onclick = function() {
+                lightboxImg.classList.remove('scale-100');
+                lightboxImg.classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 200);
+            };
+        }
+
         window.onscroll = function() {
             const btn = document.getElementById('back-to-top');
+            if(!btn) return;
             if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
                 btn.classList.remove('opacity-0', 'invisible');
                 btn.classList.add('opacity-100', 'visible');
@@ -472,59 +513,23 @@
             }
         };
 
-        window.onload = renderizarProdutos;
-
-        // --- DIAPORAMA ---
+        // GESTION DU DIAPORAMA DU HAUT
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide-item');
-        const totalSlides = slides.length;
-
         function nextSlide() {
-            if(totalSlides === 0) return;
+            const slides = document.querySelectorAll('.slide-item');
+            if(slides.length === 0) return;
             slides[currentSlide].classList.remove('opacity-100');
             slides[currentSlide].classList.add('opacity-0');
-            currentSlide = (currentSlide + 1) % totalSlides;
+            currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.remove('opacity-0');
             slides[currentSlide].classList.add('opacity-100');
         }
-        setInterval(nextSlide, 5000);
-    </script>
 
-    <!-- INTERFACE ET CODE JAVASCRIPT DU ZOOM (LIGHTBOX) -->
-    <div id="image-lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center p-4 cursor-zoom-out" style="backdrop-filter: blur(5px);">
-        <span class="absolute top-6 right-6 text-white text-5xl font-light cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
-        <img id="lightbox-img" src="" alt="Zoom produto" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform scale-95 transition-transform duration-300">
-    </div>
-
-    <script>
-        function inicializarZoomGlobal() {
-            const lightbox = document.getElementById('image-lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const images = document.querySelectorAll('.clickable-image');
-            
-            images.forEach(img => {
-                img.addEventListener('click', function() {
-                    lightboxImg.src = this.src;
-                    lightboxImg.alt = this.alt || "Produto";
-                    lightbox.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                    
-                    setTimeout(() => {
-                        lightboxImg.classList.remove('scale-95');
-                        lightboxImg.classList.add('scale-100');
-                    }, 10);
-                });
-            });
-            
-            lightbox.addEventListener('click', function() {
-                lightboxImg.classList.remove('scale-100');
-                lightboxImg.classList.add('scale-95');
-                setTimeout(() => {
-                    lightbox.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }, 200);
-            });
-        }
+        // Lancement au chargement complet
+        window.addEventListener('DOMContentLoaded', () => {
+            renderizarProdutos();
+            setInterval(nextSlide, 5000);
+        });
     </script>
 </body>
 </html>
