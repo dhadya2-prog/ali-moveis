@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALI MOVEIS | Eletrónicos & Móveis em Luanda</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Barra de Informações Superior -->
     <div class="bg-indigo-900 text-white text-xs py-2 px-4 text-center font-medium">
         Loja física no bairro HOJE AINDA 🇦🇴 | Fazemos Entregas ao Domicílio | Pagamento por Multicaixa
     </div>
 
-    <!-- Barra de Navegação -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">ALI <span class="text-yellow-500">MOVEIS</span></a>
@@ -28,7 +25,6 @@
             </div>
 
             <div class="flex items-center space-x-4">
-                <!-- Botão do Carrinho -->
                 <button onclick="toggleCarrinho()" class="relative bg-gray-100 p-2 rounded-full text-gray-700 hover:bg-indigo-100 hover:text-indigo-600 transition">
                     <i class="fa-solid fa-basket-shopping text-xl"></i>
                     <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
@@ -37,22 +33,17 @@
         </div>
     </nav>
 
-    <!-- Secção Principal (Hero) -->
     <header class="relative bg-slate-900 py-24 px-6 text-center overflow-hidden">
-        <!-- Banner Principal com Diaporama (Slider) -->
-    <section class="relative h-[70vh] md:h-[80vh] w-full flex items-center justify-center overflow-hidden bg-slate-900">
+        <section class="relative h-[70vh] md:h-[80vh] w-full flex items-center justify-center overflow-hidden bg-slate-900">
         
-        <!-- Contentor das Imagens de Fundo -->
         <div id="slider-container" class="absolute inset-0 w-full h-full">
-            <!-- Imagem 1 (Canapé) -->
             <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('canape.jpg');"></div>
-            <!-- Imagem 2 (Lit chambre bébé) -->
             <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('lit chambre bebe.jpeg');"></div>
-            <!-- Imagem 3 (Micro-ondes ou autre produit électronique si tu veux) -->
             <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('micro-onde.jpeg');"></div>
-    		</div>
+            <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('friteuse8l.jpeg');"></div>
+            <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('chauffeur eau petit.jpeg');"></div>
+        </div>
 
-        <!-- Conteúdo Fixo por cima do Diaporama -->
         <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white space-y-6">
             <span class="inline-block bg-yellow-500 text-slate-900 text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider">
                 Bairro Hoje Ainda - Luanda
@@ -75,18 +66,15 @@
     </section>
     </header>
 
-    <!-- PRODUTOS: ELETRÓNICOS -->
     <section id="eletronicos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex items-center justify-between mb-8 border-b pb-4">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900"><i class="fa-solid fa-laptop text-indigo-600 mr-2"></i> Alta Tecnologia</h2>
             <span class="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded">Garantia ALI MOVEIS</span>
         </div>
         <div id="container-eletronicos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Gerado via JavaScript -->
-        </div>
+            </div>
     </section>
 
-    <!-- PRODUTOS: MÓVEIS (CASA & ESCRITÓRIO) -->
     <section id="moveis" class="bg-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-8 border-b pb-4 border-gray-200">
@@ -94,12 +82,10 @@
                 <span class="text-sm font-semibold text-indigo-600 bg-white px-3 py-1 rounded">Conforto & Design</span>
             </div>
             <div id="container-moveis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Gerado via JavaScript -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Painel Lateral do Carrinho -->
     <div id="carrinho-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
         <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between">
             <div>
@@ -125,7 +111,6 @@
         </div>
     </div>
 
-    <!-- Contactos e Rodapé -->
     <footer id="contacto" class="bg-slate-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
@@ -149,23 +134,23 @@
         <div class="text-center text-gray-600 text-xs mt-8 border-t border-slate-800 pt-4">
             &copy; 2026 ALI MOVEIS. Todos os direitos reservados.
         </div>
+    </footer>
 
-    <!-- LÓGICA E BANCO DE DADOS LOCAL -->
     <script>
-        // BASE DE DADOS DOS PRODUTOS (Altera aqui facilmente)
+        // BASE DE DADOS DOS PRODUTOS CORRIGÉE ET SYNCHRONISÉE
         const PRODUTOS_DATA = [
             {
                 id: 1,
                 nome: "Termoacumulador Elétrico Vertical Fizzen grande",
-                descricao: "Desfrute de um conforto térmico ideal no seu dia-a-dia com o termoacumulador elétrico vertical Fizzen. Projetado para combinar robustez, segurança e eficiência energética, este balão de água quente integra-se perfeitamente na sua casa para garantir água quente disponível a qualquer momento. Equipado com um indicador de temperatura preciso e um isolamento de alta densidade, ajuda-o a controlar o seu consumo de energia..",
+                descricao: "Desfrute de um conforto térmico ideal no seu dia-a-dia com o termoacumulador elétrico vertical Fizzen. Projetado para combinar robustez, segurança e eficiência energética, este balão de água quente integra-se perfeitamente na sua casa para garantir água quente disponível a qualquer momento.",
                 preco: 90000,
                 categoria: "eletronico",
                 imagem: "chauffe eau electrique grand.jpeg"
             },
-{
+            {
                 id: 2,
                 nome: "Termoacumulador Elétrico Vertical Fizzen pequeno",
-                descricao: "Desfrute de um conforto térmico ideal no seu dia-a-dia com o termoacumulador elétrico vertical Fizzen. Projetado para combinar robustez, segurança e eficiência energética, este balão de água quente integra-se perfeitamente na sua casa para garantir água quente disponível a qualquer momento. Equipado com um indicador de temperatura preciso e um isolamento de alta densidade, ajuda-o a controlar o seu consumo de energia..",
+                descricao: "Desfrute de um conforto térmico ideal no seu dia-a-dia com o termoacumulador elétrico vertical Fizzen. Projetado para combinar robustez, segurança e eficiência energética.",
                 preco: 45000,
                 categoria: "eletronico",
                 imagem: "chauffe eau petit.jpeg"
@@ -194,23 +179,23 @@
                 categoria: "moveis",
                 imagem: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600"
             },
-{
-   		 id: 6,
- 		   nome: "Cama Beliche Infantil com Escrivaninha e Arrumação",
-  		  descricao: "Conjunto completo e moderno para quarto de criança. Inclui cama beliche dupla com proteção superior, escadas laterais com gavetas embutidas, gavetões inferiores espaçosos e uma mesa de escritório funcional com blocos de gavetas. Design otimizado em tons pastel (rosa e verde claro) e madeira clara.",
-  		  preco: 120000, // Ajusta o preço em Kwanzas conforme o teu stock actual
-   		 categoria: "moveis",
-   		 imagem: "lit chambre bebe.jpeg"
-	   },
-{
+            {
+                id: 6,
+                nome: "Cama Beliche Infantil com Escrivaninha e Arrumação",
+                descricao: "Conjunto completo e moderno para quarto de criança. Inclui cama beliche dupla com proteção superior, escadas laterais com gavetas embutidas.",
+                preco: 120000,
+                categoria: "moveis",
+                imagem: "lit chambre bebe.jpeg"
+            },
+            {
                 id: 7,
                 nome: "Forno de Micro-ondas Fizzen 25L",
-                descricao: "Modelo FZMW-25LM8E. Design moderno em preto e prateado com controlos manuais intuitivos, funções de descongelamento e múltiplos níveis de energia (850W de saída). Ideal para rapidez e praticidade na sua cozinha.",
+                descricao: "Modelo FZMW-25LM8E. Design moderno em preto e prateado com controlos manuais intuitivos, funções de descongelamento.",
                 preco: 85000, 
                 categoria: "eletronico",
                 imagem: "micro-onde.jpeg"
             },
-{
+            {
                 id: 8,
                 nome: "Auscultadores Bluetooth Pro",
                 descricao: "Som de alta definição com cancelamento de ruído ativo.",
@@ -218,28 +203,27 @@
                 categoria: "eletronico",
                 imagem: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600"
             },
-{
-   		 id: 9,
-    		nome: "Sofá Modular Orgânico em Tecido Bouclé",
-   		 descricao: "Sofá de luxo com linhas curvas e design contemporâneo. Estofado em tecido bouclé texturado de cor branca/creme, extremamente confortável e macio. Estrutura modular que se adapta perfeitamente a salas de estar modernas, proporcionando elegância e um ambiente acolhedor.",
-    		preco: 60000, // Ajusta o preço em Kwanzas conforme o teu stock actual
-    		categoria: "moveis",
-    		imagem: "canape.jpg"
-	    },
-{
+            {
+                id: 9,
+                nome: "Sofá Modular Orgânico em Tecido Bouclé",
+                descricao: "Sofá de luxo com linhas curvas e design contemporâneo. Estofado em tecido bouclé texturado de cor branca/creme, extremamente confortável e macio. Estrutura modular que se adapta perfeitamente a salas de estar modernas, proporcionando elegância e um ambiente acolhedor.",
+                preco: 60000,
+                categoria: "moveis",
+                imagem: "canape.jpg"
+            },
+            {
                 id: 10,
-                nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L – Cozinha Saudável, Rápida e Estaladiça",
+                nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L",
                 descricao: "Cozinhe refeições saborosas, estaladiças e saudáveis para toda a família com a fritadeira sem óleo RAF Air Fryer de 8.0L.",
                 preco: 80000,
                 categoria: "eletronico",
-                imagem: "Friteuse 8l.jpeg"
-            },			
+                imagem: "friteuse8l.jpeg"
+            }
         ];
 
         let carrinho = [];
         let total = 0;
 
-        // Renderizar produtos automaticamente nas secções corretas
         function renderizarProdutos() {
             const containerEletronicos = document.getElementById('container-eletronicos');
             const containerMoveis = document.getElementById('container-moveis');
@@ -250,7 +234,7 @@
             PRODUTOS_DATA.forEach(prod => {
                 const cardHTML = `
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition duration-300">
-                        <img src="${prod.imagem}" alt="${prod.nome}" class="h-64 w-full object-cover">
+                        <img src="${prod.imagem}" alt="${prod.nome}" class="clickable-image h-64 w-full object-cover cursor-zoom-in">
                         <div class="p-6">
                             <h3 class="font-bold text-lg text-slate-900 mb-2">${prod.nome}</h3>
                             <p class="text-gray-500 text-sm mb-4">${prod.descricao}</p>
@@ -270,6 +254,9 @@
                     containerMoveis.innerHTML += cardHTML;
                 }
             });
+
+            // Lancement du système de zoom après l'affichage des images
+            inicializarZoomGlobal();
         }
 
         function toggleCarrinho() {
@@ -340,28 +327,58 @@
             window.open(url, '_blank');
         }
 
-        // Executar carregamento ao abrir a página
         window.onload = renderizarProdutos;
-// --- LOGIQUE DU DIAPORAMA AUTOMATIQUE ---
+
+        // --- DIAPORAMA ---
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide-item');
         const totalSlides = slides.length;
 
         function nextSlide() {
-            // Masquer l'image actuelle
+            if(totalSlides === 0) return;
             slides[currentSlide].classList.remove('opacity-100');
             slides[currentSlide].classList.add('opacity-0');
-            
-            // Passer à l'image suivante (et revenir à 0 si on arrive à la fin)
             currentSlide = (currentSlide + 1) % totalSlides;
-            
-            // Afficher la nouvelle image
             slides[currentSlide].classList.remove('opacity-0');
             slides[currentSlide].classList.add('opacity-100');
         }
-
-        // Lancer le diaporama automatique toutes les 4000 millisecondes (4 secondes)
         setInterval(nextSlide, 4000);
+    </script>
+
+    <div id="image-lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center p-4 cursor-zoom-out" style="backdrop-filter: blur(5px);">
+        <span class="absolute top-6 right-6 text-white text-5xl font-light cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
+        <img id="lightbox-img" src="" alt="Zoom produto" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform scale-95 transition-transform duration-300">
+    </div>
+
+    <script>
+        function inicializarZoomGlobal() {
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const images = document.querySelectorAll('.clickable-image');
+            
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxImg.src = this.src;
+                    lightboxImg.alt = this.alt || "Produto";
+                    lightbox.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    
+                    setTimeout(() => {
+                        lightboxImg.classList.remove('scale-95');
+                        lightboxImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+            
+            lightbox.addEventListener('click', function() {
+                lightboxImg.classList.remove('scale-100');
+                lightboxImg.classList.add('scale-95');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 200);
+            });
+        }
     </script>
 </body>
 </html>
