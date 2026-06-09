@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALI MOVEIS | Eletrónicos & Móveis em Luanda</title>
+    <!-- Tailwind CSS (Para uma produção 100% otimizada, compile via CLI futuramente) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ícones FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
+        /* Ocultar a barra de rolagem mantendo a funcionalidade de deslizar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <!-- Barra de Informações Superior (Clean & Minimalista) -->
+    <!-- Barra de Informações Superior -->
     <div class="bg-[#00269c] text-white text-xs py-2 px-4 text-center sticky top-0 z-50 shadow-sm font-bold tracking-wide">
         Loja física no bairro HOJE AINDA 🇦🇴 | Entregas ao Domicílio | Pagamento por Multicaixa & Express
     </div>
 
-    <!-- Barra de Navegação com Logo Oficial -->
+    <!-- Barra de Navegação -->
     <nav class="bg-white shadow-md sticky top-[36px] z-40 backdrop-blur-md bg-white/95">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2">
-                <img src="logo.png" alt="ALI MOVEIS" class="h-14 w-auto object-contain">
+                <img src="logo.png" alt="ALI MOVEIS" width="150" height="56" class="h-14 w-auto object-contain">
             </a>
             
             <div class="hidden md:flex space-x-6 font-semibold text-sm">
@@ -32,18 +34,17 @@
                 <a href="#eletronicos" class="text-gray-600 hover:text-indigo-600 transition">Eletrónicos</a>
                 <a href="#moveis" class="text-gray-600 hover:text-indigo-600 transition">Móveis</a>
                 <a href="#testemunhos" class="text-gray-600 hover:text-indigo-600 transition">Feedback</a>
-                <a href="#faq" class="text-gray-600 hover:text-indigo-600 transition">Perguntas Frequentes</a>
             </div>
 
             <div class="flex items-center space-x-3">
                 <button onclick="toggleConta()" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm">
-                    <i class="fa-solid fa-user text-sm text-indigo-600"></i>
+                    <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                     <span class="hidden sm:inline">Minha Conta</span>
                 </button>
 
                 <!-- Botão do Carrinho -->
                 <button onclick="toggleCarrinho()" class="relative bg-indigo-50 p-3 rounded-full text-indigo-600 hover:bg-indigo-100 transition shadow-sm">
-                    <i class="fa-solid fa-basket-shopping text-lg"></i>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
                     <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
@@ -77,328 +78,192 @@
         </section>
     </header>
 
-    <!-- OPTION 1 : Barra de Pesquisa e Filtros de Tri Integrados -->
+    <!-- Barra de Pesquisa e Filtros Conectados -->
     <div class="max-w-4xl mx-auto px-4 -mt-8 relative z-20 flex flex-col sm:flex-row gap-3">
         <div class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 flex-1">
-            <i class="fa-solid fa-magnifying-glass text-gray-400 text-xl pl-2"></i>
-            <input type="text" id="search-input" oninput="filtrarProdutos()" placeholder="O que está a procurar hoje? (Ex: sofá, micro-ondas...)" class="w-full text-base focus:outline-none text-gray-700 bg-transparent">
-            <button onclick="limparPesquisa()" id="clear-search" class="hidden text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
+            <svg class="w-5 h-5 text-gray-400 pl-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="search-input" oninput="filtrarProdutos()" placeholder="O que está a procurar hoje? (Ex: sofá, frigorífico...)" class="w-full text-base focus:outline-none text-gray-700 bg-transparent">
         </div>
-        <!-- Menu de ordenação por preço -->
-        <select id="sort-select" onchange="filtrarProdutos()" class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 text-sm font-bold text-slate-700 focus:outline-none cursor-pointer bg-no-repeat pr-10">
+        <select id="sort-select" onchange="filtrarProdutos()" class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 text-sm font-bold text-slate-700 focus:outline-none cursor-pointer pr-10">
             <option value="default">✨ Relevância</option>
             <option value="preco-baixo">📉 Preço: Mais Baixo</option>
             <option value="preco-alto">📈 Preço: Mais Alto</option>
         </select>
     </div>
 
-    <!-- PRODUTOS: NOVIDADES -->
+    <!-- PRODUTOS: NOVIDADES (Carrossel Automático) -->
     <section id="novidades" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex items-center justify-between mb-6 border-b pb-4">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
-                <i class="fa-solid fa-fire text-red-500"></i> Novidades da Semana 
+                <svg class="w-6 h-6 text-red-500 animate-bounce" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.86-.319.477-.53.996-.608 1.581a5.996 5.996 0 00-2.254-1.474a1 1 0 00-1.242 1.13c.242 1.18.14 2.422-.3 3.527a4.996 4.996 0 01-2.322 2.704a1 1 0 00-.325 1.39a7.494 7.494 0 001.34 1.617a1 1 0 001.411-.013A4.288 4.288 0 0110 11.5a4.288 4.288 0 013.272 1.482a1 1 0 001.411.013a7.494 7.494 0 001.34-1.617a1 1 0 00-.325-1.39a4.996 4.996 0 01-2.322-2.704c-.44-1.105-.542-2.347-.3-3.527a1 1 0 00-.244-.943z" clip-rule="evenodd"></path></svg> 
+                Novidades da Semana 
                 <span id="count-novidades" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded-full font-bold">0</span>
             </h2>
-            <span class="text-xs md:text-sm font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-lg border border-red-100">Postados recentemente</span>
         </div>
-        
-        <div id="container-novidades" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-        <div id="empty-novidades" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum produto novo adicionado nos últimos 7 dias.</div>
-
-        <!-- Paginação Novidades -->
-        <div id="paginacao-novidades" class="mt-10 bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
-            <div id="info-paginacao-novidades" class="text-gray-700 font-semibold"></div>
-            <div id="botoes-paginacao-novidades" class="flex items-center gap-1"></div>
+        <div class="relative overflow-hidden group">
+            <div id="container-novidades" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth py-4 snap-x snap-mandatory"></div>
+            <div id="empty-novidades" class="hidden text-center py-12 text-gray-400 font-medium">Nenhum produto novo nesta listagem.</div>
         </div>
     </section>
 
-    <!-- PRODUTOS: ELETRÓNICOS -->
+    <!-- PRODUTOS: ELETRÓNICOS (Carrossel Automático) -->
     <section id="eletronicos" class="bg-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6 border-b pb-4 border-gray-200">
                 <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
-                    <i class="fa-solid fa-laptop text-indigo-600"></i> Alta Tecnologia
+                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Alta Tecnologia
                     <span id="count-eletronicos" class="text-xs bg-indigo-600 text-white px-2.5 py-1 rounded-full font-bold">0</span>
                 </h2>
-                <span class="text-xs md:text-sm font-bold text-indigo-600 bg-white px-3 py-1.5 rounded-lg border border-gray-200">Garantia ALI MOVEIS</span>
             </div>
-            
-            <div id="container-eletronicos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-            <div id="empty-eletronicos" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum eletrónico corresponde à sua pesquisa.</div>
-
-            <!-- Paginação Eletrónicos -->
-            <div id="paginacao-eletronicos" class="mt-10 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
-                <div id="info-paginacao-eletronicos" class="text-gray-700 font-semibold"></div>
-                <div id="botoes-paginacao-eletronicos" class="flex items-center gap-1"></div>
+            <div class="relative overflow-hidden">
+                <div id="container-eletronicos" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth py-4 snap-x snap-mandatory"></div>
+                <div id="empty-eletronicos" class="hidden text-center py-12 text-gray-400 font-medium">Nenhum eletrónico correspondente encontrado.</div>
             </div>
         </div>
     </section>
 
-    <!-- PRODUTOS: MÓVEIS -->
+    <!-- PRODUTOS: MÓVEIS (Carrossel Automático) -->
     <section id="moveis" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex items-center justify-between mb-6 border-b pb-4">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
-                <i class="fa-solid fa-couch text-indigo-600"></i> Móveis para Casa & Escritório
+                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5h14l1 12H4L5 5z"></path></svg>
+                Móveis para Casa & Escritório
                 <span id="count-moveis" class="text-xs bg-slate-700 text-white px-2.5 py-1 rounded-full font-bold">0</span>
             </h2>
-            <span class="text-xs md:text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-100">Conforto & Design</span>
         </div>
-        
-        <div id="container-moveis" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-        <div id="empty-moveis" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum móvel corresponde à sua pesquisa.</div>
-
-        <!-- Paginação Móveis -->
-        <div id="paginacao-moveis" class="mt-10 bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
-            <div id="info-paginacao-moveis" class="text-gray-700 font-semibold"></div>
-            <div id="botoes-paginacao-moveis" class="flex items-center gap-1"></div>
+        <div class="relative overflow-hidden">
+            <div id="container-moveis" class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth py-4 snap-x snap-mandatory"></div>
+            <div id="empty-moveis" class="hidden text-center py-12 text-gray-400 font-medium">Nenhum móvel correspondente encontrado.</div>
         </div>
     </section>
 
-    <!-- OPTION 3 : SECÇÃO DE TESTEMUNHOS (FEEDBACK CLIENTES) -->
+    <!-- SECÇÃO DE TESTEMUNHOS -->
     <section id="testemunhos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white border-y border-gray-100">
         <div class="text-center max-w-2xl mx-auto mb-12">
             <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Avaliações</span>
             <h2 class="text-3xl font-black text-slate-900 mt-2 mb-3">O que dizem os nossos clientes</h2>
-            <p class="text-gray-500 text-sm">A experiência e satisfação de quem compra na ALI MOVEIS em Luanda.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Testemunho 1 -->
             <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
-                <p class="text-gray-600 text-xs italic leading-relaxed">"Comprei o frigorífico Roch e a entrega no Talatona foi super rápida. O atendimento no WhatsApp é nota 10, responderam todas as minhas dúvidas na hora!"</p>
-                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
-                    <div class="bg-indigo-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">AM</div>
+                <p class="text-gray-600 text-xs italic leading-relaxed">"Comprei o frigorífico Roch e a entrega no Talatona foi super rápida. O atendimento no WhatsApp é nota 10!"</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200">
+                    <div class="bg-indigo-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs">AM</div>
                     <div>
                         <h4 class="text-xs font-bold text-slate-900">António Manuel</h4>
-                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Luanda, Talatona</span>
+                        <span class="text-[10px] text-gray-400">Luanda, Talatona</span>
                     </div>
                 </div>
             </div>
-            <!-- Testemunho 2 -->
             <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
-                <p class="text-gray-600 text-xs italic leading-relaxed">"O termoacumulador Fizzen funciona perfeitamente. Paguei por Express logo após a montagem em casa. Empresa muito séria e de extrema confiança."</p>
-                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
-                    <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">JS</div>
+                <p class="text-gray-600 text-xs italic leading-relaxed">"O termoacumulador Fizzen funciona perfeitamente. Empresa muito séria e de extrema confiança."</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200">
+                    <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs">JS</div>
                     <div>
                         <h4 class="text-xs font-bold text-slate-900">Juana Santos</h4>
-                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Bairro Hoje Ainda</span>
+                        <span class="text-[10px] text-gray-400">Bairro Hoje Ainda</span>
                     </div>
                 </div>
             </div>
-            <!-- Testemunho 3 -->
             <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
-                <p class="text-gray-600 text-xs italic leading-relaxed">"Excelente qualidade nos móveis. A cadeira ergonómica salvou os meus dias longos de trabalho em home office. Valeu cada Kwanza investido."</p>
-                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
-                    <div class="bg-amber-500 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">CC</div>
+                <p class="text-gray-600 text-xs italic leading-relaxed">"Excelente qualidade nos móveis. A cadeira ergonómica salvou os meus dias longos de trabalho."</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200">
+                    <div class="bg-amber-500 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs">CC</div>
                     <div>
                         <h4 class="text-xs font-bold text-slate-900">Carlos Cardoso</h4>
-                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Luanda, Viana</span>
+                        <span class="text-[10px] text-gray-400">Luanda, Viana</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECÇÃO: PERGUNTAS FREQUENTES -->
-    <section id="faq" class="bg-slate-900 text-white py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center mb-10">
-            <h2 class="text-3xl font-black mb-2">Perguntas Frequentes</h2>
-            <p class="text-gray-400 text-sm">Esclareça as suas dúvidas antes de fazer o seu pedido</p>
-        </div>
-        <div class="max-w-3xl mx-auto px-4 space-y-4">
-            <!-- Pergunta 1 -->
-            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
-                <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
-                    <span>Como é feito o pagamento?</span>
-                    <i id="faq-icon-1" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                </button>
-                <div id="faq-ans-1" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
-                    Aceitamos pagamentos via Multicaixa, seja por referência, através do Multicaixa Express ou por Transferência Bancária direta (BAI/BFA) no ato ou antes da entrega.
-                </div>
-            </div>
-            <!-- Pergunta 2 -->
-            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
-                <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
-                    <span>Fazem entregas em toda Luanda?</span>
-                    <i id="faq-icon-2" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                </button>
-                <div id="faq-ans-2" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
-                    Sim! Contamos com um serviço logístico próprio e rápido que realiza entregas ao domicílio em todas as zonas e municípios habitáveis de Luanda.
-                </div>
-            </div>
-            <!-- Pergunta 3 -->
-            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
-                <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
-                    <span>Posso visitar a loja física?</span>
-                    <i id="faq-icon-3" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                </button>
-                <div id="faq-ans-3" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
-                    Com certeza. A nossa loja física fica localizada estrategicamente no bairro HOJE AINDA. Será um enorme prazer receber a sua visita!
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAINEL LATERAL: CRIAR CONTA / LOGIN -->
-    <div id="conta-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-        <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
-            <div>
-                <div class="flex justify-between items-center border-b pb-4 mb-6">
-                    <h3 class="text-lg font-black text-slate-950"><i class="fa-solid fa-user-plus text-indigo-600 mr-2"></i> Área do Cliente</h3>
-                    <button onclick="toggleConta()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
-                </div>
-                <div class="flex bg-gray-100 p-1 rounded-xl mb-6">
-                    <button onclick="mudarAbaConta('login')" id="btn-aba-login" class="w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition">Entrar</button>
-                    <button onclick="mudarAbaConta('cadastro')" id="btn-aba-cadastro" class="w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition">Criar Conta</button>
-                </div>
-                <div id="form-login" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">E-mail ou Telefone</label>
-                        <input type="text" placeholder="Ex: maria@gmail.com" class="w-full text-sm border p-2.5 rounded-xl focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Palavra-passe</label>
-                        <input type="password" placeholder="••••••••" class="w-full text-sm border p-2.5 rounded-xl focus:outline-none">
-                    </div>
-                    <button onclick="alert('Login efetuado!')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold text-sm transition">Entrar na Minha Conta</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Painel Lateral do Carrinho -->
+    <!-- Painel Lateral do Carrinho Conectado -->
     <div id="carrinho-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
         <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
             <div>
                 <div class="flex justify-between items-center border-b pb-4 mb-4">
                     <h3 class="text-lg font-bold text-slate-950">O Meu Pedido - ALI MOVEIS</h3>
-                    <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500 font-bold text-lg">✕</button>
                 </div>
-                <div id="itens-carrinho" class="space-y-4 max-h-[30vh] overflow-y-auto pr-1"></div>
-                
-                <!-- Dados de Envio -->
-                <div id="form-entrega" class="border-t pt-4 mt-4 space-y-3 hidden">
-                    <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide">Dados de Envio</h4>
-                    <input type="text" id="cliente-nome" placeholder="Seu Nome" class="w-full text-sm border p-2.5 rounded-xl">
-                    <input type="text" id="cliente-bairro" placeholder="Bairro em Luanda" class="w-full text-sm border p-2.5 rounded-xl">
-                    
-                    <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide pt-2">Método de Pagamento</h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <label class="border p-2 rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-indigo-50 transition border-gray-200">
-                            <input type="radio" name="metodo_pagamento" value="Multicaixa" checked class="accent-indigo-600">
-                            <img src="multicaixa.jpeg" alt="Multicaixa" class="h-6 w-6 object-cover rounded shadow-sm">
-                            <span class="text-xs font-bold text-gray-700">Multicaixa</span>
-                        </label>
-                        <label class="border p-2 rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-indigo-50 transition border-gray-200">
-                            <input type="radio" name="metodo_pagamento" value="Multicaixa Express" class="accent-indigo-600">
-                            <img src="express logo.png" alt="Express" class="h-6 w-6 object-cover rounded shadow-sm">
-                            <span class="text-xs font-bold text-gray-700">MCX Express</span>
-                        </label>
-                    </div>
+                <div id="itens-carrinho" class="space-y-4 max-h-[60vh] overflow-y-auto pr-1 no-scrollbar">
+                    <p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>
                 </div>
             </div>
-            <div class="border-t pt-4 mt-4">
-                <div class="flex justify-between font-bold text-lg mb-2">
+            <div class="border-t pt-4 mt-4 bg-white">
+                <div class="flex justify-between font-bold text-lg mb-4">
                     <span>Total:</span>
                     <span id="total-preco" class="text-indigo-600">0 Kz</span>
                 </div>
-                <button onclick="finalizarPedido()" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar via WhatsApp
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.652 1.493 5.433.002 9.85-4.386 9.853-9.782.002-2.614-1.015-5.07-2.864-6.92C16.38 2.096 13.922 1.08 11.31 1.08 5.877 1.08 1.46 5.47 1.457 10.865c-.001 1.444.381 2.859 1.107 4.108l-.406 1.484 1.52-.4 1.353.804c1.238.736 2.502 1.123 3.016 1.133z"/></svg>
+                    <span>Enviar via WhatsApp</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- OPTION 2 : MODAL AVANÇADO DE DETALHES DO PRODUTO -->
-    <div id="detalhes-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4" onclick="verificarFecharModal(event)">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative flex flex-col md:flex-row gap-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
-            <button onclick="fecharModalProduto()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition bg-gray-100 p-2 rounded-full w-9 h-9 flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
-            
-            <div class="w-full md:w-1/2 bg-gray-50 rounded-2xl p-4 flex items-center justify-center h-64 md:h-auto">
-                <img id="modal-img" src="" alt="" class="max-h-full max-w-full object-contain">
-            </div>
-            <div class="w-full md:w-1/2 flex flex-col justify-between">
-                <div class="space-y-3">
-                    <span id="modal-badge" class="inline-block bg-indigo-100 text-indigo-700 font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide"></span>
-                    <h3 id="modal-nome" class="text-xl font-black text-slate-900 leading-snug"></h3>
-                    <p id="modal-descricao" class="text-gray-500 text-xs leading-relaxed"></p>
-                    
-                    <div class="bg-slate-50 p-3 rounded-xl border border-gray-100 text-[11px] text-gray-600 space-y-2">
-                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500"></i> **Estado:** Produto 100% Novo na Caixa</p>
-                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-indigo-600"></i> **Garantia:** Coberto pela Loja ALI MOVEIS</p>
-                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-truck-ramp-box text-amber-500"></i> **Disponibilidade:** Pronta Entrega em Luanda</p>
-                    </div>
-                </div>
-                <div class="pt-6 border-t border-gray-100 mt-4 flex items-center justify-between gap-4">
-                    <div>
-                        <span class="block text-[10px] text-gray-400 font-bold uppercase">Preço Especial</span>
-                        <span id="modal-preco" class="text-xl font-black text-indigo-600"></span>
-                    </div>
-                    <div id="modal-action-container"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Botão Topo -->
-    <button onclick="window.scrollTo(0,0)" id="back-to-top" class="fixed bottom-6 left-6 bg-slate-900 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 invisible z-30 hover:bg-indigo-600"><i class="fa-solid fa-arrow-up"></i></button>
-
-    <!-- RODAPÉ -->
+    <!-- RODAPÉ COMPLETO -->
     <footer class="bg-slate-950 text-gray-400 pt-16 pb-8 relative w-full z-10 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-left pb-12 border-b border-slate-900">
+            <!-- Coluna 1: Sobre -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">ALI MOVEIS</h4>
                 <p class="text-xs leading-relaxed max-w-xs text-gray-400">
                     A sua loja de referência em Luanda para artigos eletrónicos modernos e móveis de qualidade para a sua casa ou escritório.
                 </p>
                 <div class="pt-2">
-                    <a href="https://wa.me/244945633379" target="_blank" class="text-gray-400 hover:text-green-500 text-xl transition">
-                        <i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://wa.me/244945633379" target="_blank" class="text-gray-400 hover:text-green-500 transition inline-flex items-center gap-2 text-sm">
+                        <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.652 1.493 5.433.002 9.85-4.386 9.853-9.782.002-2.614-1.015-5.07-2.864-6.92C16.38 2.096 13.922 1.08 11.31 1.08 5.877 1.08 1.46 5.47 1.457 10.865c-.001 1.444.381 2.859 1.107 4.108l-.406 1.484 1.52-.4 1.353.804c1.238.736 2.502 1.123 3.016 1.133z"/></svg>
+                        <span>Fale connosco</span>
                     </a>
                 </div>
             </div>
 
+            <!-- Coluna 2: Pagamentos -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">Pagamento & Envio</h4>
                 <ul class="space-y-3 text-xs text-gray-400">
                     <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-credit-card text-yellow-500 mt-0.5"></i>
-                        <span>Aceitamos **Multicaixa** (Express ou Transferência Bancária BAI/BFA).</span>
+                        <svg class="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                        <span>Aceitamos <strong>Multicaixa</strong> (Express ou Transferência Bancária BAI/BFA).</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-truck text-yellow-500 mt-0.5"></i>
-                        <span>Disponível serviço de entregas rápidas ao domicílio.</span>
+                        <svg class="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011-1v-4a1 1 0 01.4-.8l2.28-2.28A1 1 0 0118 8h2a1 1 0 011 1v7a1 1 0 01-1 1h-1M13 12h7"></path></svg>
+                        <span>Disponível serviço de entregas rápidas ao domicílio em Luanda.</span>
                     </li>
                 </ul>
             </div>
 
+            <!-- Coluna 3: Localização -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">Localização Directa</h4>
                 <ul class="space-y-3 text-xs text-gray-400">
                     <li class="flex items-start gap-3">
-                        <i class="fa-solid fa-location-dot text-indigo-500 mt-0.5"></i>
-                        <span>Bairro: **HOJE AINDA**, Luanda, Angola</span>
+                        <svg class="w-4 h-4 text-indigo-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span>Bairro: <strong>HOJE AINDA</strong>, Luanda, Angola</span>
                     </li>
                     <li class="flex items-start gap-3">
-                        <i class="fa-brands fa-whatsapp text-green-500 mt-0.5"></i>
+                        <svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.652 1.493 5.433.002 9.85-4.386 9.853-9.782.002-2.614-1.015-5.07-2.864-6.92C16.38 2.096 13.922 1.08 11.31 1.08 5.877 1.08 1.46 5.47 1.457 10.865c-.001 1.444.381 2.859 1.107 4.108l-.406 1.484 1.52-.4 1.353.804c1.238.736 2.502 1.123 3.016 1.133z"/></svg>
                         <span>WhatsApp: <a href="https://wa.me/244945633379" target="_blank" class="hover:underline text-gray-300 font-medium">+244 945 633 379</a></span>
                     </li>
                 </ul>
             </div>
         </div>
 
+        <!-- Créditos e Logos Inferiores -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col items-center justify-center gap-4 text-[11px] tracking-wide text-gray-500">
             <div class="flex items-center gap-2 bg-white/5 p-1 px-2 rounded-lg border border-white/10 shadow-inner">
                 <img src="multicaixa.jpeg" alt="Multicaixa" class="h-5 w-auto object-contain rounded">
                 <img src="express logo.png" alt="Multicaixa Express" class="h-5 w-auto object-contain rounded">
             </div>
-            <div>
-                &copy; 2026 ALI MOVEIS. Todos os direitos reservados.
-            </div>
+            <div>&copy; 2026 ALI MOVEIS. Todos os direitos reservados.</div>
         </div>
     </footer>
 
     <script>
         const HOJE_SISTEMA = new Date("2026-06-09");
+        let carrinho = [];
 
         const PRODUTOS_DATA = [
             { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Recente", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
@@ -408,303 +273,208 @@
             { id: 5, nome: "Fogão a Gás ROCH em Aço Inoxidável", badge: "Destaque", descricao: "Este elegante fogão possui uma mesa de cozedura com 5 bocas a gás.", preco: 120000, categoria: "moveis", imagem: "cuisiniere.jpg", dataPublicacao: "2026-05-10" }, 
             { id: 6, nome: "Cama Beliche Infantil com Escrivaninha", badge: "✨ Kit Quarto", descricao: "Conjunto completo e moderno para quarto de criança com gavetas embutidas.", preco: 120000, categoria: "moveis", imagem: "lit chambre bebe.jpeg", dataPublicacao: "2026-05-15" },
             { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "🔥 850W", descricao: "Modelo FZMW-25LM8E. Design moderno com múltiplos níveis de energia de aquecimento.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg", dataPublicacao: "2026-05-20" },
-            { id: 8, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas cookies contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "canape.jpg", dataPublicacao: "2026-04-01" },
+            { id: 8, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "canape.jpg", dataPublicacao: "2026-04-01" },
             { id: 9, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "⚡ Restam 2", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
             { id: 10, nome: "Fogão Compacto Fizzen", badge: "⚡ Luxo", descricao: "Estilo e Eficiência na Sua Cozinha. Alto rendimento com queimadores potentes.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png", dataPublicacao: "2026-05-22" },
             { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "Promo", descricao: "Este ferro de engomar combina potência e ergonomia eficaz contra vincos difíceis.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
-            { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "Promo", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo.jpg", dataPublicacao: "2026-05-14" },
-            { id: 13, nome: "Fritadeira Airfryer Sokany 12L", badge: "Promo", descricao: "Grande capacidade: 12 Litros, Alta potência: 2000W com painel digital intuitivo.", preco: 110000, categoria: "eletronico", imagem: "friteuse sokany 12l.jpeg", dataPublicacao: "2026-05-18" },
-	    { id: 14, nome: "Fritadeira Sem Óleo Sokany Healthy AirFryer – 5.0L", badge: "Promo", descricao: "Cozinhe mais saudável e sem complicação! Com capacidade de 5 litros e painel digital táctil, esta AirFryer permite fritar, assar e dourar os teus petiscos favoritos com quase zero óleo. Comida crocante, rápida e saborosa para toda a família!", preco: 57000, categoria: "eletronico", imagem: "friteuse 5l.jpeg", dataPublicacao: "2026-06-09" },
-	    { id: 15, nome: "Fogão de Mesa BOKO a Gás (4 Bocas) com Prateleiras", badge: "", descricao: "Compacto, potente e super prático! Tem 4 bocas a gás e duas prateleiras em baixo para organizar as tuas panelas e temperos. Ideal para poupar espaço na cozinha.", preco: 55000, categoria: "eletronico", imagem: "fugao.jpeg", dataPublicacao: "2026-06-09" }
+            { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "Promo", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-05-28" }
         ];
 
-        const ITENS_POR_PAGINA = 4;
-        let paginaAtualNovidades = 1;
-        let paginaAtualEletronicos = 1;
-        let paginaAtualMoveis = 1;
-        let carrinho = {}; 
-        let total = 0;
-
-        function renderizarProdutos(listaProdutos = PRODUTOS_DATA) {
-            const containerNovidades = document.getElementById('container-novidades');
-            const containerEletronicos = document.getElementById('container-eletronicos');
-            const containerMoveis = document.getElementById('container-moveis');
-            
-            if(!containerNovidades || !containerEletronicos || !containerMoveis) return;
-
-            const umDiaEmMs = 24 * 60 * 60 * 1000;
-            const novidadesFiltradas = listaProdutos.filter(p => {
-                const dataProd = new Date(p.dataPublicacao);
-                const diffEmDias = Math.floor((HOJE_SISTEMA - dataProd) / umDiaEmMs);
-                return diffEmDias >= 0 && diffEmDias <= 7;
-            });
-
-            const eletronicosFiltrados = listaProdutos.filter(p => p.categoria === "eletronico");
-            const moveisFiltrados = listaProdutos.filter(p => p.categoria === "moveis");
-
-            document.getElementById('count-novidades').innerText = novidadesFiltradas.length;
-            document.getElementById('count-eletronicos').innerText = eletronicosFiltrados.length;
-            document.getElementById('count-moveis').innerText = moveisFiltrados.length;
-
-            processarSegmentoProdutos('novidades', novidadesFiltradas, containerNovidades, paginaAtualNovidades);
-            processarSegmentoProdutos('eletronicos', eletronicosFiltrados, containerEletronicos, paginaAtualEletronicos);
-            processarSegmentoProdutos('moveis', moveisFiltrados, containerMoveis, paginaAtualMoveis);
-        }
-
-        function processarSegmentoProdutos(seccao, subLista, containerDOM, paginaAtual) {
-            const totalItens = subLista.length;
-            const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
-            
-            if(paginaAtual > totalPaginas) paginaAtual = totalPaginas;
-            const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
-            const fim = inicio + ITENS_POR_PAGINA;
-            const itensVisiveis = subLista.slice(inicio, fim);
-
-            containerDOM.innerHTML = '';
-            itensVisiveis.forEach(prod => { containerDOM.innerHTML += gerarCardHTML(prod); });
-            
-            document.getElementById(`empty-${seccao}`).classList.toggle('hidden', totalItens > 0);
-            configurarBarraPaginacao(seccao, paginaAtual, totalPaginas, totalItens === 0 ? 0 : inicio + 1, Math.min(fim, totalItens), totalItens);
-        }
-
-        function gerarCardHTML(prod) {
+        function criarCardProduto(p) {
             return `
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 relative group flex flex-col justify-between h-full">
-                    <div>
-                        ${prod.badge ? `<span class="absolute top-3 left-3 bg-indigo-600 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide z-10 shadow-sm">${prod.badge}</span>` : ''}
-                        <div class="overflow-hidden bg-gray-50 h-52 relative flex items-center justify-center">
-                            <!-- Ao clicar na imagem, abre o Modal de detalhes (Option 2) -->
-                            <img src="${prod.imagem}" alt="${prod.nome}" class="max-h-full max-w-full object-contain cursor-pointer group-hover:scale-105 transition duration-500" onclick="abrirModalProduto(${prod.id})" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=ALI+MOVEIS';">
-                        </div>
-                        <div class="p-4">
-                            <h3 onclick="abrirModalProduto(${prod.id})" class="font-bold text-sm text-slate-900 mb-1 line-clamp-1 group-hover:text-indigo-600 transition cursor-pointer" title="${prod.nome}">${prod.nome}</h3>
-                            <p class="text-gray-500 text-xs mb-3 line-clamp-2 leading-relaxed">${prod.descricao}</p>
-                        </div>
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex flex-col justify-between min-w-[280px] max-w-[280px] snap-start flex-shrink-0">
+                    <div class="relative mb-4 bg-gray-50 rounded-xl p-2 h-48 flex items-center justify-center overflow-hidden">
+                        <span class="absolute top-2 left-2 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">${p.badge}</span>
+                        <img src="${p.imagem}" alt="${p.nome}" loading="lazy" class="max-h-full max-w-full object-contain mix-blend-multiply">
                     </div>
-                    <div class="p-4 pt-0">
-                        <div class="flex justify-between items-center gap-2 pt-2 border-t border-gray-50">
-                            <span class="text-base font-black text-slate-900">${prod.preco.toLocaleString()} Kz</span>
-                            <button onclick="adicionarAoCarrinho(${prod.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-xl font-semibold text-xs transition flex items-center gap-1">
-                                <i class="fa-solid fa-cart-plus"></i> Adicionar
-                            </button>
-                        </div>
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-900 line-clamp-2 mb-1">${p.nome}</h3>
+                        <p class="text-gray-500 text-xs line-clamp-2 mb-4">${p.descricao}</p>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-gray-50">
+                        <span class="text-base font-black text-slate-900">${p.preco.toLocaleString()} Kz</span>
+                        <button onclick="adicionarAoCarrinho(${p.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3 py-2 rounded-xl transition">
+                            Adicionar
+                        </button>
                     </div>
                 </div>
             `;
         }
 
-        function configurarBarraPaginacao(seccao, paginaAtual, totalPaginas, itemInicio, itemFim, totalItens) {
-            const divInfo = document.getElementById(`info-paginacao-${seccao}`);
-            const divBotoes = document.getElementById(`botoes-paginacao-${seccao}`);
-            const navContainer = document.getElementById(`paginacao-${seccao}`);
+        // Sistema de Renderização Centralizado (Aceita filtros dinâmicos)
+        function render(produtos = PRODUTOS_DATA) {
+            const novidadesContainer = document.getElementById('container-novidades');
+            const eletronicosContainer = document.getElementById('container-eletronicos');
+            const moveisContainer = document.getElementById('container-moveis');
 
-            if(totalItens === 0) {
-                navContainer.classList.add('hidden');
-                return;
-            }
-            navContainer.classList.remove('hidden');
-            divInfo.innerHTML = `Mostrando ${itemInicio}-${itemFim} de ${totalItens} artigo(s)`;
+            let novidadesHtml = '', eletronicosHtml = '', moveisHtml = '';
+            let cNovidades = 0, cEletronicos = 0, cMoveis = 0;
 
-            let botoesHTML = '';
-            for (let i = 1; i <= totalPaginas; i++) {
-                if(i === paginaAtual) {
-                    botoesHTML += `<button class="px-3 py-1.5 bg-green-600 text-white font-bold rounded-md shadow-sm">${i}</button>`;
-                } else {
-                    botoesHTML += `<button onclick="mudarPagina('${seccao}', ${i})" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition">${i}</button>`;
+            produtos.forEach(p => {
+                const card = criarCardProduto(p);
+                const diffTime = Math.abs(HOJE_SISTEMA - new Date(p.dataPublicacao));
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays <= 20) { // Janela estendida para abranger novidades locais
+                    novidadesHtml += card;
+                    cNovidades++;
                 }
-            }
-            divBotoes.innerHTML = botoesHTML;
+                if (p.categoria === 'eletronico') {
+                    eletronicosHtml += card;
+                    cEletronicos++;
+                } else if (p.categoria === 'moveis') {
+                    moveisHtml += card;
+                    cMoveis++;
+                }
+            });
+
+            if(novidadesContainer) novidadesContainer.innerHTML = novidadesHtml;
+            if(eletronicosContainer) eletronicosContainer.innerHTML = eletronicosHtml;
+            if(moveisContainer) moveisContainer.innerHTML = moveisHtml;
+
+            document.getElementById('count-novidades').innerText = cNovidades;
+            document.getElementById('count-eletronicos').innerText = cEletronicos;
+            document.getElementById('count-moveis').innerText = cMoveis;
+
+            // Mostrar/Ocultar alertas de lista vazia
+            document.getElementById('empty-novidades').classList.toggle('hidden', cNovidades > 0);
+            document.getElementById('empty-eletronicos').classList.toggle('hidden', cEletronicos > 0);
+            document.getElementById('empty-moveis').classList.toggle('hidden', cMoveis > 0);
         }
 
-        function mudarPagina(seccao, novaPagina) {
-            if(seccao === 'novidades') paginaAtualNovidades = novaPagina;
-            if(seccao === 'eletronicos') paginaAtualEletronicos = novaPagina;
-            if(seccao === 'moveis') paginaAtualMoveis = novaPagina;
-            filtrarProdutos();
-        }
-
-        // OPTION 1 LOGIC: Filtrar e Ordenar por preço de forma dinâmica
+        // Mecanismo de Busca Dinâmica e Ordenação
         function filtrarProdutos() {
             const termo = document.getElementById('search-input').value.toLowerCase();
-            const btnClear = document.getElementById('clear-search');
-            btnClear.classList.toggle('hidden', termo.length === 0);
-
-            let filtrados = [...PRODUTOS_DATA].filter(p => p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo));
-
-            const ordenacao = document.getElementById('sort-select').value;
-            if (ordenacao === 'preco-baixo') {
+            const ordem = document.getElementById('sort-select').value;
+            
+            let filtrados = PRODUTOS_DATA.filter(p => 
+                p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo)
+            );
+            
+            if (ordem === 'preco-baixo') {
                 filtrados.sort((a, b) => a.preco - b.preco);
-            } else if (ordenacao === 'preco-alto') {
+            } else if (ordem === 'preco-alto') {
                 filtrados.sort((a, b) => b.preco - a.preco);
             }
-
-            renderizarProdutos(filtrados);
-        }
-
-        function limparPesquisa() {
-            document.getElementById('search-input').value = '';
-            document.getElementById('sort-select').value = 'default';
-            filtrarProdutos();
-        }
-
-        // OPTION 2 LOGIC: Funções do Modal de Detalhes Avançados
-        function abrirModalProduto(id) {
-            const prod = PRODUTOS_DATA.find(p => p.id === id);
-            if(!prod) return;
-
-            document.getElementById('modal-img').src = prod.imagem;
-            document.getElementById('modal-nome').innerText = prod.nome;
-            document.getElementById('modal-descricao').innerText = prod.descricao;
-            document.getElementById('modal-preco').innerText = `${prod.preco.toLocaleString()} Kz`;
             
-            const badgeDOM = document.getElementById('modal-badge');
-            if(prod.badge) {
-                badgeDOM.innerText = prod.badge;
-                badgeDOM.classList.remove('hidden');
-            } else {
-                badgeDOM.classList.add('hidden');
-            }
-
-            document.getElementById('modal-action-container').innerHTML = `
-                <button onclick="adicionarAoCarrinho(${prod.id}); fecharModalProduto();" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-md">
-                    <i class="fa-solid fa-basket-shopping"></i> Adicionar ao carrinho
-                </button>
-            `;
-
-            document.getElementById('detalhes-modal').classList.remove('hidden');
+            render(filtrados);
         }
 
-        function fecharModalProduto() {
-            document.getElementById('detalhes-modal').classList.add('hidden');
-        }
-
-        function verificarFecharModal(event) {
-            if(event.target.id === 'detalhes-modal') fecharModalProduto();
-        }
-
+        // Gestão de Estado do Carrinho (Funcional)
         function adicionarAoCarrinho(id) {
             const produto = PRODUTOS_DATA.find(p => p.id === id);
-            if(carrinho[id]) carrinho[id].quantidade++;
-            else carrinho[id] = { ...produto, aggregate: 1, quantidade: 1 };
-            atualizarCarrinho();
-            toggleCarrinho(true);
-        }
-
-        function alterarQuantidade(id, delta) {
-            if(carrinho[id]) {
-                carrinho[id].quantidade += delta;
-                if(carrinho[id].quantidade <= 0) delete carrinho[id];
-                atualizarCarrinho();
-            }
-        }
-
-        function mudarAbaConta(aba) {
-            const btnLogin = document.getElementById('btn-aba-login');
-            const btnCadastro = document.getElementById('btn-aba-cadastro');
-            if(aba === 'login') {
-                btnLogin.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition";
-                btnCadastro.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition";
+            const itemNoCarrinho = carrinho.find(item => item.id === id);
+            
+            if (itemNoCarrinho) {
+                itemNoCarrinho.quantidade++;
             } else {
-                btnCadastro.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition";
-                btnLogin.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition";
+                carrinho.push({ ...produto, quantidade: 1 });
             }
+            atualizarCarrinho();
+            document.getElementById('carrinho-sidebar').classList.remove('translate-x-full');
+        }
+
+        function removerDoCarrinho(id) {
+            carrinho = carrinho.filter(item => item.id !== id);
+            atualizarCarrinho();
         }
 
         function atualizarCarrinho() {
+            const container = document.getElementById('itens-carrinho');
             const cartCount = document.getElementById('cart-count');
-            const itensCarrinhoDOM = document.getElementById('itens-carrinho');
-            const totalPrecoDOM = document.getElementById('total-preco');
-            const formEntrega = document.getElementById('form-entrega');
+            const totalPreco = document.getElementById('total-preco');
             
-            let count = 0; total = 0;
-            itensCarrinhoDOM.innerHTML = '';
-            const cartItems = Object.values(carrinho);
+            const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+            cartCount.innerText = totalItens;
             
-            if(cartItems.length === 0) {
-                itensCarrinhoDOM.innerHTML = '<p class="text-gray-500 text-sm text-center py-6">O seu carrinho está vazio.</p>';
-                formEntrega.classList.add('hidden');
-            } else {
-                formEntrega.classList.remove('hidden');
-                cartItems.forEach(item => {
-                    count += item.quantidade;
-                    total += item.preco * item.quantidade;
-                    itensCarrinhoDOM.innerHTML += `
-                        <div class="flex gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                            <img src="${item.imagem}" class="w-14 h-14 object-cover rounded-lg bg-white border" onerror="this.src='https://placehold.co/100x100?text=IMG'">
-                            <div class="flex-1 flex flex-col justify-between">
+            let html = '';
+            let precoTotalGeral = 0;
+            
+            carrinho.forEach(item => {
+                precoTotalGeral += item.preco * item.quantidade;
+                html += `
+                    <div class="flex items-center justify-between border-b pb-3 border-gray-100 bg-gray-50/50 p-2 rounded-xl">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.imagem}" class="w-12 h-12 object-contain bg-white border rounded-lg p-1">
+                            <div>
                                 <h5 class="text-xs font-bold text-slate-900 line-clamp-1">${item.nome}</h5>
-                                <div class="flex justify-between items-center mt-1">
-                                    <span class="text-xs font-black text-indigo-600">${item.preco.toLocaleString()} Kz</span>
-                                    <div class="flex items-center bg-white border rounded-lg">
-                                        <button onclick="alterarQuantidade(${item.id}, -1)" class="px-2 py-0.5 text-gray-500">-</button>
-                                        <span class="text-xs font-bold px-1">${item.quantidade}</span>
-                                        <button onclick="alterarQuantidade(${item.id}, 1)" class="px-2 py-0.5 text-gray-500">+</button>
-                                    </div>
-                                </div>
+                                <p class="text-[11px] text-gray-500">${item.quantidade}x - ${(item.preco).toLocaleString()} Kz</p>
                             </div>
-                        </div>`;
-                });
-            }
-            cartCount.innerText = count;
-            totalPrecoDOM.innerText = `${total.toLocaleString()} Kz`;
+                        </div>
+                        <button onclick="removerDoCarrinho(${item.id})" class="text-red-500 hover:text-red-700 text-xs font-semibold px-2">
+                            Remover
+                        </button>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || '<p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>';
+            totalPreco.innerText = `${precoTotalGeral.toLocaleString()} Kz`;
         }
 
-        function finalizarPedido() {
-            const cartItems = Object.values(carrinho);
-            const nome = document.getElementById('cliente-nome').value;
-            const bairro = document.getElementById('cliente-bairro').value;
-            const mPagamento = document.querySelector('input[name="metodo_pagamento"]:checked').value;
-
-            if(!nome || !bairro) {
-                alert('Preencha os seus dados de envio.');
+        // Integração de Checkout WhatsApp Directo
+        function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("O seu carrinho está vazio!");
                 return;
             }
-
-            let mensagem = `Olá ALI MOVEIS! Gostaria de fazer o seguinte pedido:\n\n`;
-            cartItems.forEach(item => { mensagem += `- ${item.quantidade}x ${item.nome} (${(item.preco * item.quantidade).toLocaleString()} Kz)\n`; });
-            mensagem += `\n*Total a Pagar:* ${total.toLocaleString()} Kz\n`;
-            mensagem += `*Forma de Pagamento:* ${mPagamento}\n\n`;
-            mensagem += `*Dados de Entrega:*\nNome: ${nome}\nBairro: ${bairro}\n`;
-
-            const numeroWhatsApp = "244945633379"; 
-            window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`, '_blank');
+            
+            let mensagem = "Olá *ALI MÓVEIS*, gostaria de fazer o seguinte pedido:\n\n";
+            let total = 0;
+            
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+                mensagem += `🛍️ *${item.quantidade}x* ${item.nome}\n`;
+                mensagem += `    ↳ Subtotal: ${subtotal.toLocaleString()} Kz\n\n`;
+            });
+            
+            mensagem += `*TOTAL DO PEDIDO:* ${total.toLocaleString()} Kz\n\n`;
+            mensagem += "👉 Aguardo a confirmação de disponibilidade dos artigos e dados de pagamento.";
+            
+            const url = `https://wa.me/244945633379?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
         }
 
-        function toggleFaq(id) {
-            const ans = document.getElementById(`faq-ans-${id}`);
-            const icon = document.getElementById(`faq-icon-${id}`);
-            if (ans && icon) {
-                const isHidden = ans.classList.contains('hidden');
-                ans.classList.toggle('hidden', !isHidden);
-                icon.classList.toggle('rotate-180', isHidden);
-            }
+        // Loop Automático de Rolagem Horizontal Fluida
+        function iniciarAutoScroll() {
+            const carrosséis = [
+                document.getElementById('container-novidades'),
+                document.getElementById('container-eletronicos'),
+                document.getElementById('container-moveis')
+            ];
+
+            carrosséis.forEach(c => {
+                if (!c) return;
+                let scrollInterval = setInterval(() => {
+                    if (c.scrollLeft + c.clientWidth >= c.scrollWidth - 10) {
+                        c.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        c.scrollBy({ left: 304, behavior: 'smooth' }); 
+                    }
+                }, 4000); 
+
+                c.addEventListener('mouseenter', () => clearInterval(scrollInterval));
+                c.addEventListener('mouseleave', () => {
+                    clearInterval(scrollInterval);
+                    scrollInterval = setInterval(() => {
+                        if (c.scrollLeft + c.clientWidth >= c.scrollWidth - 10) {
+                            c.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            c.scrollBy({ left: 304, behavior: 'smooth' });
+                        }
+                    }, 4000);
+                });
+            });
         }
 
-        function toggleCarrinho(forceOpen = false) { document.getElementById('carrinho-sidebar').classList.toggle('translate-x-full', !forceOpen); }
-        function toggleConta() { document.getElementById('conta-sidebar').classList.toggle('translate-x-full'); }
+        function toggleCarrinho() { document.getElementById('carrinho-sidebar').classList.toggle('translate-x-full'); }
+        function toggleConta() { alert('Espaço de conta em desenvolvimento para Luanda.'); }
 
-        // Sistema Back-To-Top
-        window.onscroll = function() {
-            const btt = document.getElementById("back-to-top");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btt.classList.remove("opacity-0", "invisible"); btt.classList.add("opacity-100", "visible");
-            } else {
-                btt.classList.add("opacity-0", "invisible"); btt.classList.remove("opacity-100", "visible");
-            }
+        window.onload = () => {
+            render();
+            iniciarAutoScroll();
         };
-
-        let slideIndex = 0;
-        function mostrarSlides() {
-            const slides = document.querySelectorAll('.slide-item');
-            if(slides.length === 0) return;
-            slides.forEach(s => { s.classList.remove('opacity-100'); s.classList.add('opacity-0'); });
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].classList.remove('opacity-0'); slides[slideIndex - 1].classList.add('opacity-100');
-            setTimeout(mostrarSlides, 5000);
-        }
-
-        window.onload = () => { renderizarProdutos(); atualizarCarrinho(); mostrarSlides(); };
     </script>
 </body>
 </html>
