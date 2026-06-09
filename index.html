@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALI MOVEIS | Eletrónicos & Móveis em Luanda</title>
-    <!-- Tailwind CSS (Para uma produção 100% otimizada, compile via CLI futuramente) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html { scroll-behavior: smooth; }
@@ -91,7 +91,7 @@
         </select>
     </div>
 
-    <!-- PRODUTOS: NOVIDADES (Carrossel Automático) -->
+    <!-- PRODUTOS: NOVIDADES -->
     <section id="novidades" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex items-center justify-between mb-6 border-b pb-4">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
@@ -106,7 +106,7 @@
         </div>
     </section>
 
-    <!-- PRODUTOS: ELETRÓNICOS (Carrossel Automático) -->
+    <!-- PRODUTOS: ELETRÓNICOS -->
     <section id="eletronicos" class="bg-slate-100 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-6 border-b pb-4 border-gray-200">
@@ -123,7 +123,7 @@
         </div>
     </section>
 
-    <!-- PRODUTOS: MÓVEIS (Carrossel Automático) -->
+    <!-- PRODUTOS: MÓVEIS -->
     <section id="moveis" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div class="flex items-center justify-between mb-6 border-b pb-4">
             <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
@@ -178,24 +178,66 @@
         </div>
     </section>
 
-    <!-- Painel Lateral do Carrinho Conectado -->
+    <!-- Painel Lateral do Carrinho Conectado (Fiel à image_291a7f.png) -->
     <div id="carrinho-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
         <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
-            <div>
-                <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <div class="flex-1 flex flex-col min-h-0">
+                <!-- Cabeçalho com Opção de Vider le Panier -->
+                <div class="flex justify-between items-center border-b pb-4 mb-4 flex-shrink-0">
                     <h3 class="text-lg font-bold text-slate-950">O Meu Pedido - ALI MOVEIS</h3>
-                    <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500 font-bold text-lg">✕</button>
+                    <div class="flex items-center gap-3">
+                        <!-- Botão Vider le Panier -->
+                        <button id="btn-limpar-carrinho" onclick="limparCarrinho()" class="hidden text-xs text-red-500 hover:text-red-700 font-bold transition">
+                            Limpar Carrinho
+                        </button>
+                        <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500 font-bold text-lg">✕</button>
+                    </div>
                 </div>
-                <div id="itens-carrinho" class="space-y-4 max-h-[60vh] overflow-y-auto pr-1 no-scrollbar">
-                    <p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>
+
+                <!-- Área Principal de Rolagem -->
+                <div class="flex-1 overflow-y-auto pr-1 no-scrollbar space-y-6">
+                    <!-- Artigos do carrinho -->
+                    <div id="itens-carrinho" class="space-y-4">
+                        <p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>
+                    </div>
+                    
+                    <!-- DADOS DE ENVIO -->
+                    <div class="border-t pt-4">
+                        <h4 class="text-xs font-black uppercase tracking-wide text-slate-900 mb-2.5">Dados de Envio</h4>
+                        <div class="space-y-3">
+                            <input type="text" id="cliente-nome" placeholder="Seu Nome" class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-indigo-600 bg-white transition">
+                            <input type="text" id="cliente-bairro" placeholder="Bairro em Luanda" class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-indigo-600 bg-white transition">
+                        </div>
+                    </div>
+
+                    <!-- MÉTODO DE PAGAMENTO -->
+                    <div class="border-t pt-4">
+                        <h4 class="text-xs font-black uppercase tracking-wide text-slate-900 mb-2.5">Método de Pagamento</h4>
+                        <div class="grid grid-cols-2 gap-3">
+                            <!-- Opção Multicaixa -->
+                            <label class="flex items-center gap-2.5 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="Multicaixa" checked class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                                <img src="multicaixa.jpeg" alt="Multicaixa" class="w-5 h-5 object-contain rounded">
+                                <span class="text-xs font-bold text-slate-700">Multicaixa</span>
+                            </label>
+                            <!-- Opção MCX Express -->
+                            <label class="flex items-center gap-2.5 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="MCX Express" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                                <img src="express logo.png" alt="MCX Express" class="w-5 h-5 object-contain rounded">
+                                <span class="text-xs font-bold text-slate-700">MCX Express</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="border-t pt-4 mt-4 bg-white">
-                <div class="flex justify-between font-bold text-lg mb-4">
-                    <span>Total:</span>
-                    <span id="total-preco" class="text-indigo-600">0 Kz</span>
+
+            <!-- Rodapé Fixo do Carrinho (Total & Botão Verde WhatsApp) -->
+            <div class="border-t pt-4 mt-4 bg-white flex-shrink-0">
+                <div class="flex justify-between items-center font-bold text-base mb-4">
+                    <span class="text-slate-900">Total:</span>
+                    <span id="total-preco" class="text-indigo-600 text-xl font-black">0 Kz</span>
                 </div>
-                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2">
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-[#128c7e] hover:bg-[#075e54] text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-md">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.652 1.493 5.433.002 9.85-4.386 9.853-9.782.002-2.614-1.015-5.07-2.864-6.92C16.38 2.096 13.922 1.08 11.31 1.08 5.877 1.08 1.46 5.47 1.457 10.865c-.001 1.444.381 2.859 1.107 4.108l-.406 1.484 1.52-.4 1.353.804c1.238.736 2.502 1.123 3.016 1.133z"/></svg>
                     <span>Enviar via WhatsApp</span>
                 </button>
@@ -203,10 +245,9 @@
         </div>
     </div>
 
-    <!-- RODAPÉ COMPLETO -->
+    <!-- RODAPÉ GLOBAL -->
     <footer class="bg-slate-950 text-gray-400 pt-16 pb-8 relative w-full z-10 border-t border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-left pb-12 border-b border-slate-900">
-            <!-- Coluna 1: Sobre -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">ALI MOVEIS</h4>
                 <p class="text-xs leading-relaxed max-w-xs text-gray-400">
@@ -220,7 +261,6 @@
                 </div>
             </div>
 
-            <!-- Coluna 2: Pagamentos -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">Pagamento & Envio</h4>
                 <ul class="space-y-3 text-xs text-gray-400">
@@ -235,7 +275,6 @@
                 </ul>
             </div>
 
-            <!-- Coluna 3: Localização -->
             <div class="space-y-4">
                 <h4 class="text-white font-bold text-base tracking-wide uppercase">Localização Directa</h4>
                 <ul class="space-y-3 text-xs text-gray-400">
@@ -251,7 +290,6 @@
             </div>
         </div>
 
-        <!-- Créditos e Logos Inferiores -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col items-center justify-center gap-4 text-[11px] tracking-wide text-gray-500">
             <div class="flex items-center gap-2 bg-white/5 p-1 px-2 rounded-lg border border-white/10 shadow-inner">
                 <img src="multicaixa.jpeg" alt="Multicaixa" class="h-5 w-auto object-contain rounded">
@@ -301,7 +339,6 @@
             `;
         }
 
-        // Sistema de Renderização Centralizado (Aceita filtros dinâmicos)
         function render(produtos = PRODUTOS_DATA) {
             const novidadesContainer = document.getElementById('container-novidades');
             const eletronicosContainer = document.getElementById('container-eletronicos');
@@ -315,7 +352,7 @@
                 const diffTime = Math.abs(HOJE_SISTEMA - new Date(p.dataPublicacao));
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 
-                if (diffDays <= 20) { // Janela estendida para abranger novidades locais
+                if (diffDays <= 20) {
                     novidadesHtml += card;
                     cNovidades++;
                 }
@@ -336,13 +373,11 @@
             document.getElementById('count-eletronicos').innerText = cEletronicos;
             document.getElementById('count-moveis').innerText = cMoveis;
 
-            // Mostrar/Ocultar alertas de lista vazia
             document.getElementById('empty-novidades').classList.toggle('hidden', cNovidades > 0);
             document.getElementById('empty-eletronicos').classList.toggle('hidden', cEletronicos > 0);
             document.getElementById('empty-moveis').classList.toggle('hidden', cMoveis > 0);
         }
 
-        // Mecanismo de Busca Dinâmica e Ordenação
         function filtrarProdutos() {
             const termo = document.getElementById('search-input').value.toLowerCase();
             const ordem = document.getElementById('sort-select').value;
@@ -360,7 +395,7 @@
             render(filtrados);
         }
 
-        // Gestão de Estado do Carrinho (Funcional)
+        // Adicionar Produto ao Carrinho
         function adicionarAoCarrinho(id) {
             const produto = PRODUTOS_DATA.find(p => p.id === id);
             const itemNoCarrinho = carrinho.find(item => item.id === id);
@@ -368,24 +403,47 @@
             if (itemNoCarrinho) {
                 itemNoCarrinho.quantidade++;
             } else {
-                carrinho.push({ ...produto, quantidade: 1 });
+                carrinho.push({ ...produto, ...produto, quantidade: 1 });
             }
             atualizarCarrinho();
             document.getElementById('carrinho-sidebar').classList.remove('translate-x-full');
         }
 
-        function removerDoCarrinho(id) {
-            carrinho = carrinho.filter(item => item.id !== id);
+        // Alterar Quantidade Dinamicamente [- 1 +]
+        function alterarQuantidade(id, delta) {
+            const item = carrinho.find(i => i.id === id);
+            if (!item) return;
+            
+            item.quantidade += delta;
+            if (item.quantidade <= 0) {
+                carrinho = carrinho.filter(i => i.id !== id);
+            }
             atualizarCarrinho();
         }
 
+        // Nova Função: Vider Complètement le Panier
+        function limparCarrinho() {
+            if (carrinho.length === 0) return;
+            if (confirm("Tem a certeza que deseja esvaziar o seu carrinho?")) {
+                carrinho = [];
+                atualizarCarrinho();
+            }
+        }
+
+        // Atualizar Renderização do Carrinho
         function atualizarCarrinho() {
             const container = document.getElementById('itens-carrinho');
             const cartCount = document.getElementById('cart-count');
             const totalPreco = document.getElementById('total-preco');
+            const btnLimpar = document.getElementById('btn-limpar-carrinho');
             
             const totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
             cartCount.innerText = totalItens;
+            
+            // Mostrar ou ocultar o botão de esvaziar
+            if (btnLimpar) {
+                btnLimpar.classList.toggle('hidden', carrinho.length === 0);
+            }
             
             let html = '';
             let precoTotalGeral = 0;
@@ -393,17 +451,20 @@
             carrinho.forEach(item => {
                 precoTotalGeral += item.preco * item.quantidade;
                 html += `
-                    <div class="flex items-center justify-between border-b pb-3 border-gray-100 bg-gray-50/50 p-2 rounded-xl">
-                        <div class="flex items-center gap-3">
-                            <img src="${item.imagem}" class="w-12 h-12 object-contain bg-white border rounded-lg p-1">
-                            <div>
-                                <h5 class="text-xs font-bold text-slate-900 line-clamp-1">${item.nome}</h5>
-                                <p class="text-[11px] text-gray-500">${item.quantidade}x - ${(item.preco).toLocaleString()} Kz</p>
+                    <div class="flex items-center justify-between border border-gray-100 bg-white p-3 rounded-2xl shadow-sm">
+                        <div class="flex items-center gap-3 flex-1 min-w-0">
+                            <img src="${item.imagem}" class="w-14 h-14 object-contain bg-gray-50 border border-gray-100 rounded-xl p-1 flex-shrink-0">
+                            <div class="flex-1 min-w-0">
+                                <h5 class="text-xs font-bold text-slate-900 truncate mb-1">${item.nome}</h5>
+                                <p class="text-xs font-black text-indigo-600">${(item.preco).toLocaleString()} Kz</p>
                             </div>
                         </div>
-                        <button onclick="removerDoCarrinho(${item.id})" class="text-red-500 hover:text-red-700 text-xs font-semibold px-2">
-                            Remover
-                        </button>
+                        <!-- Seletores de quantidade integrados -->
+                        <div class="flex items-center border border-gray-200 bg-gray-50/50 rounded-xl p-1 ml-3 flex-shrink-0">
+                            <button onclick="alterarQuantidade(${item.id}, -1)" class="px-2 py-0.5 text-gray-500 hover:text-red-600 font-bold text-xs transition">-</button>
+                            <span class="px-2 text-xs font-bold text-slate-800">${item.quantidade}</span>
+                            <button onclick="alterarQuantidade(${item.id}, 1)" class="px-2 py-0.5 text-gray-500 hover:text-green-600 font-bold text-xs transition">+</button>
+                        </div>
                     </div>
                 `;
             });
@@ -412,21 +473,34 @@
             totalPreco.innerText = `${precoTotalGeral.toLocaleString()} Kz`;
         }
 
-        // Integração de Checkout WhatsApp Directo
+        // Enviar pedido formatado via WhatsApp recolhendo os campos do formulário
         function enviarPedidoWhatsApp() {
             if (carrinho.length === 0) {
                 alert("O seu carrinho está vazio!");
                 return;
             }
             
-            let mensagem = "Olá *ALI MÓVEIS*, gostaria de fazer o seguinte pedido:\n\n";
-            let total = 0;
+            const nome = document.getElementById('cliente-nome').value.trim();
+            const bairro = document.getElementById('cliente-bairro').value.trim();
+            const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+
+            if (!nome || !bairro) {
+                alert("Por favor, preencha os seus Dados de Envio (Nome e Bairro) antes de enviar!");
+                return;
+            }
             
+            let mensagem = `Olá *ALI MÓVEIS*, gostaria de fazer o seguinte pedido:\n\n`;
+            mensagem += `👤 *Cliente:* ${nome}\n`;
+            mensagem += `📍 *Entrega:* ${bairro} (Luanda)\n`;
+            mensagem += `💳 *Pagamento:* ${metodoPagamento}\n\n`;
+            mensagem += `--- *ARTIGOS* ---\n`;
+            
+            let total = 0;
             carrinho.forEach(item => {
                 const subtotal = item.preco * item.quantidade;
                 total += subtotal;
                 mensagem += `🛍️ *${item.quantidade}x* ${item.nome}\n`;
-                mensagem += `    ↳ Subtotal: ${subtotal.toLocaleString()} Kz\n\n`;
+                mensagem += `    ↳ Preço: ${subtotal.toLocaleString()} Kz\n\n`;
             });
             
             mensagem += `*TOTAL DO PEDIDO:* ${total.toLocaleString()} Kz\n\n`;
@@ -436,7 +510,7 @@
             window.open(url, '_blank');
         }
 
-        // Loop Automático de Rolagem Horizontal Fluida
+        // Loop Automático de Rolagem
         function iniciarAutoScroll() {
             const carrosséis = [
                 document.getElementById('container-novidades'),
