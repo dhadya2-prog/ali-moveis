@@ -11,181 +11,259 @@
         html { scroll-behavior: smooth; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <!-- Barra de Informações Superior -->
-    <div class="bg-indigo-900 text-white text-xs py-2 px-4 text-center font-medium sticky top-0 z-50">
-        Loja física no bairro HOJE AINDA 🇦🇴 | Fazemos Entregas ao Domicílio | Pagamento por Multicaixa
+    <!-- Barra de Informações Superior (Clean & Minimalista) -->
+    <div class="bg-[#00269c] text-white text-xs py-2 px-4 text-center sticky top-0 z-50 shadow-sm font-bold tracking-wide">
+        Loja física no bairro HOJE AINDA 🇦🇴 | Entregas ao Domicílio | Pagamento por Multicaixa & Express
     </div>
 
-    <!-- Barra de Navegação -->
-    <nav class="bg-white shadow-md sticky top-[32px] z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black text-indigo-600 tracking-wider">ALI <span class="text-yellow-500">MOVEIS</span></a>
+    <!-- Barra de Navegação com Logo Oficial -->
+    <nav class="bg-white shadow-md sticky top-[36px] z-40 backdrop-blur-md bg-white/95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <img src="logo.png" alt="ALI MOVEIS" class="h-14 w-auto object-contain">
+            </a>
             
-            <div class="hidden md:flex space-x-8 font-medium">
+            <div class="hidden md:flex space-x-6 font-semibold text-sm">
                 <a href="#" class="text-indigo-600">Início</a>
+                <a href="#novidades" class="text-gray-600 hover:text-indigo-600 transition flex items-center gap-1">Novidades <span class="bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full animate-pulse">Novo</span></a>
                 <a href="#eletronicos" class="text-gray-600 hover:text-indigo-600 transition">Eletrónicos</a>
                 <a href="#moveis" class="text-gray-600 hover:text-indigo-600 transition">Móveis</a>
                 <a href="#testemunhos" class="text-gray-600 hover:text-indigo-600 transition">Feedback</a>
                 <a href="#faq" class="text-gray-600 hover:text-indigo-600 transition">Perguntas Frequentes</a>
             </div>
 
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleConta()" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm">
+                    <i class="fa-solid fa-user text-sm text-indigo-600"></i>
+                    <span class="hidden sm:inline">Minha Conta</span>
+                </button>
+
                 <!-- Botão do Carrinho -->
-                <button onclick="toggleCarrinho()" class="relative bg-indigo-50 p-2.5 rounded-full text-indigo-600 hover:bg-indigo-100 transition">
-                    <i class="fa-solid fa-basket-shopping text-xl"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold animate-pulse">0</span>
+                <button onclick="toggleCarrinho()" class="relative bg-indigo-50 p-3 rounded-full text-indigo-600 hover:bg-indigo-100 transition shadow-sm">
+                    <i class="fa-solid fa-basket-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Secção Principal (Hero - Carrossel Local) -->
+    <!-- Secção Principal (Hero) -->
     <header class="relative bg-slate-900 overflow-hidden">
-        <section class="relative h-[65vh] md:h-[75vh] w-full flex items-center justify-center bg-slate-900">
+        <section class="relative h-[55vh] md:h-[65vh] w-full flex items-center justify-center bg-slate-900">
             <div id="slider-container" class="absolute inset-0 w-full h-full">
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('canape.jpg');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('lit chambre bebe.jpeg');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('micro-onde.jpeg');"></div>
-                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.65)), url('friteuse8l.jpeg');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('canape.jpg');"></div>
+                <div class="slide-item absolute inset-0 w-full h-full bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('lit chambre bebe.jpeg');"></div>
             </div>
 
             <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white space-y-6">
-                <span class="inline-block bg-yellow-500 text-slate-900 text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider">
+                <span class="inline-block bg-yellow-500 text-slate-900 text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-md">
                     Bairro Hoje Ainda - Luanda
                 </span>
                 <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight max-w-4xl mx-auto">
                     Alta Tecnologia e Equipamentos para Casa & Escritório
                 </h1>
-                <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto font-medium">
-                    Encontre tudo o que precisa na ALI MOVEIS. Peça a sua entrega ao domicílio em qualquer ponto de Luanda.
-                </p>
-                <div class="pt-4 flex flex-wrap justify-center gap-4">
+                <div class="pt-2 flex flex-wrap justify-center gap-4">
+                    <a href="#novidades" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                        Ver Novidades 🔥
+                    </a>
                     <a href="#eletronicos" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         Ver Eletrónicos
-                    </a>
-                    <a href="#moveis" class="bg-white hover:bg-gray-100 text-slate-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
-                        Ver Móveis
                     </a>
                 </div>
             </div>
         </section>
     </header>
 
-    <!-- BARRA DE PESQUISA AVANÇADA -->
-    <div class="max-w-4xl mx-auto px-4 -mt-8 relative z-20">
-        <div class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3">
+    <!-- OPTION 1 : Barra de Pesquisa e Filtros de Tri Integrados -->
+    <div class="max-w-4xl mx-auto px-4 -mt-8 relative z-20 flex flex-col sm:flex-row gap-3">
+        <div class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-3 flex-1">
             <i class="fa-solid fa-magnifying-glass text-gray-400 text-xl pl-2"></i>
-            <input type="text" id="search-input" oninput="filtrarProdutos()" placeholder="O que está a procurar hoje? (Ex: sofá, micro-ondas, balão de água...)" class="w-full text-base focus:outline-none text-gray-700 bg-transparent">
-            <button onclick="limparPesquisa()" id="clear-search" class="hidden text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-circle-xmark"></i></button>
+            <input type="text" id="search-input" oninput="filtrarProdutos()" placeholder="O que está a procurar hoje? (Ex: sofá, micro-ondas...)" class="w-full text-base focus:outline-none text-gray-700 bg-transparent">
+            <button onclick="limparPesquisa()" id="clear-search" class="hidden text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
         </div>
+        <!-- Menu de ordenação por preço -->
+        <select id="sort-select" onchange="filtrarProdutos()" class="bg-white p-4 rounded-2xl shadow-xl border border-gray-100 text-sm font-bold text-slate-700 focus:outline-none cursor-pointer bg-no-repeat pr-10">
+            <option value="default">✨ Relevância</option>
+            <option value="preco-baixo">📉 Preço: Mais Baixo</option>
+            <option value="preco-alto">📈 Preço: Mais Alto</option>
+        </select>
     </div>
 
+    <!-- PRODUTOS: NOVIDADES -->
+    <section id="novidades" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex items-center justify-between mb-6 border-b pb-4">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-fire text-red-500"></i> Novidades da Semana 
+                <span id="count-novidades" class="text-xs bg-red-600 text-white px-2.5 py-1 rounded-full font-bold">0</span>
+            </h2>
+            <span class="text-xs md:text-sm font-bold text-red-600 bg-red-50 px-3 py-1.5 rounded-lg border border-red-100">Postados recentemente</span>
+        </div>
+        
+        <div id="container-novidades" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        <div id="empty-novidades" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum produto novo adicionado nos últimos 7 dias.</div>
+
+        <!-- Paginação Novidades -->
+        <div id="paginacao-novidades" class="mt-10 bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
+            <div id="info-paginacao-novidades" class="text-gray-700 font-semibold"></div>
+            <div id="botoes-paginacao-novidades" class="flex items-center gap-1"></div>
+        </div>
+    </section>
+
     <!-- PRODUTOS: ELETRÓNICOS -->
-    <section id="eletronicos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="flex items-center justify-between mb-8 border-b pb-4">
-            <h2 class="text-2xl md:text-3xl font-black text-slate-900"><i class="fa-solid fa-laptop text-indigo-600 mr-2"></i> Alta Tecnologia</h2>
-            <span class="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded">Garantia ALI MOVEIS</span>
+    <section id="eletronicos" class="bg-slate-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-6 border-b pb-4 border-gray-200">
+                <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-laptop text-indigo-600"></i> Alta Tecnologia
+                    <span id="count-eletronicos" class="text-xs bg-indigo-600 text-white px-2.5 py-1 rounded-full font-bold">0</span>
+                </h2>
+                <span class="text-xs md:text-sm font-bold text-indigo-600 bg-white px-3 py-1.5 rounded-lg border border-gray-200">Garantia ALI MOVEIS</span>
+            </div>
+            
+            <div id="container-eletronicos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+            <div id="empty-eletronicos" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum eletrónico corresponde à sua pesquisa.</div>
+
+            <!-- Paginação Eletrónicos -->
+            <div id="paginacao-eletronicos" class="mt-10 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
+                <div id="info-paginacao-eletronicos" class="text-gray-700 font-semibold"></div>
+                <div id="botoes-paginacao-eletronicos" class="flex items-center gap-1"></div>
+            </div>
         </div>
-        <div id="container-eletronicos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Gerado via JavaScript -->
-        </div>
-        <div id="empty-eletronicos" class="hidden text-center py-12 text-gray-400">Nenhum eletrónico corresponde à sua pesquisa.</div>
     </section>
 
     <!-- PRODUTOS: MÓVEIS -->
-    <section id="moveis" class="bg-slate-100 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between mb-8 border-b pb-4 border-gray-200">
-                <h2 class="text-2xl md:text-3xl font-black text-slate-900"><i class="fa-solid fa-couch text-indigo-600 mr-2"></i> Móveis para Casa & Escritório</h2>
-                <span class="text-sm font-semibold text-indigo-600 bg-white px-3 py-1 rounded">Conforto & Design</span>
-            </div>
-            <div id="container-moveis" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Gerado via JavaScript -->
-            </div>
-            <div id="empty-moveis" class="hidden text-center py-12 text-gray-400">Nenhum móvel corresponde à sua pesquisa.</div>
+    <section id="moveis" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex items-center justify-between mb-6 border-b pb-4">
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 flex items-center gap-2">
+                <i class="fa-solid fa-couch text-indigo-600"></i> Móveis para Casa & Escritório
+                <span id="count-moveis" class="text-xs bg-slate-700 text-white px-2.5 py-1 rounded-full font-bold">0</span>
+            </h2>
+            <span class="text-xs md:text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-100">Conforto & Design</span>
+        </div>
+        
+        <div id="container-moveis" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+        <div id="empty-moveis" class="hidden text-center py-16 text-gray-400 font-medium">Nenhum móvel corresponde à sua pesquisa.</div>
+
+        <!-- Paginação Móveis -->
+        <div id="paginacao-moveis" class="mt-10 bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 text-sm font-medium">
+            <div id="info-paginacao-moveis" class="text-gray-700 font-semibold"></div>
+            <div id="botoes-paginacao-moveis" class="flex items-center gap-1"></div>
         </div>
     </section>
 
-    <!-- SECÇÃO TESTEMUNHOS -->
-    <section id="testemunhos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <span class="text-indigo-600 font-bold text-sm tracking-wider uppercase bg-indigo-50 px-3 py-1 rounded-full">Clientes Satisfeitos</span>
-            <h2 class="text-3xl font-black text-slate-900 mt-2">O que dizem sobre nós em Luanda</h2>
+    <!-- OPTION 3 : SECÇÃO DE TESTEMUNHOS (FEEDBACK CLIENTES) -->
+    <section id="testemunhos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white border-y border-gray-100">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Avaliações</span>
+            <h2 class="text-3xl font-black text-slate-900 mt-2 mb-3">O que dizem os nossos clientes</h2>
+            <p class="text-gray-500 text-sm">A experiência e satisfação de quem compra na ALI MOVEIS em Luanda.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                <p class="text-gray-600 italic">"Comprei o sofá em tecido bouclé e a qualidade é fantástica. A entrega foi feita no mesmo dia aqui em Talatona. Muito profissionais!"</p>
-                <div class="flex items-center gap-3 mt-6 border-t pt-4">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold">ED</div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Testemunho 1 -->
+            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
+                <p class="text-gray-600 text-xs italic leading-relaxed">"Comprei o frigorífico Roch e a entrega no Talatona foi super rápida. O atendimento no WhatsApp é nota 10, responderam todas as minhas dúvidas na hora!"</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
+                    <div class="bg-indigo-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">AM</div>
                     <div>
-                        <h4 class="font-bold text-sm text-slate-900">Edivaldo Dias</h4>
-                        <span class="text-xs text-gray-400">Talatona, Luanda</span>
+                        <h4 class="text-xs font-bold text-slate-900">António Manuel</h4>
+                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Luanda, Talatona</span>
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                <p class="text-gray-600 italic">"Estava com receio de comprar o termoacumulador sem ver, mas o atendimento no WhatsApp foi excelente e me mandaram vídeos reais. Funciona perfeitamente."</p>
-                <div class="flex items-center gap-3 mt-6 border-t pt-4">
-                    <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold">AM</div>
+            <!-- Testemunho 2 -->
+            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
+                <p class="text-gray-600 text-xs italic leading-relaxed">"O termoacumulador Fizzen funciona perfeitamente. Paguei por Express logo após a montagem em casa. Empresa muito séria e de extrema confiança."</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
+                    <div class="bg-emerald-600 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">JS</div>
                     <div>
-                        <h4 class="font-bold text-sm text-slate-900">Ana Marisa</h4>
-                        <span class="text-xs text-gray-400">Kilamba, Luanda</span>
+                        <h4 class="text-xs font-bold text-slate-900">Juana Santos</h4>
+                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Bairro Hoje Ainda</span>
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                <p class="text-gray-600 italic">"O preço da cama beliche é imbatível. Já vem tudo bem embalado e a equipe montou tudo com muito cuidado. Recomendo imenso a ALI MOVEIS!"</p>
-                <div class="flex items-center gap-3 mt-6 border-t pt-4">
-                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">MC</div>
+            <!-- Testemunho 3 -->
+            <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between shadow-sm">
+                <p class="text-gray-600 text-xs italic leading-relaxed">"Excelente qualidade nos móveis. A cadeira ergonómica salvou os meus dias longos de trabalho em home office. Valeu cada Kwanza investido."</p>
+                <div class="flex items-center gap-3 pt-4 border-t mt-4 border-gray-200/60">
+                    <div class="bg-amber-500 text-white w-9 h-9 rounded-full flex items-center justify-center font-black text-xs shadow-sm">CC</div>
                     <div>
-                        <h4 class="font-bold text-sm text-slate-900">Mateus Cardoso</h4>
-                        <span class="text-xs text-gray-400">Viana, Luanda</span>
+                        <h4 class="text-xs font-bold text-slate-900">Carlos Cardoso</h4>
+                        <span class="text-[10px] text-gray-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-indigo-500"></i> Luanda, Viana</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECÇÃO PERGUNTAS FREQUENTES (FAQ) -->
+    <!-- SECÇÃO: PERGUNTAS FREQUENTES -->
     <section id="faq" class="bg-slate-900 text-white py-16">
-        <div class="max-w-4xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black tracking-tight">Perguntas Frequentes</h2>
-                <p class="text-gray-400 text-sm mt-2">Esclareça as suas dúvidas antes de fazer o seu pedido</p>
+        <div class="max-w-4xl mx-auto px-4 text-center mb-10">
+            <h2 class="text-3xl font-black mb-2">Perguntas Frequentes</h2>
+            <p class="text-gray-400 text-sm">Esclareça as suas dúvidas antes de fazer o seu pedido</p>
+        </div>
+        <div class="max-w-3xl mx-auto px-4 space-y-4">
+            <!-- Pergunta 1 -->
+            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
+                <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
+                    <span>Como é feito o pagamento?</span>
+                    <i id="faq-icon-1" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                </button>
+                <div id="faq-ans-1" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
+                    Aceitamos pagamentos via Multicaixa, seja por referência, através do Multicaixa Express ou por Transferência Bancária direta (BAI/BFA) no ato ou antes da entrega.
+                </div>
             </div>
-            <div class="space-y-4">
-                <div class="bg-slate-800 rounded-xl overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold flex justify-between items-center hover:bg-slate-700/50 transition">
-                        <span>Como é feito o pagamento?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 bg-slate-850">
-                        <p class="p-5 text-gray-400 text-sm leading-relaxed">Aceitamos pagamentos via Multicaixa (Express ou transferência bancária para as nossas contas BAI ou BFA). O comprovativo é verificado antes ou no ato da entrega, dependendo do produto.</p>
-                    </div>
+            <!-- Pergunta 2 -->
+            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
+                <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
+                    <span>Fazem entregas em toda Luanda?</span>
+                    <i id="faq-icon-2" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                </button>
+                <div id="faq-ans-2" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
+                    Sim! Contamos com um serviço logístico próprio e rápido que realiza entregas ao domicílio em todas as zonas e municípios habitáveis de Luanda.
                 </div>
-                <div class="bg-slate-800 rounded-xl overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold flex justify-between items-center hover:bg-slate-700/50 transition">
-                        <span>Fazem entregas em toda Luanda?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 bg-slate-850">
-                        <p class="p-5 text-gray-400 text-sm leading-relaxed">Sim! Fazemos entregas seguras diretamente ao domicílio em qualquer ponto de Luanda (Cazenga, Talatona, Kilamba, Viana, Morro Bento, etc.). A taxa de entrega é combinada no WhatsApp com base na sua localização.</p>
-                    </div>
-                </div>
-                <div class="bg-slate-800 rounded-xl overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full text-left p-5 font-bold flex justify-between items-center hover:bg-slate-700/50 transition">
-                        <span>Posso visitar a loja física?</span>
-                        <i class="fa-solid fa-chevron-down text-gray-400 transition-transform"></i>
-                    </button>
-                    <div class="max-h-0 overflow-hidden transition-all duration-300 bg-slate-850">
-                        <p class="p-5 text-gray-400 text-sm leading-relaxed">Com certeza! Temos o nosso espaço físico localizado no bairro **HOJE AINDA**, em Luanda. Pode agendar uma visita via WhatsApp se preferir levantar o produto pessoalmente.</p>
-                    </div>
+            </div>
+            <!-- Pergunta 3 -->
+            <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700/50">
+                <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-bold text-sm flex justify-between items-center hover:bg-slate-700/50 transition">
+                    <span>Posso visitar a loja física?</span>
+                    <i id="faq-icon-3" class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                </button>
+                <div id="faq-ans-3" class="hidden p-5 pt-0 text-xs text-gray-400 border-t border-slate-700/30 leading-relaxed">
+                    Com certeza. A nossa loja física fica localizada estrategicamente no bairro HOJE AINDA. Será um enorme prazer receber a sua visita!
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- PAINEL LATERAL: CRIAR CONTA / LOGIN -->
+    <div id="conta-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+        <div class="w-screen max-w-md bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+            <div>
+                <div class="flex justify-between items-center border-b pb-4 mb-6">
+                    <h3 class="text-lg font-black text-slate-950"><i class="fa-solid fa-user-plus text-indigo-600 mr-2"></i> Área do Cliente</h3>
+                    <button onclick="toggleConta()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="flex bg-gray-100 p-1 rounded-xl mb-6">
+                    <button onclick="mudarAbaConta('login')" id="btn-aba-login" class="w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition">Entrar</button>
+                    <button onclick="mudarAbaConta('cadastro')" id="btn-aba-cadastro" class="w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition">Criar Conta</button>
+                </div>
+                <div id="form-login" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">E-mail ou Telefone</label>
+                        <input type="text" placeholder="Ex: maria@gmail.com" class="w-full text-sm border p-2.5 rounded-xl focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">Palavra-passe</label>
+                        <input type="password" placeholder="••••••••" class="w-full text-sm border p-2.5 rounded-xl focus:outline-none">
+                    </div>
+                    <button onclick="alert('Login efetuado!')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-bold text-sm transition">Entrar na Minha Conta</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Painel Lateral do Carrinho -->
     <div id="carrinho-sidebar" class="fixed inset-y-0 right-0 max-w-full flex transform translate-x-full transition-transform duration-300 ease-in-out z-50">
@@ -195,345 +273,436 @@
                     <h3 class="text-lg font-bold text-slate-950">O Meu Pedido - ALI MOVEIS</h3>
                     <button onclick="toggleCarrinho()" class="text-gray-500 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
                 </div>
+                <div id="itens-carrinho" class="space-y-4 max-h-[30vh] overflow-y-auto pr-1"></div>
                 
-                <div id="itens-carrinho" class="space-y-4 max-h-[35vh] overflow-y-auto pr-1">
-                    <!-- Gerado Dinamicamente -->
-                </div>
-                
-                <!-- FORMULÁRIO DE ENTREGA -->
-                <div id="form-entrega" class="border-t pt-4 mt-6 space-y-3 hidden">
-                    <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide"><i class="fa-solid fa-truck-ramp-box text-indigo-600 mr-1"></i> Dados de Envio</h4>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Seu Nome *</label>
-                        <input text="text" id="cliente-nome" placeholder="Ex: Maria Antónia" class="w-full text-sm border p-2.5 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Bairro / Zona de Luanda *</label>
-                        <input type="text" id="cliente-bairro" placeholder="Ex: Kilamba, Edifício X" class="w-full text-sm border p-2.5 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                <!-- Dados de Envio -->
+                <div id="form-entrega" class="border-t pt-4 mt-4 space-y-3 hidden">
+                    <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide">Dados de Envio</h4>
+                    <input type="text" id="cliente-nome" placeholder="Seu Nome" class="w-full text-sm border p-2.5 rounded-xl">
+                    <input type="text" id="cliente-bairro" placeholder="Bairro em Luanda" class="w-full text-sm border p-2.5 rounded-xl">
+                    
+                    <h4 class="font-bold text-sm text-slate-900 uppercase tracking-wide pt-2">Método de Pagamento</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="border p-2 rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-indigo-50 transition border-gray-200">
+                            <input type="radio" name="metodo_pagamento" value="Multicaixa" checked class="accent-indigo-600">
+                            <img src="multicaixa.jpeg" alt="Multicaixa" class="h-6 w-6 object-cover rounded shadow-sm">
+                            <span class="text-xs font-bold text-gray-700">Multicaixa</span>
+                        </label>
+                        <label class="border p-2 rounded-xl flex items-center gap-2 cursor-pointer bg-slate-50 hover:bg-indigo-50 transition border-gray-200">
+                            <input type="radio" name="metodo_pagamento" value="Multicaixa Express" class="accent-indigo-600">
+                            <img src="express logo.png" alt="Express" class="h-6 w-6 object-cover rounded shadow-sm">
+                            <span class="text-xs font-bold text-gray-700">MCX Express</span>
+                        </label>
                     </div>
                 </div>
             </div>
-            
             <div class="border-t pt-4 mt-4">
                 <div class="flex justify-between font-bold text-lg mb-2">
-                    <span>Total de Produtos:</span>
+                    <span>Total:</span>
                     <span id="total-preco" class="text-indigo-600">0 Kz</span>
                 </div>
-                <p class="text-[11px] text-gray-400 mb-4">* O valor exato da taxa de entrega será calculado com base no seu bairro.</p>
-                <button onclick="finalizarPedido()" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-green-600/20">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido via WhatsApp
+                <button onclick="finalizarPedido()" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-3.5 rounded-xl font-bold transition flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar via WhatsApp
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Botão Voltar ao Topo -->
-    <button onclick="window.scrollTo(0,0)" id="back-to-top" class="fixed bottom-6 left-6 bg-slate-900 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 invisible z-30 hover:bg-indigo-600">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <!-- Rodapé -->
-    <footer id="contacto" class="bg-slate-950 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-                <h4 class="text-xl font-bold mb-4">ALI MOVEIS</h4>
-                <p class="text-gray-400 text-sm">A sua loja de referência em Luanda para artigos eletrónicos modernos e móveis de qualidade para a sua casa ou escritório.</p>
-                <div class="mt-4">
-                    <a href="https://wa.me/244945633379" target="_blank" class="text-gray-400 hover:text-green-500 text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+    <!-- OPTION 2 : MODAL AVANÇADO DE DETALHES DO PRODUTO -->
+    <div id="detalhes-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4" onclick="verificarFecharModal(event)">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative flex flex-col md:flex-row gap-6 max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+            <button onclick="fecharModalProduto()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition bg-gray-100 p-2 rounded-full w-9 h-9 flex items-center justify-center"><i class="fa-solid fa-xmark text-lg"></i></button>
+            
+            <div class="w-full md:w-1/2 bg-gray-50 rounded-2xl p-4 flex items-center justify-center h-64 md:h-auto">
+                <img id="modal-img" src="" alt="" class="max-h-full max-w-full object-contain">
+            </div>
+            <div class="w-full md:w-1/2 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <span id="modal-badge" class="inline-block bg-indigo-100 text-indigo-700 font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide"></span>
+                    <h3 id="modal-nome" class="text-xl font-black text-slate-900 leading-snug"></h3>
+                    <p id="modal-descricao" class="text-gray-500 text-xs leading-relaxed"></p>
+                    
+                    <div class="bg-slate-50 p-3 rounded-xl border border-gray-100 text-[11px] text-gray-600 space-y-2">
+                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500"></i> **Estado:** Produto 100% Novo na Caixa</p>
+                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-shield text-indigo-600"></i> **Garantia:** Coberto pela Loja ALI MOVEIS</p>
+                        <p class="flex items-center gap-1.5"><i class="fa-solid fa-truck-ramp-box text-amber-500"></i> **Disponibilidade:** Pronta Entrega em Luanda</p>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-gray-100 mt-4 flex items-center justify-between gap-4">
+                    <div>
+                        <span class="block text-[10px] text-gray-400 font-bold uppercase">Preço Especial</span>
+                        <span id="modal-preco" class="text-xl font-black text-indigo-600"></span>
+                    </div>
+                    <div id="modal-action-container"></div>
                 </div>
             </div>
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Pagamento & Envio</h4>
-                <p class="text-gray-400 text-sm mb-2"><i class="fa-solid fa-credit-card text-yellow-500 mr-2"></i> Aceitamos **Multicaixa** (Express ou Transferência Bancária BAI/BFA).</p>
-                <p class="text-gray-400 text-sm"><i class="fa-solid fa-truck text-yellow-500 mr-2"></i> Disponível serviço de entregas rápidas ao domicílio.</p>
+        </div>
+    </div>
+
+    <!-- Botão Topo -->
+    <button onclick="window.scrollTo(0,0)" id="back-to-top" class="fixed bottom-6 left-6 bg-slate-900 text-white w-10 h-10 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 invisible z-30 hover:bg-indigo-600"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-slate-950 text-gray-400 pt-16 pb-8 relative w-full z-10 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-10 text-left pb-12 border-b border-slate-900">
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-base tracking-wide uppercase">ALI MOVEIS</h4>
+                <p class="text-xs leading-relaxed max-w-xs text-gray-400">
+                    A sua loja de referência em Luanda para artigos eletrónicos modernos e móveis de qualidade para a sua casa ou escritório.
+                </p>
+                <div class="pt-2">
+                    <a href="https://wa.me/244945633379" target="_blank" class="text-gray-400 hover:text-green-500 text-xl transition">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
             </div>
-            <div>
-                <h4 class="text-lg font-semibold mb-4">Localização Directa</h4>
-                <p class="text-gray-400 text-sm mb-2"><i class="fa-solid fa-location-dot text-indigo-500 mr-2"></i> Bairro: **HOJE AINDA**, Luanda, Angola</p>
-                <p class="text-gray-400 text-sm"><i class="fa-brands fa-whatsapp text-green-500 mr-2"></i> WhatsApp: +244 945 633 379</p>
+
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-base tracking-wide uppercase">Pagamento & Envio</h4>
+                <ul class="space-y-3 text-xs text-gray-400">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-credit-card text-yellow-500 mt-0.5"></i>
+                        <span>Aceitamos **Multicaixa** (Express ou Transferência Bancária BAI/BFA).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-truck text-yellow-500 mt-0.5"></i>
+                        <span>Disponível serviço de entregas rápidas ao domicílio.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="text-white font-bold text-base tracking-wide uppercase">Localização Directa</h4>
+                <ul class="space-y-3 text-xs text-gray-400">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-location-dot text-indigo-500 mt-0.5"></i>
+                        <span>Bairro: **HOJE AINDA**, Luanda, Angola</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-brands fa-whatsapp text-green-500 mt-0.5"></i>
+                        <span>WhatsApp: <a href="https://wa.me/244945633379" target="_blank" class="hover:underline text-gray-300 font-medium">+244 945 633 379</a></span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="text-center text-gray-600 text-xs mt-8 border-t border-slate-900 pt-4">
-            &copy; 2026 ALI MOVEIS. Todos os direitos reservados.
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col items-center justify-center gap-4 text-[11px] tracking-wide text-gray-500">
+            <div class="flex items-center gap-2 bg-white/5 p-1 px-2 rounded-lg border border-white/10 shadow-inner">
+                <img src="multicaixa.jpeg" alt="Multicaixa" class="h-5 w-auto object-contain rounded">
+                <img src="express logo.png" alt="Multicaixa Express" class="h-5 w-auto object-contain rounded">
+            </div>
+            <div>
+                &copy; 2026 ALI MOVEIS. Todos os direitos reservados.
+            </div>
         </div>
     </footer>
 
-    <!-- INTERFACE DO ZOOM (LIGHTBOX) -->
-    <div id="image-lightbox" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center p-4 cursor-zoom-out" style="backdrop-filter: blur(5px);">
-        <span class="absolute top-6 right-6 text-white text-5xl font-light cursor-pointer hover:text-gray-300 transition-colors">&times;</span>
-        <img id="lightbox-img" src="" alt="Zoom produto" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl object-contain transform scale-95 transition-transform duration-300">
-    </div>
-
-    <!-- LÓGICA LOCAL CORRIGIDA -->
     <script>
+        const HOJE_SISTEMA = new Date("2026-06-09");
+
         const PRODUTOS_DATA = [
-            { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Mais vendido", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg" },
-            { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "Destaque", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg" },
-            { id: 3, nome: "Frigorífico Roch", badge: "Novidade", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch, organização e máxima conservação dos alimentos.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg" }, 
-            { id: 4, nome: "Cadeira de Escritório Ergonómica", badge: "Conforto Pro", descricao: "Máximo conforto com suporte lombar para longas horas de trabalho.", preco: 85000, categoria: "moveis", imagem: "canape.jpg" }, 
-            { id: 5, nome: "Fogão a Gás ROCH em Aço Inoxidável", badge: "Design Minimal", descricao: "ste elegante fogão da marca ROCH possui uma mesa de cozedura com 5 bocas a gás, ideal para preparar vários pratos simultaneamente.", preco: 120000, categoria: "moveis", imagem: "cuisiniere.jpg" }, 
-            { id: 6, nome: "Cama Beliche Infantil com Escrivaninha e Arrumação", badge: "✨ Kit Quarto", descricao: "Conjunto completo e moderno para quarto de criança com gavetas embutidas.", preco: 120000, categoria: "moveis", imagem: "lit chambre bebe.jpeg" },
-            { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "🔥 850W", descricao: "Modelo FZMW-25LM8E. Design moderno com múltiplos níveis de energia.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg" },
-            { id: 8, nome: "Fogão a Gás ROCH em Aço Inoxidável", badge: "Premium", descricao: "ste elegante fogão da marca ROCH possui uma mesa de cozedura com 5 bocas a gás, ideal para preparar vários pratos simultaneamente.", preco: 120000, categoria: "moveis", imagem: "cuisiniere.jpg" }, 
-            { id: 9, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas curvas contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "canape.jpg" },
-            { id: 10, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "⚡ so fica 2", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg" },
-	    { id: 11, nome: "Fogão Compacto Fizzen", badge: "⚡ luxo", descricao: "Estilo e Eficiência na Sua Cozinha.Dê um toque de modernidade e elegância à sua cozinha com o fogão Fizzen, ideal para quem procura alta performance sem ocupar muito espaço.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png" },
-	    { id: 12, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "Promo", descricao: "Este ferro de engomar de alta performance da marca SOKANY combina potência e ergonomia para eliminar eficazmente os vincos mais difíceis.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png" },
-	    { id: 13, nome: "Frigorífico Roch (com Chave)", badge: "Promo", descricao: "2 Portas com fechadura de segurança.Design compacto em cinza inox.Tecnologia Nature Fresh.", preco: 170000, categoria: "eletronico", imagem: "frigo.jpg" },
-	    { id: 14, nome: "Fritadeira Airfryer Sokany 12L", badge: "Promo", descricao: "Grande capacidade: 12 Litros, Alta potência: 2000W, Painel digital tátil com janela de visualização.Cozinha saudável e sem óleo.Tecnologia Nature Fresh.", preco: 110000, categoria: "eletronico", imagem: "friteuse sokany 12l.jpeg" }
+            { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Recente", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
+            { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "Recente", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg", dataPublicacao: "2026-06-06" },
+            { id: 3, nome: "Frigorífico Roch", badge: "Recente", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-08" }, 
+            { id: 4, nome: "Cadeira de Escritório Ergonómica", badge: "Recente", descricao: "Máximo conforto com suporte lombar para longas horas de trabalho intenso.", preco: 85000, categoria: "moveis", imagem: "canape.jpg", dataPublicacao: "2026-06-05" }, 
+            { id: 5, nome: "Fogão a Gás ROCH em Aço Inoxidável", badge: "Destaque", descricao: "Este elegante fogão possui uma mesa de cozedura com 5 bocas a gás.", preco: 120000, categoria: "moveis", imagem: "cuisiniere.jpg", dataPublicacao: "2026-05-10" }, 
+            { id: 6, nome: "Cama Beliche Infantil com Escrivaninha", badge: "✨ Kit Quarto", descricao: "Conjunto completo e moderno para quarto de criança com gavetas embutidas.", preco: 120000, categoria: "moveis", imagem: "lit chambre bebe.jpeg", dataPublicacao: "2026-05-15" },
+            { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "🔥 850W", descricao: "Modelo FZMW-25LM8E. Design moderno com múltiplos níveis de energia de aquecimento.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg", dataPublicacao: "2026-05-20" },
+            { id: 8, nome: "Sofá Modular Orgânico em Tecido Bouclé", badge: "⭐ Luxo", descricao: "Sofá de alto padrão com linhas cookies contemporâneas em tecido bouclé super macio.", preco: 60000, categoria: "moveis", imagem: "canape.jpg", dataPublicacao: "2026-04-01" },
+            { id: 9, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "⚡ Restam 2", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
+            { id: 10, nome: "Fogão Compacto Fizzen", badge: "⚡ Luxo", descricao: "Estilo e Eficiência na Sua Cozinha. Alto rendimento com queimadores potentes.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png", dataPublicacao: "2026-05-22" },
+            { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "Promo", descricao: "Este ferro de engomar combina potência e ergonomia eficaz contra vincos difíceis.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
+            { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "Promo", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo.jpg", dataPublicacao: "2026-05-14" },
+            { id: 13, nome: "Fritadeira Airfryer Sokany 12L", badge: "Promo", descricao: "Grande capacidade: 12 Litros, Alta potência: 2000W com painel digital intuitivo.", preco: 110000, categoria: "eletronico", imagem: "friteuse sokany 12l.jpeg", dataPublicacao: "2026-05-18" }
         ];
 
+        const ITENS_POR_PAGINA = 4;
+        let paginaAtualNovidades = 1;
+        let paginaAtualEletronicos = 1;
+        let paginaAtualMoveis = 1;
         let carrinho = {}; 
         let total = 0;
 
         function renderizarProdutos(listaProdutos = PRODUTOS_DATA) {
+            const containerNovidades = document.getElementById('container-novidades');
             const containerEletronicos = document.getElementById('container-eletronicos');
             const containerMoveis = document.getElementById('container-moveis');
             
-            if(!containerEletronicos || !containerMoveis) return;
+            if(!containerNovidades || !containerEletronicos || !containerMoveis) return;
 
-            containerEletronicos.innerHTML = '';
-            containerMoveis.innerHTML = '';
-
-            let contEletr = 0;
-            let contMoveis = 0;
-
-            listaProdutos.forEach(prod => {
-                const cardHTML = `
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition duration-300 relative group">
-                        ${prod.badge ? `<span class="absolute top-3 left-3 bg-indigo-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide z-10 shadow-sm">${prod.badge}</span>` : ''}
-                        <div class="overflow-hidden bg-gray-100 h-64">
-                            <img src="${prod.imagem}" alt="${prod.nome}" class="clickable-image h-full w-full object-cover cursor-zoom-in group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Imagem+Nao+Encontrada';">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-lg text-slate-900 mb-2 truncate">${prod.nome}</h3>
-                            <p class="text-gray-500 text-sm mb-4 line-clamp-2">${prod.descricao}</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-xl font-black text-slate-900">${prod.preco.toLocaleString()} Kz</span>
-                                <button onclick="adicionarAoCarrinho(${prod.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition flex items-center gap-2">
-                                    <i class="fa-solid fa-cart-plus"></i> Adicionar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                if(prod.categoria === "eletronico") {
-                    containerEletronicos.innerHTML += cardHTML;
-                    contEletr++;
-                } else if(prod.categoria === "moveis") {
-                    containerMoveis.innerHTML += cardHTML;
-                    contMoveis++;
-                }
+            const umDiaEmMs = 24 * 60 * 60 * 1000;
+            const novidadesFiltradas = listaProdutos.filter(p => {
+                const dataProd = new Date(p.dataPublicacao);
+                const diffEmDias = Math.floor((HOJE_SISTEMA - dataProd) / umDiaEmMs);
+                return diffEmDias >= 0 && diffEmDias <= 7;
             });
 
-            document.getElementById('empty-eletronicos').classList.toggle('hidden', contEletr > 0);
-            document.getElementById('empty-moveis').classList.toggle('hidden', contMoveis > 0);
+            const eletronicosFiltrados = listaProdutos.filter(p => p.categoria === "eletronico");
+            const moveisFiltrados = listaProdutos.filter(p => p.categoria === "moveis");
 
-            // On lance le zoom uniquement APRÈS que les images existent à l'écran
-            inicializarZoomGlobal();
+            document.getElementById('count-novidades').innerText = novidadesFiltradas.length;
+            document.getElementById('count-eletronicos').innerText = eletronicosFiltrados.length;
+            document.getElementById('count-moveis').innerText = moveisFiltrados.length;
+
+            processarSegmentoProdutos('novidades', novidadesFiltradas, containerNovidades, paginaAtualNovidades);
+            processarSegmentoProdutos('eletronicos', eletronicosFiltrados, containerEletronicos, paginaAtualEletronicos);
+            processarSegmentoProdutos('moveis', moveisFiltrados, containerMoveis, paginaAtualMoveis);
         }
 
-        function filtrarProdutos() {
-            const termo = document.getElementById('search-input').value.toLowerCase().trim();
-            const btnLimpar = document.getElementById('clear-search');
+        function processarSegmentoProdutos(seccao, subLista, containerDOM, paginaAtual) {
+            const totalItens = subLista.length;
+            const totalPaginas = Math.ceil(totalItens / ITENS_POR_PAGINA) || 1;
             
-            if(termo === '') {
-                btnLimpar.classList.add('hidden');
-                renderizarProdutos(PRODUTOS_DATA);
+            if(paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+            const inicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
+            const fim = inicio + ITENS_POR_PAGINA;
+            const itensVisiveis = subLista.slice(inicio, fim);
+
+            containerDOM.innerHTML = '';
+            itensVisiveis.forEach(prod => { containerDOM.innerHTML += gerarCardHTML(prod); });
+            
+            document.getElementById(`empty-${seccao}`).classList.toggle('hidden', totalItens > 0);
+            configurarBarraPaginacao(seccao, paginaAtual, totalPaginas, totalItens === 0 ? 0 : inicio + 1, Math.min(fim, totalItens), totalItens);
+        }
+
+        function gerarCardHTML(prod) {
+            return `
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition duration-300 relative group flex flex-col justify-between h-full">
+                    <div>
+                        ${prod.badge ? `<span class="absolute top-3 left-3 bg-indigo-600 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wide z-10 shadow-sm">${prod.badge}</span>` : ''}
+                        <div class="overflow-hidden bg-gray-50 h-52 relative flex items-center justify-center">
+                            <!-- Ao clicar na imagem, abre o Modal de detalhes (Option 2) -->
+                            <img src="${prod.imagem}" alt="${prod.nome}" class="max-h-full max-w-full object-contain cursor-pointer group-hover:scale-105 transition duration-500" onclick="abrirModalProduto(${prod.id})" onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=ALI+MOVEIS';">
+                        </div>
+                        <div class="p-4">
+                            <h3 onclick="abrirModalProduto(${prod.id})" class="font-bold text-sm text-slate-900 mb-1 line-clamp-1 group-hover:text-indigo-600 transition cursor-pointer" title="${prod.nome}">${prod.nome}</h3>
+                            <p class="text-gray-500 text-xs mb-3 line-clamp-2 leading-relaxed">${prod.descricao}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <div class="flex justify-between items-center gap-2 pt-2 border-t border-gray-50">
+                            <span class="text-base font-black text-slate-900">${prod.preco.toLocaleString()} Kz</span>
+                            <button onclick="adicionarAoCarrinho(${prod.id})" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-xl font-semibold text-xs transition flex items-center gap-1">
+                                <i class="fa-solid fa-cart-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function configurarBarraPaginacao(seccao, paginaAtual, totalPaginas, itemInicio, itemFim, totalItens) {
+            const divInfo = document.getElementById(`info-paginacao-${seccao}`);
+            const divBotoes = document.getElementById(`botoes-paginacao-${seccao}`);
+            const navContainer = document.getElementById(`paginacao-${seccao}`);
+
+            if(totalItens === 0) {
+                navContainer.classList.add('hidden');
                 return;
             }
+            navContainer.classList.remove('hidden');
+            divInfo.innerHTML = `Mostrando ${itemInicio}-${itemFim} de ${totalItens} artigo(s)`;
 
-            btnLimpar.classList.remove('hidden');
-            const produtosFiltrados = PRODUTOS_DATA.filter(p => 
-                p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo)
-            );
-            renderizarProdutos(produtosFiltrados);
+            let botoesHTML = '';
+            for (let i = 1; i <= totalPaginas; i++) {
+                if(i === paginaAtual) {
+                    botoesHTML += `<button class="px-3 py-1.5 bg-green-600 text-white font-bold rounded-md shadow-sm">${i}</button>`;
+                } else {
+                    botoesHTML += `<button onclick="mudarPagina('${seccao}', ${i})" class="px-3 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-md transition">${i}</button>`;
+                }
+            }
+            divBotoes.innerHTML = botoesHTML;
+        }
+
+        function mudarPagina(seccao, novaPagina) {
+            if(seccao === 'novidades') paginaAtualNovidades = novaPagina;
+            if(seccao === 'eletronicos') paginaAtualEletronicos = novaPagina;
+            if(seccao === 'moveis') paginaAtualMoveis = novaPagina;
+            filtrarProdutos();
+        }
+
+        // OPTION 1 LOGIC: Filtrar e Ordenar por preço de forma dinâmica
+        function filtrarProdutos() {
+            const termo = document.getElementById('search-input').value.toLowerCase();
+            const btnClear = document.getElementById('clear-search');
+            btnClear.classList.toggle('hidden', termo.length === 0);
+
+            let filtrados = [...PRODUTOS_DATA].filter(p => p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo));
+
+            const ordenacao = document.getElementById('sort-select').value;
+            if (ordenacao === 'preco-baixo') {
+                filtrados.sort((a, b) => a.preco - b.preco);
+            } else if (ordenacao === 'preco-alto') {
+                filtrados.sort((a, b) => b.preco - a.preco);
+            }
+
+            renderizarProdutos(filtrados);
         }
 
         function limparPesquisa() {
             document.getElementById('search-input').value = '';
+            document.getElementById('sort-select').value = 'default';
             filtrarProdutos();
         }
 
-        function toggleCarrinho() {
-            document.getElementById('carrinho-sidebar').classList.toggle('translate-x-full');
+        // OPTION 2 LOGIC: Funções do Modal de Detalhes Avançados
+        function abrirModalProduto(id) {
+            const prod = PRODUTOS_DATA.find(p => p.id === id);
+            if(!prod) return;
+
+            document.getElementById('modal-img').src = prod.imagem;
+            document.getElementById('modal-nome').innerText = prod.nome;
+            document.getElementById('modal-descricao').innerText = prod.descricao;
+            document.getElementById('modal-preco').innerText = `${prod.preco.toLocaleString()} Kz`;
+            
+            const badgeDOM = document.getElementById('modal-badge');
+            if(prod.badge) {
+                badgeDOM.innerText = prod.badge;
+                badgeDOM.classList.remove('hidden');
+            } else {
+                badgeDOM.classList.add('hidden');
+            }
+
+            document.getElementById('modal-action-container').innerHTML = `
+                <button onclick="adicionarAoCarrinho(${prod.id}); fecharModalProduto();" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-5 py-3 rounded-xl text-xs transition flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-basket-shopping"></i> Adicionar ao carrinho
+                </button>
+            `;
+
+            document.getElementById('detalhes-modal').classList.remove('hidden');
+        }
+
+        function fecharModalProduto() {
+            document.getElementById('detalhes-modal').classList.add('hidden');
+        }
+
+        function verificarFecharModal(event) {
+            if(event.target.id === 'detalhes-modal') fecharModalProduto();
         }
 
         function adicionarAoCarrinho(id) {
-            if (carrinho[id]) {
-                carrinho[id] += 1;
-            } else {
-                carrinho[id] = 1;
-            }
+            const produto = PRODUTOS_DATA.find(p => p.id === id);
+            if(carrinho[id]) carrinho[id].quantidade++;
+            else carrinho[id] = { ...produto, aggregate: 1, quantidade: 1 };
             atualizarCarrinho();
-            document.getElementById('carrinho-sidebar').classList.remove('translate-x-full');
+            toggleCarrinho(true);
         }
 
         function alterarQuantidade(id, delta) {
-            if (carrinho[id]) {
-                carrinho[id] += delta;
-                if (carrinho[id] <= 0) {
-                    delete carrinho[id];
-                }
+            if(carrinho[id]) {
+                carrinho[id].quantidade += delta;
+                if(carrinho[id].quantidade <= 0) delete carrinho[id];
                 atualizarCarrinho();
             }
         }
 
-        function atualizarCarrinho() {
-            const container = document.getElementById('itens-carrinho');
-            const formEntrega = document.getElementById('form-entrega');
-            let totalItens = 0;
-            total = 0;
-
-            Object.values(carrinho).forEach(q => totalItens += q);
-            document.getElementById('cart-count').innerText = totalItens;
-            
-            if (totalItens === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center py-8">O carrinho está vazio.</p>';
-                document.getElementById('total-preco').innerText = '0 Kz';
-                formEntrega.classList.add('hidden');
-                return;
+        function mudarAbaConta(aba) {
+            const btnLogin = document.getElementById('btn-aba-login');
+            const btnCadastro = document.getElementById('btn-aba-cadastro');
+            if(aba === 'login') {
+                btnLogin.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition";
+                btnCadastro.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition";
+            } else {
+                btnCadastro.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg bg-white text-indigo-600 shadow-sm transition";
+                btnLogin.className = "w-1/2 text-center py-2 text-xs font-bold rounded-lg text-gray-500 hover:text-indigo-600 transition";
             }
+        }
 
-            container.innerHTML = '';
-            formEntrega.classList.remove('hidden');
-
-            Object.keys(carrinho).forEach(id => {
-                const prod = PRODUTOS_DATA.find(p => p.id == id);
-                if (prod) {
-                    const subtotal = prod.preco * carrinho[id];
-                    total += subtotal;
-                    container.innerHTML += `
-                        <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl border border-gray-100">
-                            <div class="max-w-[60%]">
-                                <p class="font-bold text-sm text-slate-900 truncate">${prod.nome}</p>
-                                <p class="text-xs text-indigo-600 font-semibold">${prod.preco.toLocaleString()} Kz</p>
+        function atualizarCarrinho() {
+            const cartCount = document.getElementById('cart-count');
+            const itensCarrinhoDOM = document.getElementById('itens-carrinho');
+            const totalPrecoDOM = document.getElementById('total-preco');
+            const formEntrega = document.getElementById('form-entrega');
+            
+            let count = 0; total = 0;
+            itensCarrinhoDOM.innerHTML = '';
+            const cartItems = Object.values(carrinho);
+            
+            if(cartItems.length === 0) {
+                itensCarrinhoDOM.innerHTML = '<p class="text-gray-500 text-sm text-center py-6">O seu carrinho está vazio.</p>';
+                formEntrega.classList.add('hidden');
+            } else {
+                formEntrega.classList.remove('hidden');
+                cartItems.forEach(item => {
+                    count += item.quantidade;
+                    total += item.preco * item.quantidade;
+                    itensCarrinhoDOM.innerHTML += `
+                        <div class="flex gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                            <img src="${item.imagem}" class="w-14 h-14 object-cover rounded-lg bg-white border" onerror="this.src='https://placehold.co/100x100?text=IMG'">
+                            <div class="flex-1 flex flex-col justify-between">
+                                <h5 class="text-xs font-bold text-slate-900 line-clamp-1">${item.nome}</h5>
+                                <div class="flex justify-between items-center mt-1">
+                                    <span class="text-xs font-black text-indigo-600">${item.preco.toLocaleString()} Kz</span>
+                                    <div class="flex items-center bg-white border rounded-lg">
+                                        <button onclick="alterarQuantidade(${item.id}, -1)" class="px-2 py-0.5 text-gray-500">-</button>
+                                        <span class="text-xs font-bold px-1">${item.quantidade}</span>
+                                        <button onclick="alterarQuantidade(${item.id}, 1)" class="px-2 py-0.5 text-gray-500">+</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <button onclick="alterarQuantidade(${prod.id}, -1)" class="w-6 h-6 bg-white border text-gray-600 rounded flex items-center justify-center font-bold text-xs hover:bg-gray-100">-</button>
-                                <span class="text-sm font-bold text-slate-900 w-4 text-center">${carrinho[id]}</span>
-                                <button onclick="alterarQuantidade(${prod.id}, 1)" class="w-6 h-6 bg-white border text-gray-600 rounded flex items-center justify-center font-bold text-xs hover:bg-gray-100">+</button>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-
-            document.getElementById('total-preco').innerText = total.toLocaleString() + ' Kz';
+                        </div>`;
+                });
+            }
+            cartCount.innerText = count;
+            totalPrecoDOM.innerText = `${total.toLocaleString()} Kz`;
         }
 
         function finalizarPedido() {
-            const nomeCliente = document.getElementById('cliente-nome').value.trim();
-            const bairroCliente = document.getElementById('cliente-bairro').value.trim();
+            const cartItems = Object.values(carrinho);
+            const nome = document.getElementById('cliente-nome').value;
+            const bairro = document.getElementById('cliente-bairro').value;
+            const mPagamento = document.querySelector('input[name="metodo_pagamento"]:checked').value;
 
-            if(Object.keys(carrinho).length === 0) {
-                alert("O seu carrinho está vazio!");
+            if(!nome || !bairro) {
+                alert('Preencha os seus dados de envio.');
                 return;
             }
 
-            if(nomeCliente === '' || bairroCliente === '') {
-                alert("Por favor, preencha o seu Nome e Bairro para entrega.");
-                return;
-            }
-            
-            let numTelefone = "244945633379"; 
-            let texto = `Olá ALI MOVEIS! Gostaria de fazer o seguinte pedido:\n\n`;
-            texto += `👤 *Cliente:* ${nomeCliente}\n`;
-            texto += `📍 *Local de Entrega:* ${bairroCliente}, Luanda\n`;
-            texto += `------------------------------------\n\n`;
-            
-            Object.keys(carrinho).forEach((id) => {
-                const prod = PRODUTOS_DATA.find(p => p.id == id);
-                if(prod) {
-                    texto += `• ${carrinho[id]}x - *${prod.nome}*\n  Subtotal: ${(prod.preco * carrinho[id]).toLocaleString()} Kz\n\n`;
-                }
-            });
-            
-            texto += `------------------------------------\n`;
-            texto += `💰 *Total dos Produtos:* ${total.toLocaleString()} Kz\n`;
-            texto += `💳 *Pagamento:* Multicaixa\n\n`;
-            texto += `Fico aguardando a confirmação da taxa de entrega para o meu bairro para efetuar o pagamento.`;
-            
-            let url = "https://api.whatsapp.com/send?phone=" + numTelefone + "&text=" + encodeURIComponent(texto);
-            window.open(url, '_blank');
+            let mensagem = `Olá ALI MOVEIS! Gostaria de fazer o seguinte pedido:\n\n`;
+            cartItems.forEach(item => { mensagem += `- ${item.quantidade}x ${item.nome} (${(item.preco * item.quantidade).toLocaleString()} Kz)\n`; });
+            mensagem += `\n*Total a Pagar:* ${total.toLocaleString()} Kz\n`;
+            mensagem += `*Forma de Pagamento:* ${mPagamento}\n\n`;
+            mensagem += `*Dados de Entrega:*\nNome: ${nome}\nBairro: ${bairro}\n`;
+
+            const numeroWhatsApp = "244945633379"; 
+            window.open(`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`, '_blank');
         }
 
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-                content.style.maxHeight = '0px';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.style.transform = 'rotate(180deg)';
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-ans-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (ans && icon) {
+                const isHidden = ans.classList.contains('hidden');
+                ans.classList.toggle('hidden', !isHidden);
+                icon.classList.toggle('rotate-180', isHidden);
             }
         }
 
-        function inicializarZoomGlobal() {
-            const lightbox = document.getElementById('image-lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const images = document.querySelectorAll('.clickable-image');
-            
-            if(!lightbox || !lightboxImg || images.length === 0) return;
-            
-            images.forEach(img => {
-                // On clone l'élément pour éviter les doublons d'écouteurs d'événements
-                const newImg = img.cloneNode(true);
-                img.parentNode.replaceChild(newImg, img);
+        function toggleCarrinho(forceOpen = false) { document.getElementById('carrinho-sidebar').classList.toggle('translate-x-full', !forceOpen); }
+        function toggleConta() { document.getElementById('conta-sidebar').classList.toggle('translate-x-full'); }
 
-                newImg.addEventListener('click', function() {
-                    lightboxImg.src = this.src;
-                    lightbox.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                    setTimeout(() => {
-                        lightboxImg.classList.remove('scale-95');
-                        lightboxImg.classList.add('scale-100');
-                    }, 10);
-                });
-            });
-            
-            lightbox.onclick = function() {
-                lightboxImg.classList.remove('scale-100');
-                lightboxImg.classList.add('scale-95');
-                setTimeout(() => {
-                    lightbox.classList.add('hidden');
-                    document.body.style.overflow = '';
-                }, 200);
-            };
-        }
-
+        // Sistema Back-To-Top
         window.onscroll = function() {
-            const btn = document.getElementById('back-to-top');
-            if(!btn) return;
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
-                btn.classList.remove('opacity-0', 'invisible');
-                btn.classList.add('opacity-100', 'visible');
+            const btt = document.getElementById("back-to-top");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btt.classList.remove("opacity-0", "invisible"); btt.classList.add("opacity-100", "visible");
             } else {
-                btn.classList.remove('opacity-100', 'visible');
-                btn.classList.add('opacity-0', 'invisible');
+                btt.classList.add("opacity-0", "invisible"); btt.classList.remove("opacity-100", "visible");
             }
         };
 
-        // GESTION DU DIAPORAMA DU HAUT
-        let currentSlide = 0;
-        function nextSlide() {
+        let slideIndex = 0;
+        function mostrarSlides() {
             const slides = document.querySelectorAll('.slide-item');
             if(slides.length === 0) return;
-            slides[currentSlide].classList.remove('opacity-100');
-            slides[currentSlide].classList.add('opacity-0');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.remove('opacity-0');
-            slides[currentSlide].classList.add('opacity-100');
+            slides.forEach(s => { s.classList.remove('opacity-100'); s.classList.add('opacity-0'); });
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].classList.remove('opacity-0'); slides[slideIndex - 1].classList.add('opacity-100');
+            setTimeout(mostrarSlides, 5000);
         }
 
-        // Lancement au chargement complet
-        window.addEventListener('DOMContentLoaded', () => {
-            renderizarProdutos();
-            setInterval(nextSlide, 5000);
-        });
+        window.onload = () => { renderizarProdutos(); atualizarCarrinho(); mostrarSlides(); };
     </script>
 </body>
 </html>
