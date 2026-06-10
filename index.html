@@ -24,7 +24,7 @@
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
     <div class="bg-[#00269c] text-white text-xs py-2 px-4 text-center sticky top-0 z-50 shadow-sm font-bold tracking-wide">
-        Loja física no bairro HOJE AINDA 🇦🇴 | Entregas ao Domicílio | Pagamento por Multicaixa & Express
+        Loja física no bairro HOJE AINDA 🇦🇴 | Entregas ao Domicílio | Pagamento por Multicaixa, Express, Banco Sol & Na Entrega
     </div>
 
     <nav class="bg-white shadow-md sticky top-[36px] z-40 backdrop-blur-md bg-white/95">
@@ -243,17 +243,53 @@
 
                     <div class="border-t pt-4">
                         <h4 class="text-xs font-black uppercase tracking-wide text-slate-900 mb-2.5">Método de Pagamento</h4>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="flex items-center gap-2.5 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
-                                <input type="radio" name="pagamento" value="Multicaixa" checked class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="Referência Multicaixa" checked onchange="toggleInfoPagamento()" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
                                 <img src="multicaixa.jpeg" alt="Multicaixa" class="w-5 h-5 object-contain rounded">
-                                <span class="text-xs font-bold text-slate-700">Multicaixa</span>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-700">Referência Multicaixa</span>
+                                    <span class="text-[10px] text-gray-500">Pagamento no ATM ou Internet Banking</span>
+                                </div>
                             </label>
-                            <label class="flex items-center gap-2.5 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
-                                <input type="radio" name="pagamento" value="MCX Express" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+
+                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="Multicaixa Express" onchange="toggleInfoPagamento()" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
                                 <img src="express logo.png" alt="MCX Express" class="w-5 h-5 object-contain rounded">
-                                <span class="text-xs font-bold text-slate-700">MCX Express</span>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-700">Multicaixa Express</span>
+                                    <span class="text-[10px] text-gray-500">Notificação rápida no telemóvel</span>
+                                </div>
                             </label>
+
+                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="Transferência Banco Sol" onchange="toggleInfoPagamento()" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                                <span class="w-5 h-5 bg-orange-500 text-white rounded text-[9px] flex items-center justify-center font-bold">SOL</span>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-700">Transferência Banco Sol</span>
+                                    <span class="text-[10px] text-gray-500">Necessário envio do comprovativo</span>
+                                </div>
+                            </label>
+
+                            <label class="flex items-center gap-3 p-3 border rounded-xl cursor-pointer bg-gray-50/50 border-gray-200 hover:bg-gray-50 transition has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/30">
+                                <input type="radio" name="pagamento" value="Dinheiro na Entrega" onchange="toggleInfoPagamento()" class="text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                                <span class="w-5 h-5 bg-emerald-600 text-white rounded text-center flex items-center justify-center font-bold text-[10px]">Kz</span>
+                                <div class="flex flex-col">
+                                    <span class="text-xs font-bold text-slate-700">Dinheiro na Entrega</span>
+                                    <span class="text-[10px] text-gray-500">Pague em líquido ao receber o produto</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div id="info-banco-sol" class="hidden mt-3 p-3 bg-blue-50 border border-blue-200 rounded-xl text-[11px] text-blue-800 leading-relaxed">
+                            ℹ️ <strong>Dados para Transferência:</strong><br>
+                            Banco: <strong>Banco Sol</strong><br>
+                            IBAN: <strong>AO06 0045 0000 1234 5678 9012 3</strong><br>
+                            Titular: <strong>ALI MOVEIS Lda.</strong>
+                        </div>
+
+                        <div id="info-entrega-liquido" class="hidden mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-xl text-[11px] text-yellow-800">
+                            ⚠️ <strong>Nota para a entrega:</strong> Por favor, tente preparar a quantia exata em notas para facilitar o troco ao nosso estafeta.
                         </div>
                     </div>
                 </div>
@@ -292,7 +328,7 @@
                 <ul class="space-y-3 text-xs text-gray-400">
                     <li class="flex items-start gap-3">
                         <svg class="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                        <span>Aceitamos <strong>Multicaixa</strong> (Express ou Transferência Bancária BAI/BFA).</span>
+                        <span>Aceitamos <strong>Multicaixa, Express, Banco Sol</strong> ou <strong>Pagamento em Dinheiro na Entrega</strong>.</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <svg class="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0zM13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011-1v-4a1 1 0 01.4-.8l2.28-2.28A1 1 0 0118 8h2a1 1 0 011 1v7a1 1 0 01-1 1h-1M13 12h7"></path></svg>
@@ -328,7 +364,7 @@
     <script>
         const HOJE_SISTEMA = new Date("2026-06-09");
         let carrinho = [];
-        let usuarioConectado = null; // Guarda informações do usuário logado
+        let usuarioConectado = null;
 
         const PRODUTOS_DATA = [
             { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "🔥 Recente", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
@@ -345,7 +381,58 @@
             { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "Promo", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-05-28" }
         ];
 
-        // Cria o card e adiciona os escutadores de eventos para o Zoom WordPress
+        // Inicialização automática das listagens de produtos na página
+        window.onload = function() {
+            renderizarLista(PRODUTOS_DATA);
+            toggleInfoPagamento(); // Garante o estado inicial dos blocos informativos de pagamento
+        };
+
+        function renderizarLista(produtos) {
+            const containerNovidades = document.getElementById('container-novidades');
+            const containerEletronicos = document.getElementById('container-eletronicos');
+            const containerMoveis = document.getElementById('container-moveis');
+
+            let htmlNovidades = '';
+            let htmlEletronicos = '';
+            let htmlMoveis = '';
+
+            let countNovidades = 0;
+            let countEletronicos = 0;
+            let countMoveis = 0;
+
+            produtos.forEach(p => {
+                const card = criarCardProduto(p);
+                
+                // Filtro para Novidades (Publicados há menos de 7 dias a partir de HOJE_SISTEMA)
+                const dataProd = new Date(p.dataPublicacao);
+                const diffTime = Math.abs(HOJE_SISTEMA - dataProd);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays <= 7) {
+                    htmlNovidades += card;
+                    countNovidades++;
+                }
+
+                if (p.categoria === 'eletronico') {
+                    htmlEletronicos += card;
+                    countEletronicos++;
+                } else if (p.categoria === 'moveis') {
+                    htmlMoveis += card;
+                    countMoveis++;
+                }
+            });
+
+            // Inserção nos containers
+            containerNovidades.innerHTML = htmlNovidades || '<p class="text-gray-400 text-xs w-full text-center py-4">Nenhum produto recente.</p>';
+            containerEletronicos.innerHTML = htmlEletronicos || '<p class="text-gray-400 text-xs w-full text-center py-4">Nenhum eletrónico disponível.</p>';
+            containerMoveis.innerHTML = htmlMoveis || '<p class="text-gray-400 text-xs w-full text-center py-4">Nenhum móvel disponível.</p>';
+
+            // Atualização dos contadores visuais
+            document.getElementById('count-novidades').innerText = countNovidades;
+            document.getElementById('count-eletronicos').innerText = countEletronicos;
+            document.getElementById('count-moveis').innerText = countMoveis;
+        }
+
         function criarCardProduto(p) {
             return `
                 <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 flex flex-col justify-between min-w-[280px] max-w-[280px] snap-start flex-shrink-0">
@@ -367,127 +454,40 @@
             `;
         }
 
-        // Funções para gerir o Zoom das Fotos (WordPress style)
         function zoomImage(e) {
             const container = e.currentTarget;
             const img = container.querySelector('img');
             const rect = container.getBoundingClientRect();
-            
-            // Calcula a posição do rato dentro do container em percentagem
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            
-            // Desloca a origem do transform de acordo com o rato
-            img.style.transformOrigin = `${x}% ${y}%`;
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            img.style.transformOrigin = `${x}px ${y}px`;
+            img.style.transform = "scale(1.4)";
         }
 
         function resetZoom(e) {
             const img = e.currentTarget.querySelector('img');
-            img.style.transformOrigin = 'center center';
-        }
-
-        // Funções para gerir o Modal de Conta (Login / Registo)
-        function toggleAuthModal() {
-            const modal = document.getElementById('auth-modal');
-            modal.classList.toggle('hidden');
-        }
-
-        function switchAuthTab(tab) {
-            const tabLogin = document.getElementById('tab-login');
-            const tabRegister = document.getElementById('tab-register');
-            const formLogin = document.getElementById('form-login');
-            const formRegister = document.getElementById('form-register');
-
-            if(tab === 'login') {
-                tabLogin.className = "flex-1 pb-3 text-indigo-600 border-b-2 border-indigo-600 text-center font-bold";
-                tabRegister.className = "flex-1 pb-3 text-gray-400 border-b-2 border-transparent text-center font-bold";
-                formLogin.classList.remove('hidden');
-                formRegister.classList.add('hidden');
-            } else {
-                tabRegister.className = "flex-1 pb-3 text-emerald-600 border-b-2 border-emerald-600 text-center font-bold";
-                tabLogin.className = "flex-1 pb-3 text-gray-400 border-b-2 border-transparent text-center font-bold";
-                formRegister.classList.remove('hidden');
-                formLogin.classList.add('hidden');
-            }
-        }
-
-        function handleAuth(event, type) {
-            event.preventDefault();
-            if(type === 'register') {
-                const name = document.getElementById('reg-name').value;
-                usuarioConectado = { nome: name };
-                alert(`Conta criada com sucesso! Bem-vindo(a), ${name}`);
-            } else {
-                usuarioConectado = { nome: "Cliente ALI" };
-                alert("Sessão iniciada com sucesso!");
-            }
-            
-            // Atualizar a barra de navegação com o nome do utilizador
-            document.getElementById('user-nav-label').innerText = usuarioConectado.nome;
-            
-            // Auto-preencher o nome no formulário de envio do carrinho
-            document.getElementById('cliente-name').value = usuarioConectado.nome;
-            
-            toggleAuthModal();
-        }
-
-        // Funções da Loja Existentes
-        function render(produtos = PRODUTOS_DATA) {
-            const novidadesContainer = document.getElementById('container-novidades');
-            const eletronicosContainer = document.getElementById('container-eletronicos');
-            const moveisContainer = document.getElementById('container-moveis');
-
-            let novidadesHtml = '', eletronicosHtml = '', moveisHtml = '';
-            let cNovidades = 0, cEletronicos = 0, cMoveis = 0;
-
-            produtos.forEach(p => {
-                const card = criarCardProduto(p);
-                const diffTime = Math.abs(HOJE_SISTEMA - new Date(p.dataPublicacao));
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                if (diffDays <= 20) {
-                    novidadesHtml += card;
-                    cNovidades++;
-                }
-                if (p.categoria === 'eletronico') {
-                    eletronicosHtml += card;
-                    cEletronicos++;
-                } else if (p.categoria === 'moveis') {
-                    moveisHtml += card;
-                    cMoveis++;
-                }
-            });
-
-            if(novidadesContainer) novidadesContainer.innerHTML = novidadesHtml;
-            if(eletronicosContainer) eletronicosContainer.innerHTML = eletronicosHtml;
-            if(moveisContainer) moveisContainer.innerHTML = moveisHtml;
-
-            document.getElementById('count-novidades').innerText = cNovidades;
-            document.getElementById('count-eletronicos').innerText = cEletronicos;
-            document.getElementById('count-moveis').innerText = cMoveis;
-
-            document.getElementById('empty-novidades').classList.toggle('hidden', cNovidades > 0);
-            document.getElementById('empty-eletronicos').classList.toggle('hidden', cEletronicos > 0);
-            document.getElementById('empty-moveis').classList.toggle('hidden', cMoveis > 0);
+            img.style.transform = "scale(1)";
+            img.style.transformOrigin = "center center";
         }
 
         function filtrarProdutos() {
-            const termo = document.getElementById('search-input').value.toLowerCase();
-            const ordem = document.getElementById('sort-select').value;
+            const busca = document.getElementById('search-input').value.toLowerCase();
+            const ordenacao = document.getElementById('sort-select').value;
             
             let filtrados = PRODUTOS_DATA.filter(p => 
-                p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo)
+                p.nome.toLowerCase().includes(busca) || p.descricao.toLowerCase().includes(busca)
             );
-            
-            if (ordem === 'preco-baixo') {
+
+            if (ordenacao === 'preco-baixo') {
                 filtrados.sort((a, b) => a.preco - b.preco);
-            } else if (ordem === 'preco-alto') {
+            } else if (ordenacao === 'preco-alto') {
                 filtrados.sort((a, b) => b.preco - a.preco);
             }
-            
-            render(filtrados);
+
+            renderizarLista(filtrados);
         }
 
+        // --- SISTEMA INTERNO DO CARRINHO ---
         function toggleCarrinho() {
             const sidebar = document.getElementById('carrinho-sidebar');
             sidebar.classList.toggle('translate-x-full');
@@ -495,14 +495,14 @@
 
         function adicionarAoCarrinho(id) {
             const produto = PRODUTOS_DATA.find(p => p.id === id);
-            const itemNoCarrinho = carrinho.find(item => item.id === id);
-            
-            if (itemNoCarrinho) {
-                itemNoCarrinho.quantidade++;
+            const itemExistente = carrinho.find(item => item.id === id);
+
+            if (itemExistente) {
+                itemExistente.quantidade++;
             } else {
                 carrinho.push({ ...produto, quantidade: 1 });
             }
-            atualizarCarrinho();
+            atualizarInterfaceCarrinho();
         }
 
         function alterarQuantidade(id, delta) {
@@ -512,95 +512,151 @@
                 if (item.quantidade <= 0) {
                     carrinho = carrinho.filter(i => i.id !== id);
                 }
-                atualizarCarrinho();
             }
+            atualizarInterfaceCarrinho();
         }
 
         function limparCarrinho() {
             carrinho = [];
-            atualizarCarrinho();
+            atualizarInterfaceCarrinho();
         }
 
-        function atualizarCarrinho() {
-            const container = document.getElementById('itens-carrinho');
-            const totalPreco = document.getElementById('total-preco');
+        function atualizarInterfaceCarrinho() {
+            const containerItens = document.getElementById('itens-carrinho');
             const cartCount = document.getElementById('cart-count');
+            const totalPreco = document.getElementById('total-preco');
             const btnLimpar = document.getElementById('btn-limpar-carrinho');
 
             if (carrinho.length === 0) {
-                container.innerHTML = '<p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>';
-                totalPreco.innerText = '0 Kz';
+                containerItens.innerHTML = '<p class="text-gray-400 text-xs text-center py-8">O seu carrinho está vazio.</p>';
                 cartCount.innerText = '0';
+                totalPreco.innerText = '0 Kz';
                 btnLimpar.classList.add('hidden');
                 return;
             }
 
             btnLimpar.classList.remove('hidden');
-            let html = '';
             let total = 0;
             let totalItens = 0;
+            let html = '';
 
             carrinho.forEach(item => {
                 total += item.preco * item.quantidade;
                 totalItens += item.quantidade;
                 html += `
-                    <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                        <img src="${item.imagem}" alt="${item.nome}" class="w-12 h-12 object-contain bg-white rounded-lg p-1">
+                    <div class="flex items-center gap-3 border-b pb-3 border-gray-100">
+                        <img src="${item.imagem}" alt="${item.nome}" class="w-12 h-12 object-contain bg-gray-50 rounded-lg p-1 flex-shrink-0">
                         <div class="flex-1 min-w-0">
                             <h5 class="text-xs font-bold text-slate-900 truncate">${item.nome}</h5>
-                            <span class="text-xs text-indigo-600 font-black">${(item.preco * item.quantidade).toLocaleString()} Kz</span>
+                            <span class="text-[11px] text-indigo-600 font-black">${item.preco.toLocaleString()} Kz</span>
                         </div>
-                        <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg p-1">
-                            <button onclick="alterarQuantidade(${item.id}, -1)" class="text-gray-500 hover:text-red-500 font-bold px-1 text-xs">-</button>
-                            <span class="text-xs font-bold px-1">${item.quantidade}</span>
-                            <button onclick="alterarQuantidade(${item.id}, 1)" class="text-gray-500 hover:text-indigo-600 font-bold px-1 text-xs">+</button>
+                        <div class="flex items-center gap-2 bg-gray-100 px-2 py-1 rounded-lg">
+                            <button onclick="alterarQuantidade(${item.id}, -1)" class="text-xs font-bold text-gray-500 hover:text-red-600 px-1">-</button>
+                            <span class="text-xs font-bold text-slate-800">${item.quantidade}</span>
+                            <button onclick="alterarQuantidade(${item.id}, 1)" class="text-xs font-bold text-gray-500 hover:text-indigo-600 px-1">+</button>
                         </div>
                     </div>
                 `;
             });
 
-            container.innerHTML = html;
-            totalPreco.innerText = `${total.toLocaleString()} Kz`;
+            containerItens.innerHTML = html;
             cartCount.innerText = totalItens;
+            totalPreco.innerText = total.toLocaleString() + ' Kz';
         }
 
+        // RECOMMANDATION REQUIS : Affichage/Masquage dynamique des blocs d'information de paiement
+        function toggleInfoPagamento() {
+            const metodoSelecionado = document.querySelector('input[name="pagamento"]:checked').value;
+            const blocoSol = document.getElementById('info-banco-sol');
+            const blocoLiquido = document.getElementById('info-entrega-liquido');
+
+            if (metodoSelecionado === "Transferência Banco Sol") {
+                blocoSol.classList.remove('hidden');
+                blocoLiquido.classList.add('hidden');
+            } else if (metodoSelecionado === "Dinheiro na Entrega") {
+                blocoLiquido.classList.remove('hidden');
+                blocoSol.classList.add('hidden');
+            } else {
+                blocoSol.classList.add('hidden');
+                blocoLiquido.classList.add('hidden');
+            }
+        }
+
+        // ENVOI WHATSAPP MIS À JOUR AVEC LES NOUVEAUX MODES DE PAIEMENT
         function enviarPedidoWhatsApp() {
             if (carrinho.length === 0) {
-                alert('O seu carrinho está vazio!');
+                alert("O seu carrinho está vazio!");
                 return;
             }
 
             const nome = document.getElementById('cliente-nome').value.trim();
             const bairro = document.getElementById('cliente-bairro').value.trim();
-            const pagamento = document.querySelector('input[name="pagamento"]:checked').value;
+            const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
 
             if (!nome || !bairro) {
-                alert('Por favor, preencha o seu nome e bairro para a entrega.');
+                alert("Por favor, preencha o seu Nome e o Bairro para a entrega.");
                 return;
             }
 
-            let mensagem = `*NOVO PEDIDO - ALI MOVEIS*\n\n`;
-            mensagem += `👤 *Cliente:* ${nome}\n`;
-            mensagem += `📍 *Entrega:* ${bairro} (Luanda)\n`;
-            mensagem += `💳 *Pagamento:* ${pagamento}\n\n`;
-            mensagem += `📦 *Artigos:* \n`;
+            let textoPedido = `*NOVO PEDIDO - ALI MOVEIS*\n\n`;
+            textoPedido += `👤 *Cliente:* ${nome}\n`;
+            textoPedido += `📍 *Bairro:* ${bairro}\n`;
+            textoPedido += `💳 *Forma de Pagamento:* ${metodoPagamento}\n\n`;
+            textoPedido += `🛒 *Produtos:* \n`;
 
             let total = 0;
             carrinho.forEach(item => {
-                mensagem += `- ${item.quantidade}x ${item.nome} (${(item.preco * item.quantidade).toLocaleString()} Kz)\n`;
-                total += item.preco * item.quantidade;
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+                textoPedido += `- ${item.quantidade}x ${item.nome} (${item.preco.toLocaleString()} Kz)\n`;
             });
 
-            mensagem += `\n💰 *Total Geral:* ${total.toLocaleString()} Kz`;
+            textoPedido += `\n💰 *Total Geral:* *${total.toLocaleString()} Kz*`;
+            
+            if(metodoPagamento === "Transferência Banco Sol") {
+                textoPedido += `\n\n_(Aguardando envio do comprovativo Banco Sol)_`;
+            } else if(metodoPagamento === "Dinheiro na Entrega") {
+                textoPedido += `\n\n_(Pagamento em numerário na entrega do material)_`;
+            }
 
-            const url = `https://wa.me/244945633379?text=${encodeURIComponent(mensagem)}`;
-            window.open(url, '_blank');
+            const linkWhatsApp = `https://wa.me/244945633379?text=${encodeURIComponent(textoPedido)}`;
+            window.open(linkWhatsApp, '_blank');
         }
 
-        // Inicialização
-        window.onload = () => {
-            render();
-        };
+        // --- AUTH CONFIG CONTROLLER ---
+        function toggleAuthModal() {
+            document.getElementById('auth-modal').classList.toggle('hidden');
+        }
+
+        function switchAuthTab(tab) {
+            const btnLogin = document.getElementById('tab-login');
+            const btnRegister = document.getElementById('tab-register');
+            const formLogin = document.getElementById('form-login');
+            const formRegister = document.getElementById('form-register');
+
+            if (tab === 'login') {
+                btnLogin.className = "flex-1 pb-3 text-indigo-600 border-b-2 border-indigo-600 text-center";
+                btnRegister.className = "flex-1 pb-3 text-gray-400 border-b-2 border-transparent text-center";
+                formLogin.classList.remove('hidden');
+                formRegister.classList.add('hidden');
+            } else {
+                btnRegister.className = "flex-1 pb-3 text-indigo-600 border-b-2 border-indigo-600 text-center";
+                btnLogin.className = "flex-1 pb-3 text-gray-400 border-b-2 border-transparent text-center";
+                formRegister.classList.remove('hidden');
+                formLogin.classList.add('hidden');
+            }
+        }
+
+        function handleAuth(event, tipo) {
+            event.preventDefault();
+            if (tipo === 'login') {
+                usuarioConectado = "Cliente Logado";
+            } else {
+                usuarioConectado = document.getElementById('reg-name').value;
+            }
+            document.getElementById('user-nav-label').innerText = usuarioConectado;
+            toggleAuthModal();
+        }
     </script>
 </body>
 </html>
