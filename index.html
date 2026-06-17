@@ -5,23 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALI MÓVEIS | Loja de Móveis e Eletrodomésticos em Luanda</title>
     
-    <!-- Meta Tags SEO -->
     <meta name="description" content="A ALI MÓVEIS é a sua loja de referência em Luanda para mobiliário moderno e eletrodomésticos. Sofás, camas e equipamentos com entrega rápida no Hoji-ya-henda e toda Luanda.">
     <meta name="keywords" content="móveis Luanda, eletrodomésticos Angola, comprar sofás online Luanda, loja de móveis Hoji-ya-henda">
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- SDK Firebase Cloud -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-    <!-- SCHEMA.ORG POUR SEO -->
     <script type="application/ld+json">
     [
       {
@@ -77,18 +72,15 @@
 </head>
 <body class="bg-[#f4f4f6] min-h-screen text-slate-800 antialiased text-xs">
 
-    <!-- COMPONENTES DINÁMICOS DE NOTIFICAÇÃO -->
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
     <div id="mini-window-container" class="fixed bottom-5 left-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
     <a href="https://wa.me/244945633379" target="_blank" rel="noopener" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group animate-pulse" aria-label="Fale Connosco no WhatsApp">
         <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
         </svg>
     </a>
 
-    <!-- TOP MINI BAR -->
     <div class="bg-slate-900 text-slate-400 text-[10px] py-1.5 px-4 border-b border-slate-800 hidden sm:block">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex gap-4">
@@ -102,14 +94,12 @@
         </div>
     </div>
 
-    <!-- MAIN HEADER / MEGA NAVIGATION -->
     <header class="sticky top-0 bg-white shadow-sm border-b border-slate-200 z-40">
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between gap-4 sm:gap-8">
             <a href="#" class="flex items-center gap-2 flex-shrink-0">
                 <img src="logo.png" alt="ALI MÓVEIS Logo" class="h-14 w-auto object-contain">
             </a>
 
-            <!-- MEGA SEARCH BAR -->
             <div class="flex-1 max-w-2xl relative hidden md:block">
                 <div class="flex border-2 border-orange-500 rounded-xl overflow-hidden shadow-sm focus-within:shadow-md transition-all">
                     <input id="search-input" oninput="filtrarProdutos()" type="text" placeholder="Estou à procura de... termoacumuladores, sofás modulares, eletrodomésticos..." class="w-full text-xs px-4 py-2.5 focus:outline-none bg-slate-50 text-slate-900 font-medium">
@@ -120,9 +110,7 @@
                 </div>
             </div>
 
-            <!-- ACTIONS / CART & USER -->
             <div class="flex items-center gap-4 flex-shrink-0">
-                <!-- Perfil -->
                 <div class="relative">
                     <button onclick="toggleUserDropdown()" class="flex items-center gap-2 hover:bg-slate-50 p-2 rounded-xl transition-all cursor-pointer text-left">
                         <div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600">
@@ -138,7 +126,6 @@
                     </div>
                 </div>
 
-                <!-- Carrinho -->
                 <button onclick="toggleCarrinho()" class="bg-gradient-to-r from-slate-900 to-slate-800 hover:from-orange-500 hover:to-red-500 text-white p-2.5 rounded-xl flex items-center gap-3 transition-all cursor-pointer shadow-md relative group">
                     <div class="relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
@@ -150,7 +137,6 @@
         </div>
     </header>
 
-    <!-- BANNER DINÂMICO -->
     <header class="relative bg-slate-900 overflow-hidden">
         <section class="relative h-[55vh] md:h-[65vh] w-full flex items-center justify-center bg-slate-900">
             <div id="slider-container" class="absolute inset-0 w-full h-full">
@@ -177,7 +163,6 @@
         </section>
     </header>
 
-    <!-- MENU DE FILTRAGEM POR CATEGORIAS -->
     <nav class="bg-white border-b border-slate-200 sticky top-20 z-30 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-center md:justify-start gap-2 h-12 overflow-x-auto no-scrollbar">
             <button id="cat-todos" onclick="selecionarFiltroCategoria('todos')" class="bg-slate-900 text-white font-bold px-4 py-1.5 rounded-lg text-xs transition-all cursor-pointer">Todos os Produtos</button>
@@ -186,7 +171,6 @@
         </div>
     </nav>
 
-    <!-- MAIN VITRINE -->
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-10">
         <section class="bg-white border border-slate-200 p-3 rounded-xl shadow-sm flex flex-col sm:flex-row gap-3 items-center justify-between md:hidden">
             <div class="relative w-full">
@@ -195,7 +179,6 @@
             </div>
         </section>
 
-        <!-- ORDENAÇÃO -->
         <div class="flex items-center justify-between bg-white border border-slate-200 px-4 py-3 rounded-xl shadow-sm">
             <div class="flex items-center gap-2 text-slate-500 font-medium">
                 <span>Ordenar Exibição:</span>
@@ -208,9 +191,7 @@
             <div class="text-[11px] text-slate-400 font-semibold hidden sm:block">Todos os produtos incluem impostos e taxas locales.</div>
         </div>
 
-        <!-- PRATELEIRAS -->
         <div id="vitrine-principal" class="space-y-10">
-            <!-- NOVIDADES -->
             <section id="secao-novidades" class="space-y-4 target-section">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-2">
                     <div class="flex items-center gap-2">
@@ -227,7 +208,6 @@
                 <div id="empty-novidades" class="hidden text-center py-12 text-xs text-slate-400 bg-white border border-slate-200 rounded-xl shadow-sm">Nenhum produto em Flash Sale.</div>
             </section>
 
-            <!-- ELETRÓNICOS -->
             <section id="secao-eletronico" class="space-y-4 target-section">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-2">
                     <div class="flex items-center gap-2">
@@ -244,7 +224,6 @@
                 <div id="empty-eletronicos" class="hidden text-center py-12 text-xs text-slate-400 bg-white border border-slate-200 rounded-xl shadow-sm">Nenhum equipamento eletrónico encontrado.</div>
             </section>
 
-            <!-- MÓVEIS -->
             <section id="secao-moveis" class="space-y-4 target-section">
                 <div class="flex items-center justify-between border-b border-slate-200 pb-2">
                     <div class="flex items-center gap-2">
@@ -263,12 +242,11 @@
         </div>
     </main>
 
-    <!-- SIDEBAR DO CARRINHO -->
     <aside id="carrinho-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l border-slate-200 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
         <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <h3 class="font-black text-slate-900 text-xs uppercase tracking-wider">Resumo das Compras</h3>
-                <button id="btn-limpar-carrinho" onclick="limparCarrinho()" class="text-[10px] bg-white border border-slate-200 text-slate-500 hover:text-red-600 hover:border-red-200 px-2 py-1 rounded-md font-bold transition-all cursor-pointer hidden">Limpar Lista</button>
+                <button id="btn-limpar-carrinho" onclick="limparCarrinho()" class="text-[10px] bg-white border border-slate-200 text-slate-500 hover:text-red-600 hover:border-red-200 px-2 py-1 rounded-md font-bold transition-all duration-300 cursor-pointer hidden">Limpar Lista</button>
             </div>
             <button onclick="toggleCarrinho()" class="text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer p-1">✕</button>
         </div>
@@ -316,8 +294,8 @@
                 <div id="info-banco-sol" class="hidden bg-slate-50 text-slate-800 p-3 rounded-xl text-[11px] border border-slate-200 space-y-1">
                     <p class="font-bold text-slate-900">Banco Sol SA</p>
                     <div class="font-mono font-bold text-slate-900 bg-white p-1.5 rounded-lg border border-slate-200 flex justify-between items-center text-[10px]">
-                        <span id="iban-text">AO06 0045 0000 4563 3379 1018 2</span>
-                        <button onclick="copiarIBAN()" class="text-orange-600 font-bold hover:underline cursor-pointer ml-2">Copiar</button>
+                        
+                        
                     </div>
                 </div>
                 <div id="info-entrega-liquido" class="hidden bg-emerald-50 text-emerald-800 p-3 rounded-xl text-[11px] font-medium border border-emerald-100">
@@ -335,7 +313,6 @@
         </div>
     </aside>
 
-    <!-- FOOTER -->
     <footer class="bg-slate-900 border-t border-slate-800 mt-20 py-12 text-slate-400 text-[11px] space-y-6 text-center">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-left border-b border-slate-800 pb-8">
             <div class="space-y-2">
@@ -372,7 +349,6 @@
         <p class="pt-2 text-slate-500">© 2026 ALI MÓVEIS SA. Luanda, Angola.</p>
     </footer>
 
-    <!-- MODAL DE AUTENTICAÇÃO -->
     <div id="auth-modal" class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl p-6 relative border border-slate-200">
             <button onclick="toggleAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
@@ -411,7 +387,6 @@
         </div>
     </div>
 
-    <!-- MODAL INSTITUCIONAL -->
     <div id="info-text-modal" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6 relative max-h-[80vh] overflow-y-auto border border-slate-200 no-scrollbar">
             <button onclick="fecharModalTexto()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 font-bold text-sm cursor-pointer">✕</button>
@@ -420,7 +395,6 @@
         </div>
     </div>
 
-    <!-- SCRIPT CORE INTEGRADO -->
     <script>
         // ==========================================
         // CONFIGURAÇÃO DO CONFIG FIREBASE CLOUD
@@ -443,29 +417,29 @@
         let usuarioConectado = null;
         let filtroCategoriaAtual = "todos";
 
-       const PRODUTOS_DATA = [
-  { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
-  { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg", dataPublicacao: "2026-06-06" },
-  { id: 3, nome: "Frigorífico Roch", badge: "SÚPER VENDA", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-10" }, 
-  { id: 4, nome: "Conjunto de Cama Contemporâneo 1.8*2m", badge: "", descricao: "Transforme o seu quarto num verdadeiro santuário de conforto e estilo.", preco: 316000, categoria: "moveis", imagem: "cama.png", dataPublicacao: "2026-06-11" }, 
-  { id: 5, nome: "Sofá Modular Contemporâneo", badge: "", descricao: "Eleve o nível da sua sala de estar com este luxuoso sofá modular.", preco: 816000, categoria: "moveis", imagem: "sofa.jpg", dataPublicacao: "2026-05-11" }, 
-  { id: 6, nome: "Sofá de Canto", badge: "", descricao: "Dê um toque de elegância clássica e conforto absolut ao seu espaço.", preco: 264000, categoria: "moveis", imagem: "sofa 2.jpg", dataPublicacao: "2026-05-15" },
-  { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "", descricao: "Design moderno com múltiplos níveis de energia para aquecimento rápido.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg", dataPublicacao: "2026-05-20" },
-  { id: 8, nome: "Conjunto de Cama Premium 1.8*2m", badge: "", descricao: "Eleve o padrão do seu quarto com o nosso conjunto de cama premium.", preco: 312000, categoria: "moveis", imagem: "cama 2.jpg", dataPublicacao: "2026-06-11" },
-  { id: 9, merge: true, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
-  { id: 10, nome: "Fogão Compacto Fizzen", badge: "", descricao: "Estilo e Eficiência na Sua Cozinha. Alto rendimento com queimadores potentes.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png", dataPublicacao: "2026-05-22" },
-  { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "PREÇO LOUCO", descricao: "Este ferro de engomar combina potência e ergonomia eficaz.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
-  { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "SEGURANÇA MAX", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-05-28" },
-  { id: 13, nome: "Congelador Horizontal Renz", badge: "Alta Eficiência e Capacidade", descricao: "Este congelador horizontal é a solução ideal para quem procura espaço, durabilidade e economia no armazenamento de congelados.", preco: 650000, categoria: "eletronico", imagem: "fri.jpeg", dataPublicacao: "2026-06-16" },
-  { id: 14, nome: "Conjunto de Cadeiras Elegantes", badge: "", descricao: "Sofisticação e conforto para a sua sala de jantar com um design moderno e acabamento premium.", preco: 50000, categoria: "moveis", imagem: "chaise.jpg", dataPublicacao: "2026-06-16" },
-  { id: 15, nome: "Fogão com Suporte de Prateleiras", badge: "NOVIDADE", descricao: "Praticidade total na sua cozinha: fogão potente com base integrada para organização de utensílios e ingredientes.", preco: 55000, categoria: "eletronico", imagem: "fugao.jpeg", dataPublicacao: "2026-06-16" },
-  { id: 16, nome: "Conjunto de Cadeiras de Jantar Premium (Bege)", badge: "ESTILO", descricao: "Design elegante e contemporâneo, perfeito para compor uma sala de jantar sofisticada e acolhedora.", preco: 180000, categoria: "moveis", imagem: "chaise 2.jpg", dataPublicacao: "2026-06-16" },
-  { id: 17, nome: "Conjunto de Cadeiras Modernas (Preto e Branco)", badge: "MODERNO", descricao: "Cadeiras com contraste elegante, oferecendo um toque moderno e um conforto excepcional para as suas refeições.", preco: 60000, categoria: "moveis", imagem: "chaise 3.jpg", dataPublicacao: "2026-06-16" },
-  { id: 18, nome: "Sofá Chesterfield Clássico", badge: "LUXO", descricao: "Sofá estofado com design capitonê elegante e pés cromados, perfeito para ambientes sofisticados.", preco: 260000, categoria: "moveis", imagem: "canape 1.jpg", dataPublicacao: "2026-06-17" },
-  { id: 19, nome: "Móvel de TV Minimalista Branco", badge: "MODERNO", descricao: "Móvel de TV moderno com acabamento branco brilhante e detalhes dourados, oferecendo elegância e organização.", preco: 280000, categoria: "moveis", imagem: "table 2.jpg", dataPublicacao: "2026-06-17" },
-  { id: 20, nome: "Aparador Premium com Detalhes Dourados", badge: "DESIGN", descricao: "Aparador sofisticado com portas caneladas, tampo escuro e base dourada, ideal para salas de jantar.", preco: 340000, categoria: "moveis", imagem: "table 3.jpg", dataPublicacao: "2026-06-17" },
-  { id: 21, nome: "Mesa de Centro Oval Moderna", badge: "EXCLUSIVO", descricao: "Mesa de centro com design oval, tampo preto polido e base branca com detalhes em ouro.", preco: 240000, categoria: "moveis", imagem: "table.jpg", dataPublicacao: "2026-06-17" }
-];
+        const PRODUTOS_DATA = [
+          { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
+          { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg", dataPublicacao: "2026-06-06" },
+          { id: 3, nome: "Frigorífico Roch", badge: "SÚPER VENDA", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-10" }, 
+          { id: 4, nome: "Conjunto de Cama Contemporâneo 1.8*2m", badge: "", descricao: "Transforme o seu quarto num verdadeiro santuário de conforto e estilo.", preco: 316000, categoria: "moveis", imagem: "cama.png", dataPublicacao: "2026-06-11" }, 
+          { id: 5, nome: "Sofá Modular Contemporâneo", badge: "", descricao: "Eleve o nível da sua sala de estar com este luxuoso sofá modular.", preco: 816000, categoria: "moveis", imagem: "sofa.jpg", dataPublicacao: "2026-05-11" }, 
+          { id: 6, nome: "Sofá de Canto", badge: "", descricao: "Dê um toque de elegância clássica e conforto absolut ao seu espaço.", preco: 264000, categoria: "moveis", imagem: "sofa 2.jpg", dataPublicacao: "2026-05-15" },
+          { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "", descricao: "Design moderno com múltiplos níveis de energia para aquecimento rápido.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg", dataPublicacao: "2026-05-20" },
+          { id: 8, nome: "Conjunto de Cama Premium 1.8*2m", badge: "", descricao: "Eleve o padrão do seu quarto com o nosso conjunto de cama premium.", preco: 312000, categoria: "moveis", imagem: "cama 2.jpg", dataPublicacao: "2026-06-11" },
+          { id: 9, merge: true, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
+          { id: 10, nome: "Fogão Compacto Fizzen", badge: "", descricao: "Estilo e Eficiência na Sua Cozinha. Alto rendimento com queimadores potentes.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png", dataPublicacao: "2026-05-22" },
+          { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "PREÇO LOUCO", descricao: "Este ferro de engomar combina potência e ergonomia eficaz.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
+          { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "SEGURANÇA MAX", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-05-28" },
+          { id: 13, nome: "Congelador Horizontal Renz", badge: "Alta Eficiência e Capacidade", descricao: "Este congelador horizontal é a solution ideal para quem procura espaço, durabilidade e economia no armazenamento de congelados.", preco: 650000, categoria: "eletronico", imagem: "fri.jpeg", dataPublicacao: "2026-06-16" },
+          { id: 14, nome: "Conjunto de Cadeiras Elegantes", badge: "", descricao: "Sofisticação e conforto para a sua sala de jantar com um design moderno e acabamento premium.", preco: 50000, categoria: "moveis", imagem: "chaise.jpg", dataPublicacao: "2026-06-16" },
+          { id: 15, nome: "Fogão com Suporte de Prateleiras", badge: "NOVIDADE", descricao: "Praticidade total na sua cozinha: fogão potente com base integrada para organização de utensílios e ingredientes.", preco: 55000, categoria: "eletronico", imagem: "fugao.jpeg", dataPublicacao: "2026-06-16" },
+          { id: 16, nome: "Conjunto de Cadeiras de Jantar Premium (Bege)", badge: "ESTILO", descricao: "Design elegante e contemporâneo, perfeito para compor uma sala de jantar sofisticada e acolhedora.", preco: 180000, categoria: "moveis", imagem: "chaise 2.jpg", dataPublicacao: "2026-06-16" },
+          { id: 17, nome: "Conjunto de Cadeiras Modernas (Preto e Branco)", badge: "MODERNO", descricao: "Cadeiras com contraste elegante, oferecendo um toque moderno e um conforto excepcional para as suas refeições.", preco: 60000, categoria: "moveis", imagem: "chaise 3.jpg", dataPublicacao: "2026-06-16" },
+          { id: 18, nome: "Sofá Chesterfield Clássico", badge: "LUXO", descricao: "Sofá estofado com design capitonê elegante e pés cromados, perfeito para ambientes sofisticados.", preco: 260000, categoria: "moveis", imagem: "canape 1.jpg", dataPublicacao: "2026-06-17" },
+          { id: 19, nome: "Móvel de TV Minimalista Branco", badge: "MODERNO", descricao: "Móvel de TV moderno com acabamento branco brilhante e detalhes dourados, oferecendo elegância e organização.", preco: 280000, categoria: "moveis", imagem: "table 2.jpg", dataPublicacao: "2026-06-17" },
+          { id: 20, nome: "Aparador Premium com Detalhes Dourados", badge: "DESIGN", descricao: "Aparador sofisticado com portas caneladas, tampo escuro e base dourada, ideal para salas de jantar.", preco: 340000, categoria: "moveis", imagem: "table 3.jpg", dataPublicacao: "2026-06-17" },
+          { id: 21, nome: "Mesa de Centro Oval Moderna", badge: "EXCLUSIVO", descricao: "Mesa de centro com design oval, tampo preto polido e base branca com detalhes em ouro.", preco: 240000, categoria: "moveis", imagem: "table.jpg", dataPublicacao: "2026-06-17" }
+        ];
 
         function showToast(message) {
             const container = document.getElementById("toast-container");
@@ -503,6 +477,19 @@
             verificarSessao();
             filtrarProdutos();
             toggleInfoPagamento();
+
+            // SCRIPT POUR LE DÉFILEMENT AUTOMATIQUE DU HERO BANNER
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(".slide-item");
+            if (slides.length > 0) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove("opacity-100");
+                    slides[currentSlide].classList.add("opacity-0");
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.remove("opacity-0");
+                    slides[currentSlide].classList.add("opacity-100");
+                }, 5000);
+            }
         });
 
         function sincronizarEPesquisarMobile(val) {
@@ -549,17 +536,40 @@
             filtrarProdutos();
         }
 
+        // MISE À JOUR TECHNIQUE : DÉFILEMENT INTELLIGENT ET DOTS DYNAMIQUES
         function sincronizarPontosIndicadores(idSecao, totalItens) {
             const container = document.getElementById(`container-${idSecao}`);
             const dotsContainer = document.getElementById(`dots-${idSecao}`);
             if (!container || !dotsContainer || totalItens <= 0) return;
+            
             dotsContainer.innerHTML = "";
-            const numPaginas = Math.ceil(totalItens / (window.innerWidth < 768 ? 2 : 4));
+            const itemsPerPage = window.innerWidth < 768 ? 2 : 4;
+            const numPaginas = Math.ceil(totalItens / itemsPerPage);
+            
+            if (numPaginas <= 1) return;
+
             for (let i = 0; i < numPaginas; i++) {
                 const dot = document.createElement("div");
-                dot.className = `h-1.5 rounded-full transition-all duration-300 ${i === 0 ? "bg-orange-500 w-5" : "bg-slate-300 w-1.5"}`;
+                dot.className = `dot-${idSecao} h-1.5 rounded-full transition-all duration-300 ${i === 0 ? "bg-orange-500 w-5" : "bg-slate-300 w-1.5"}`;
                 dotsContainer.appendChild(dot);
             }
+
+            // Écouteur de scroll pour modifier la taille et couleur des points dynamiquement
+            container.onscroll = () => {
+                const dots = dotsContainer.querySelectorAll(`.dot-${idSecao}`);
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                let pageIndex = 0;
+                if (maxScroll > 0) {
+                    pageIndex = Math.round((container.scrollLeft / maxScroll) * (numPaginas - 1));
+                }
+                dots.forEach((dot, idx) => {
+                    if (idx === pageIndex) {
+                        dot.className = `dot-${idSecao} h-1.5 rounded-full transition-all duration-300 bg-orange-500 w-5`;
+                    } else {
+                        dot.className = `dot-${idSecao} h-1.5 rounded-full transition-all duration-300 bg-slate-300 w-1.5`;
+                    }
+                });
+            };
         }
 
         function verificarSessao() {
@@ -582,12 +592,12 @@
             const tl = document.getElementById("tab-login"), tr = document.getElementById("tab-register");
             const fl = document.getElementById("form-login"), fr = document.getElementById("form-register");
             if (tab === "login") {
-                tl.className = "flex-1 pb-3 text-orange-500 border-b-2 border-orange-500 text-center text-xs font-black";
-                tr.className = "flex-1 pb-3 text-slate-400 border-b-2 border-transparent text-center text-xs font-black";
+                tl.className = "flex-1 pb-3 text-orange-500 border-b-2 border-orange-500 text-center text-xs font-black cursor-pointer";
+                tr.className = "flex-1 pb-3 text-slate-400 border-b-2 border-transparent text-center text-xs font-black cursor-pointer";
                 fl.classList.remove("hidden"); fr.classList.add("hidden");
             } else {
-                tr.className = "flex-1 pb-3 text-orange-500 border-b-2 border-orange-500 text-center text-xs font-black";
-                tl.className = "flex-1 pb-3 text-slate-400 border-b-2 border-transparent text-center text-xs font-black";
+                tr.className = "flex-1 pb-3 text-orange-500 border-b-2 border-orange-500 text-center text-xs font-black cursor-pointer";
+                tl.className = "flex-1 pb-3 text-slate-400 border-b-2 border-transparent text-center text-xs font-black cursor-pointer";
                 fr.classList.remove("hidden"); fl.classList.add("hidden");
             }
         }
@@ -719,7 +729,7 @@
         function adicionarAoCarrinho(id) {
             const p = PRODUTOS_DATA.find(prod => prod.id === id);
             const exist = carrinho.find(item => item.id === id);
-            if(exist) exist.quantidade++; else carrinho.push({...p, quantidade: 1});
+            if(exist) exist.quantidade++; else carrinho.push({...p, gateway: true, quantidade: 1});
             atualizarCarrinhoUI();
             mostrarMiniJanelaProduto(p);
             document.getElementById("checkout-error-block").classList.add("hidden");
@@ -852,8 +862,28 @@
                 </div>`;
             document.body.appendChild(modal);
         }
+		// AJOUT POUR LE DÉFILEMENT AUTOMATIQUE DES PRODUITS
+document.addEventListener("DOMContentLoaded", () => {
+    const secoes = ['novidades', 'eletronicos', 'moveis'];
+    
+    secoes.forEach(idSecao => {
+        setInterval(() => {
+            const container = document.getElementById(`container-${idSecao}`);
+            // Ne défile pas si la souris est sur la liste pour ne pas gêner l'utilisateur
+            if (!container || container.matches(':hover')) return;
+
+            // Calcul pour savoir si on est arrivé au bout
+            if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 20) {
+                // Retour au début (premier produit)
+                container.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+                // Avance vers le prochain groupe de produits
+                container.scrollBy({ left: container.clientWidth * 0.7, behavior: "smooth" });
+            }
+        }, 4500); // Défilement toutes les 4.5 secondes
+    });
+});
+
     </script>
 </body>
 </html>
-index.html
-Affichage de index.html.
