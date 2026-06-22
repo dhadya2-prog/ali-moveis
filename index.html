@@ -964,14 +964,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ... (début de votre fonction enregistrerVente)
 
-    db.collection("vendas").add({
-        produto: nom,
-        valor: preco,
-        data: firebase.firestore.FieldValue.serverTimestamp(),
-        status: "pendente"
-    })
-    .then(() => {
-        console.log("Sucesso!");
+    // Exemple : Récupérer la valeur d'un champ d'entrée avec id="product-name"
+const nome = document.getElementById("product-name").value; 
+const preco = 50000; // Cette valeur devrait également provenir de votre source de données
+
+db.collection("vendas").add({
+    produto: nome,
+    valor: preco,
+    data: firebase.firestore.FieldValue.serverTimestamp(),
+    status: "pendente"
+})
+.then(() => {
+    console.log("Sucesso!");
+    
+    // Code de suivi
+    gtag('event', 'clic_whatsapp', {
+        'event_category': 'vendas',
+        'event_label': 'clic_bouton_achat_' + nome
+    });
+
+    // Ouvrir WhatsApp
+    const msg = encodeURIComponent("Olá, gostaria de comprar o produto...");
+    window.open("https://wa.me/244945633379?text=" + msg);
+})
+.catch((error) => {
+    console.error("Erro ao adicionar documento: ", error);
+});
         
         // --- C'EST ICI QUE VOUS COLLEZ LE CODE DE SUIVI ---
         gtag('event', 'clic_whatsapp', {
