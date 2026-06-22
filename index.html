@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-AO">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALI MÓVEIS | Loja de Móveis e Eletrodomésticos em Luanda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A ALI MÓVEIS é a sua loja de referência em Luanda para mobiliário moderno e eletrodomésticos.">
     
     <meta name="description" content="A ALI MÓVEIS é a sua loja de referência em Luanda para mobiliário moderno e eletrodomésticos. Sofás, camas e equipamentos com entrega rápida no Hoji-ya-henda e toda Luanda.">
     <meta name="keywords" content="móveis Luanda, eletrodomésticos Angola, comprar sofás online Luanda, loja de móveis Hoji-ya-henda">
@@ -941,26 +941,54 @@ document.addEventListener("DOMContentLoaded", () => {
 });
     </script>
 <script>
-    // Initialisation de Firestore
-    const db = firebase.firestore();
+(function() {
+    // Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB1Y4zv_H0Q8gVP2vr_b_gZT24TM8dwvW0",
+        authDomain: "ali-moveis.firebaseapp.com",
+        projectId: "ali-moveis",
+        storageBucket: "ali-moveis.firebasestorage.app",
+        messagingSenderId: "960033679005",
+        appId: "1:960033679005:web:62e687807e43a958979674"
+    };
 
-    // Fonction qui sera appelée par vos boutons
-    function enregistrerVente(nomProduit, prix) {
-        db.collection("vendas").add({
-            produto: nomProduit,
-            valor: prix,
-            data: firebase.firestore.FieldValue.serverTimestamp(),
-            status: "pendente"
-        })
-        .then(() => {
-            console.log("Vente enregistrée !");
-            // Redirection vers WhatsApp après sauvegarde
-            window.open("https://wa.me/244945633379?text=Olá, quero comprar: " + nomProduit, '_blank');
-        })
-        .catch((error) => {
-            alert("Erreur lors de l'enregistrement : " + error);
-        });
+    // Initialisation sécurisée
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
     }
+
+    // On attend que le DOM soit chargé pour définir 'db'
+    document.addEventListener("DOMContentLoaded", function() {
+        window.db = firebase.firestore();
+        console.log("Firestore initialisé avec succès !");
+    });
+})();
+
+// ... (début de votre fonction enregistrerVente)
+
+    db.collection("vendas").add({
+        produto: nom,
+        valor: preco,
+        data: firebase.firestore.FieldValue.serverTimestamp(),
+        status: "pendente"
+    })
+    .then(() => {
+        console.log("Sucesso!");
+        
+        // --- C'EST ICI QUE VOUS COLLEZ LE CODE DE SUIVI ---
+        gtag('event', 'clic_whatsapp', {
+            'event_category': 'vendas',
+            'event_label': 'clic_bouton_achat_' + nom
+        });
+        // --------------------------------------------------
+
+        // Ouvrir WhatsApp
+        const msg = encodeURIComponent("Olá, gostaria de comprar: " + nom);
+        window.open("https://wa.me/244945633379?text=" + msg, "_blank");
+    })
+
+// ... (fin de votre fonction enregistrerVente)
+</script>
 </script>
 </body>
 </html>
