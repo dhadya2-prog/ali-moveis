@@ -940,5 +940,27 @@ document.addEventListener("DOMContentLoaded", () => {
     renderizarAvisos();
 });
     </script>
+<script>
+    // Initialisation de Firestore
+    const db = firebase.firestore();
+
+    // Fonction qui sera appelée par vos boutons
+    function enregistrerVente(nomProduit, prix) {
+        db.collection("vendas").add({
+            produto: nomProduit,
+            valor: prix,
+            data: firebase.firestore.FieldValue.serverTimestamp(),
+            status: "pendente"
+        })
+        .then(() => {
+            console.log("Vente enregistrée !");
+            // Redirection vers WhatsApp après sauvegarde
+            window.open("https://wa.me/244945633379?text=Olá, quero comprar: " + nomProduit, '_blank');
+        })
+        .catch((error) => {
+            alert("Erreur lors de l'enregistrement : " + error);
+        });
+    }
+</script>
 </body>
 </html>
