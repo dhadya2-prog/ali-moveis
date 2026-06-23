@@ -430,7 +430,7 @@
         let usuarioConectado = null;
         let filtroCategoriaAtual = "todos";
 
-        const PRODUTOS_DATA = [
+  const PRODUTOS_DATA = [
     { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
     { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg", dataPublicacao: "2026-06-06" },
     { id: 3, nome: "Frigorífico Roch", badge: "SÚPER VENDA", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-10" }, 
@@ -462,8 +462,13 @@
     { id: 29, nome: "Congelador Horizontal Roch 570L", badge: "QUALIDADE", descricao: "Arca congeladora com design curvo e eficiência energética.", preco: 645000, categoria: "eletronico", imagem: "arca.png", dataPublicacao: "2026-06-19" },
     { id: 30, nome: "Frigorífico Expositor Roch 350L", badge: "NOVIDADE", descricao: "Modelo vertical de 350L para otimização do espaço comercial.", preco: 400000, categoria: "eletronico", imagem: "arga 350ltr.png", dataPublicacao: "2026-06-19" },
     { id: 31, nome: "Máquina de Lavar Roupa SHARP 6KG", badge: "TECNOLOGIA", descricao: "Máquina de lavar de alta performance com tecnologia japonesa.", preco: 280000, categoria: "eletronico", imagem: "machine.png", dataPublicacao: "2026-06-19" },
+    // Nouveaux produits TV
+    { id: 32, nome: "TV Roch 32 Polegadas", badge: "", descricao: "TV LED 32 polegadas com suporte de parede incluído.", preco: 120000, categoria: "eletronico", imagem: "tv 32.jfif", dataPublicacao: "2026-06-23" },
+    { id: 33, nome: "TV Roch 43 Polegadas Android Smart", badge: "", descricao: "TV 43 polegadas Full HD com Android Smart e suporte de parede.", preco: 240000, categoria: "eletronico", imagem: "tv 43.jfif", dataPublicacao: "2026-06-23" },
+    { id: 34, nome: "TV Roch 50 Polegadas 4K", badge: "", descricao: "TV 50 polegadas Ultra HD 4K com suporte de parede incluído.", preco: 340000, categoria: "eletronico", imagem: "tv 50.jfif", dataPublicacao: "2026-06-23" },
+    { id: 35, nome: "TV Roch 65 Polegadas 4K", badge: "", descricao: "TV 65 polegadas Ultra HD 4K com suporte de parede incluído.", preco: 500000, categoria: "eletronico", imagem: "tv 65.jfif", dataPublicacao: "2026-06-23" },
+    { id: 36, nome: "TV Sharp 50 Polegadas Google TV", badge: "PREMIUM", descricao: "Smart TV Sharp de 50 polegadas com Google TV integrado e excelente qualidade de som Dolby Audio.", preco: 370000, categoria: "eletronico", imagem: "tv sharp 50pouces.jfif", dataPublicacao: "2026-06-23" },
 ];
-
         function showToast(message) {
             const container = document.getElementById("toast-container");
             const toast = document.createElement("div");
@@ -751,6 +756,15 @@
 
         function adicionarAoCarrinho(id) {
             const p = PRODUTOS_DATA.find(prod => prod.id === id);
+            gtag('event', 'add_to_cart', {
+        'currency': 'AOA',
+        'value': p.preco,
+        'items': [{
+            'item_id': p.id,
+            'item_name': p.nome,
+            'price': p.preco
+        }]
+    });
             const exist = carrinho.find(item => item.id === id);
             if(exist) exist.quantidade++; else carrinho.push({...p, gateway: true, quantidade: 1});
             atualizarCarrinhoUI();
@@ -828,6 +842,19 @@
                 total += i.preco * i.quantidade;
             });
             msg += `\n💵 *Total:* ${total.toLocaleString("pt-AO")} Kz`;
+            gtag('event', 'purchase', {
+        'transaction_id': 'WHATSAPP_' + Date.now(),
+        'value': total,
+        'currency': 'AOA',
+        'items': carrinho.map(i => ({
+            'item_id': i.id,
+            'item_name': i.nome,
+            'price': i.preco,
+            'quantity': i.quantidade
+        }))
+    });
+
+             window.open(`https://wa.me/244945633379?text=${encodeURIComponent(msg)}`, "_blank");
             window.open(`https://wa.me/244945633379?text=${encodeURIComponent(msg)}`, "_blank");
         }
 
@@ -872,6 +899,11 @@
         function fecharModalTexto() { document.getElementById("info-text-modal").classList.add("hidden"); }
 
         function abrirDetalhesProduto(produto) {
+
+            gtag('event', 'select_item', {
+        'event_category': 'engagement',
+        'event_label': produto.nome
+    });
             const modal = document.createElement("div");
             modal.className = "modal-overlay";
             modal.onclick = () => modal.remove(); 
@@ -1001,7 +1033,7 @@ db.collection("vendas").add({
         // Ouvrir WhatsApp
         const msg = encodeURIComponent("Olá, gostaria de comprar: " + nom);
         window.open("https://wa.me/244945633379?text=" + msg, "_blank");
-    })
+    
 
 // ... (fin de votre fonction enregistrerVente)
 function clicWhatsApp() {
