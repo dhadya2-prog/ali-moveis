@@ -430,139 +430,232 @@
         let usuarioConectado = null;
         let filtroCategoriaAtual = "todos";
 
-  const PRODUTOS_DATA = [
+ // ==========================================
+// ==========================================
+// 1. VOS ARTICLES (DONNÉES)
+// ==========================================
+const PRODUTOS_DATA = [
     { id: 1, nome: "Termoacumulador Elétrico Vertical Fizzen grande", badge: "", descricao: "Desfrute de um conforto térmico ideal com isolamento de alta densidade.", preco: 150000, categoria: "eletronico", imagem: "chauffe eau electrique grand.jpeg", dataPublicacao: "2026-06-07" },
     { id: 2, nome: "Termoacumulador Elétrico Vertical Fizzen pequeno", badge: "", descricao: "Modelo compacto ideal para espaços reduzidos com alta eficiência térmica.", preco: 67000, categoria: "eletronico", imagem: "chauffe eau petit.jpeg", dataPublicacao: "2026-06-06" },
-    { id: 3, nome: "Frigorífico Roch", badge: "SÚPER VENDA", descricao: "Eleve o nível da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-10" }, 
-    { id: 4, nome: "Conjunto de Cama Contemporâneo 1.8*2m", badge: "", descricao: "Transforme o seu quarto num verdadeiro santuário de conforto e estilo.", preco: 316000, categoria: "moveis", imagem: "cama.png", dataPublicacao: "2026-06-11" }, 
+    { id: 3, nome: "Frigorífico Roch", badge: "SÚPER VENDA", descricao: "Eleve o niveau da sua cozinha com este frigorífico inovador de 2 portas da Roch.", preco: 160000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-06-10" }, 
+    { id: 4, nome: "Conjunto de Cama Contemporâneo 1.8*2m", badge: "", descricao: "Transforme o seu quarto num verdadeiro santuário de conforto et estilo.", preco: 316000, categoria: "moveis", imagem: "cama.png", dataPublicacao: "2026-06-11" }, 
     { id: 5, nome: "Sofá Modular Contemporâneo", badge: "", descricao: "Eleve o nível da sua sala de estar com este luxuoso sofá modular.", preco: 816000, categoria: "moveis", imagem: "sofa.jpg", dataPublicacao: "2026-05-11" }, 
     { id: 6, nome: "Sofá de Canto", badge: "", descricao: "Dê um toque de elegância clássica e conforto absolut ao seu espaço.", preco: 264000, categoria: "moveis", imagem: "sofa 2.jpg", dataPublicacao: "2026-05-15" },
     { id: 7, nome: "Forno de Micro-ondas Fizzen 25L", badge: "", descricao: "Design moderno com múltiplos níveis de energia para aquecimento rápido.", preco: 85000, categoria: "eletronico", imagem: "micro-onde.jpeg", dataPublicacao: "2026-05-20" },
     { id: 8, nome: "Conjunto de Cama Premium 1.8*2m", badge: "", descricao: "Eleve o padrão do seu quarto com o nosso conjunto de cama premium.", preco: 312000, categoria: "moveis", imagem: "cama 2.jpg", dataPublicacao: "2026-06-11" },
-    { id: 9, merge: true, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "", descricao: "Cozinhe refeições saborosas, estaladiças e sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
+    { id: 9, nome: "Fritadeira sem Óleo RAF Air Fryer XXL 8.0L", badge: "", descricao: "Cozinhe refeições saborosas, estaladiças et sem óleo para toda a família.", preco: 75000, categoria: "eletronico", imagem: "friteuse 8l.jpeg", dataPublicacao: "2026-05-01" },
     { id: 10, nome: "Fogão Compacto Fizzen", badge: "", descricao: "Estilo e Eficiência na Sua Cozinha. Alto rendimento com queimadores potentes.", preco: 90000, categoria: "eletronico", imagem: "fugan fizzen.png", dataPublicacao: "2026-05-22" },
-    { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "PREÇO LOUCO", descricao: "Este ferro de engomar combina potência e ergonomia eficaz.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
+    { id: 11, nome: "Ferro de Engomar a Vapor SOKANY 2000W", badge: "PREÇO LOUCO", descricao: "Este ferro de engomar combina potência e ergonomia efficace.", preco: 15000, categoria: "eletronico", imagem: "fer sokani.png", dataPublicacao: "2026-05-25" },
     { id: 12, nome: "Frigorífico Roch (com Chave)", badge: "SEGURANÇA MAX", descricao: "2 Portas com fechadura de segurança. Design compacto em cinza inox.", preco: 170000, categoria: "eletronico", imagem: "frigo roch.jpg", dataPublicacao: "2026-05-28" },
     { id: 13, nome: "Congelador Horizontal Renz", badge: "Alta Eficiência e Capacidade", descricao: "Este congelador horizontal é a solution ideal para quem procura espaço, durabilidade e economia no armazenamento de congelados.", preco: 650000, categoria: "eletronico", imagem: "fri.jpeg", dataPublicacao: "2026-06-16" },
     { id: 14, nome: "Conjunto de Cadeiras Elegantes", badge: "", descricao: "Sofisticação e conforto para a sua sala de jantar com um design moderno e acabamento premium.", preco: 50000, categoria: "moveis", imagem: "chaise.jpg", dataPublicacao: "2026-06-16" },
     { id: 15, nome: "Fogão com Suporte de Prateleiras", badge: "NOVIDADE", descricao: "Praticidade total na sua cozinha: fogão potente com base integrada para organização de utensílios e ingredientes.", preco: 55000, categoria: "eletronico", imagem: "fugao.jpeg", dataPublicacao: "2026-06-16" },
-    { id: 16, nome: "Conjunto de Cadeiras de Jantar Premium (Bege)", badge: "ESTILO", descricao: "Design elegante e contemporâneo, perfeito para compor uma sala de jantar sofisticada e acolhedora.", preco: 180000, categoria: "moveis", imagem: "chaise 2.jpg", dataPublicacao: "2026-06-16" },
-    { id: 17, nome: "Conjunto de Cadeiras Modernas (Preto e Branco)", badge: "MODERNO", descricao: "Cadeiras com contraste elegante, oferecendo um toque moderno e um conforto excepcional para as suas refeições.", preco: 60000, categoria: "moveis", imagem: "chaise 3.jpg", dataPublicacao: "2026-06-16" },
+    { id: 16, nome: "Conjunto de Cadeiras de Jantar Premium (Bege)", badge: "ESTILO", descricao: "Design elegante e contemporâneo, perfeito para compor uma sala de jantar sofisticada et acolhedora.", preco: 180000, categoria: "moveis", imagem: "chaise 2.jpg", dataPublicacao: "2026-06-16" },
+    { id: 17, nome: "Conjunto de Cadeiras Modernas (Preto e Branco)", badge: "MODERNO", descricao: "Cadeiras com contraste elegante, oferecendo um toque moderno et um conforto excepcional para as suas refeições.", preco: 60000, categoria: "moveis", imagem: "chaise 3.jpg", dataPublicacao: "2026-06-16" },
     { id: 18, nome: "Sofá Chesterfield Clássico", badge: "LUXO", descricao: "Sofá estofado com design capitonê elegante e pés cromados, perfeito para ambientes sofisticados.", preco: 260000, categoria: "moveis", imagem: "canape 1.jpg", dataPublicacao: "2026-06-17" },
-    { id: 19, nome: "Móvel de TV Minimalista Branco", badge: "MODERNO", descricao: "Móvel de TV moderno com acabamento branco brilhante e detalhes dourados, oferecendo elegância e organização.", preco: 280000, categoria: "moveis", imagem: "table 2.jpg", dataPublicacao: "2026-06-17" },
+    { id: 19, nome: "Móvel de TV Minimalista Branco", badge: "MODERNO", descricao: "Móvel de TV moderno com acabamento branco brilhante et detalhes dourados, oferecendo elegância et organização.", preco: 280000, categoria: "moveis", imagem: "table 2.jpg", dataPublicacao: "2026-06-17" },
     { id: 20, nome: "Aparador Premium com Detalhes Dourados", badge: "DESIGN", descricao: "Aparador sofisticado com portas caneladas, tampo escuro e base dourada, ideal para salas de jantar.", preco: 340000, categoria: "moveis", imagem: "table 3.jpg", dataPublicacao: "2026-06-17" },
-    { id: 21, nome: "Mesa de Centro Oval Moderna", badge: "EXCLUSIVO", descricao: "Mesa de centro com design oval, tampo preto polido e base branca com detalhes em ouro.", preco: 240000, categoria: "moveis", imagem: "table.jpg", dataPublicacao: "2026-06-17" },
+    { id: 21, nome: "Mesa de Centro Oval Moderna", badge: "EXCLUSIVO", descricao: "Mesa de centro cu design oval, tampo preto polido e base branca com detalhes em ouro.", preco: 240000, categoria: "moveis", imagem: "table.jpg", dataPublicacao: "2026-06-17" },
     { id: 22, nome: "Conjunto de Cama Elegante", badge: "", descricao: "Conjunto de cama luxuoso com cabeceira estofada.", preco: 500000, categoria: "moveis", imagem: "cama h.jpg", dataPublicacao: "2026-06-18" },
     { id: 23, nome: "Mesa de Jantar Retangular", badge: "", descricao: "Mesa de jantar com design moderno e pés detalhados.", preco: 120000, categoria: "moveis", imagem: "mesa jantar.jpg", dataPublicacao: "2026-06-18" },
     { id: 24, nome: "Mesa de Apoio Branca", badge: "", descricao: "Mesa de apoio com acabamento em brilho.", preco: 385000, categoria: "moveis", imagem: "table blanche.jpg", dataPublicacao: "2026-06-18" },
-    { id: 25, nome: "Mesa de Centro Redonda", badge: "", descricao: "Mesa de centro redonda com estrutura metálica.", preco: 70000, categoria: "moveis", imagem: "table ronde.jpg", dataPublicacao: "2026-06-18" },
+    { id: 25, nome: "Mesa de Centro Redonda", badge: "", descricao: "Mesa de centro redonda com estrutura métallique.", preco: 70000, categoria: "moveis", imagem: "table onde.jpg", dataPublicacao: "2026-06-18" },
     { id: 26, nome: "Frigorífico Expositor Roch 260L", badge: "NOVIDADE", descricao: "Frigorífico expositor vertical ideal para bebidas e produtos frescos.", preco: 300000, categoria: "eletronico", imagem: "arca 260 ltr.png", dataPublicacao: "2026-06-19" },
     { id: 27, nome: "Frigorífico Expositor Roch 290L", badge: "NOVIDADE", descricao: "Frigorífico expositor vertical com maior capacidade para o seu negócio.", preco: 345000, categoria: "eletronico", imagem: "arca 290 ltr.png", dataPublicacao: "2026-06-19" },
     { id: 28, nome: "Congelador Horizontal Roch 670L", badge: "CAPACIDADE", descricao: "Congelador horizontal de alta capacidade, ideal para armazenamento de gelados.", preco: 710000, categoria: "eletronico", imagem: "arca 670.png", dataPublicacao: "2026-06-19" },
     { id: 29, nome: "Congelador Horizontal Roch 570L", badge: "QUALIDADE", descricao: "Arca congeladora com design curvo e eficiência energética.", preco: 645000, categoria: "eletronico", imagem: "arca.png", dataPublicacao: "2026-06-19" },
-    { id: 30, nome: "Frigorífico Expositor Roch 350L", badge: "NOVIDADE", descricao: "Modelo vertical de 350L para otimização do espaço comercial.", preco: 400000, categoria: "eletronico", imagem: "arga 350ltr.png", dataPublicacao: "2026-06-19" },
+    { id: 30, nome: "Frigorífico Expositor Roch 350L", badge: "NOVIDADE", descricao: "Modelo vertical de 350L para otimização do espace comercial.", preco: 400000, categoria: "eletronico", imagem: "arga 350ltr.png", dataPublicacao: "2026-06-19" },
     { id: 31, nome: "Máquina de Lavar Roupa SHARP 6KG", badge: "TECNOLOGIA", descricao: "Máquina de lavar de alta performance com tecnologia japonesa.", preco: 280000, categoria: "eletronico", imagem: "machine.png", dataPublicacao: "2026-06-19" },
-    // Nouveaux produits TV
     { id: 32, nome: "TV Roch 32 Polegadas", badge: "", descricao: "TV LED 32 polegadas com suporte de parede incluído.", preco: 120000, categoria: "eletronico", imagem: "tv 32.jfif", dataPublicacao: "2026-06-23" },
     { id: 33, nome: "TV Roch 43 Polegadas Android Smart", badge: "", descricao: "TV 43 polegadas Full HD com Android Smart e suporte de parede.", preco: 240000, categoria: "eletronico", imagem: "tv 43.jfif", dataPublicacao: "2026-06-23" },
     { id: 34, nome: "TV Roch 50 Polegadas 4K", badge: "", descricao: "TV 50 polegadas Ultra HD 4K com suporte de parede incluído.", preco: 340000, categoria: "eletronico", imagem: "tv 50.jfif", dataPublicacao: "2026-06-23" },
     { id: 35, nome: "TV Roch 65 Polegadas 4K", badge: "", descricao: "TV 65 polegadas Ultra HD 4K com suporte de parede incluído.", preco: 500000, categoria: "eletronico", imagem: "tv 65.jfif", dataPublicacao: "2026-06-23" },
-    { id: 36, nome: "TV Sharp 50 Polegadas Google TV", badge: "PREMIUM", descricao: "Smart TV Sharp de 50 polegadas com Google TV integrado e excelente qualidade de som Dolby Audio.", preco: 370000, categoria: "eletronico", imagem: "tv sharp 50pouces.jfif", dataPublicacao: "2026-06-23" },
+    { id: 36, nome: "TV Sharp 50 Polegadas Google TV", badge: "PREMIUM", descricao: "Smart TV Sharp de 50 polegadas com Google TV integrado e excelente qualidade de som Dolby Audio.", preco: 370000, categoria: "eletronico", imagem: "tv sharp 50pouces.jfif", dataPublicacao: "2026-06-25" },
+    { id: 37, nome: "Cama Estofada Contemporânea Bege e Ouro", badge: "", descricao: "Design moderno com cabeceira de canais e detalhes em ouro. Dimensões 1.8*2m.", preco: 265000, categoria: "moveis", imagem: "cama contemporanea.png", dataPublicacao: "2026-06-25" },
+    { id: 38, nome: "Cama Clássica de Madeira com Capitonaé", badge: "LUXO", descricao: "Estrutura de madeira rica com cabeceira e peseira em capitoné branco com brilhantes. Dimensões 1.8*2m.", preco: 350000, categoria: "moveis", imagem: "cama clássica.png", dataPublicacao: "2026-06-25" },
+    { id: 39, nome: "Aparador Moderno com Linhas Geométricas Douradas", badge: "", descricao: "Aparador branco com padrões geométricos embutidos em ouro e tampo preto. Ideal para salas de estar sofisticadas.", preco: 330000, categoria: "moveis", imagem: "mesa 2.png", dataPublicacao: "2026-06-25" }, 
+    { id: 40, nome: "Conjunto de Jantar Moderno Branco e Ouro", badge: "", descricao: "Mesa de jantar branca com faixas douradas e cadeiras de couro branco estilo contemporâneo.", preco: 355000, categoria: "moveis", imagem: "conjunto jantar branco ouro.png", dataPublicacao: "2026-06-25" }, 
+    { id: 41, nome: "Mesa de Jantar Premium Vidro Preto e Ouro", badge: "EXCLUSIVO", descricao: "Mesa de jantar sofisticada com tampo de vidro preto e base branca detalhada com ouro.", preco: 395000, categoria: "moveis", imagem: "mesa jantar vidro premium.png", dataPublicacao: "2026-06-25" }, 
+    { id: 42, nome: "Poltrona Curva de Veludo Branco Moderno", badge: "CONFORTO", descricao: "Poltrona de design curvo com estofamento de veludo branco e pés metálicos dourados.", preco: 90000, categoria: "moveis", imagem: "poltrona moderna.png", dataPublicacao: "2026-06-25" },
 ];
-        function showToast(message) {
-            const container = document.getElementById("toast-container");
-            const toast = document.createElement("div");
-            toast.className = `p-4 rounded-xl text-xs font-bold text-white shadow-2xl bg-slate-900 border border-slate-800 transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto`;
-            toast.innerHTML = `<span>${message}</span>`;
-            container.appendChild(toast);
-            setTimeout(() => { toast.classList.remove("translate-y-2", "opacity-0"); }, 50);
-            setTimeout(() => {
-                toast.classList.add("translate-y-2", "opacity-0");
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
 
-        function mostrarMiniJanelaProduto(p) {
-            const container = document.getElementById("mini-window-container");
-            if (!container) return;
-            const windowId = "win-" + Date.now();
-            const card = document.createElement("div");
-            card.className = "bg-white border border-slate-200 rounded-xl shadow-2xl p-3 pointer-events-auto flex gap-3 max-w-sm relative overflow-hidden";
-            card.id = windowId;
-            card.innerHTML = `
-                <img src="${p.imagem}" class="w-16 h-16 object-cover cursor-pointer rounded" alt="${p.nome}" onclick="abrirDetalhesProduto(PRODUTOS_DATA.find(prod => prod.id === ${p.id}))">
-                <div class="flex-1 text-left">
-                    <div class="text-[9px] uppercase font-bold text-orange-600">Adicionado ao carrinho</div>
-                    <h4 class="text-xs font-bold text-slate-900 line-clamp-1">${p.nome}</h4>
-                </div>
-                <button onclick="document.getElementById('${windowId}').remove();" class="text-slate-400 hover:text-slate-600 font-bold ml-2">✕</button>
-            `;
-            container.appendChild(card);
-            setTimeout(() => { const el = document.getElementById(windowId); if (el) el.remove(); }, 3000);
-        }
+// ==========================================
+// 2. SCRIPT DE TOAST (NOTIFICATION)
+// ==========================================
+function showToast(message) {
+    const container = document.getElementById("toast-container");
+    if (!container) return;
+    const toast = document.createElement("div");
+    toast.className = `p-4 rounded-xl text-xs font-bold text-white shadow-2xl bg-slate-900 border border-slate-800 transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-auto`;
+    toast.innerHTML = `<span>${message}</span>`;
+    container.appendChild(toast);
+    setTimeout(() => { toast.classList.remove("translate-y-2", "opacity-0"); }, 50);
+    setTimeout(() => {
+        toast.classList.add("translate-y-2", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
 
-        document.addEventListener("DOMContentLoaded", () => {
-            verificarSessao();
-            filtrarProdutos();
-            toggleInfoPagamento();
+// ==========================================
+// 3. SCRIPT FILTRE ET TRI DE LA SEMAINE EN COURS
+// ==========================================
+function carregarNovidades() {
+    console.log("La fonction carregarNovidades est exécutée !");
 
-            // SCRIPT POUR LE DÉFILEMENT AUTOMATIQUE DU HERO BANNER
-            let currentSlide = 0;
-            const slides = document.querySelectorAll(".slide-item");
-            if (slides.length > 0) {
-                setInterval(() => {
-                    slides[currentSlide].classList.remove("opacity-100");
-                    slides[currentSlide].classList.add("opacity-0");
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.remove("opacity-0");
-                    slides[currentSlide].classList.add("opacity-100");
-                }, 5000);
-            }
+    // 1. Calculer la date du Lundi de la semaine en cours
+    const hoje = new Date();
+    const diaDaSemana = hoje.getDay(); 
+    const diferenca = hoje.getDate() - diaDaSemana + (diaDaSemana === 0 ? -6 : 1);
+    const segundaFeira = new Date(hoje.setDate(diferenca));
+    
+    const ano = segundaFeira.getFullYear();
+    const mes = String(segundaFeira.getMonth() + 1).padStart(2, '0');
+    const dia = String(segundaFeira.getDate()).padStart(2, '0');
+    const dataSegundaFeira = `${ano}-${mes}-${dia}`;
+
+    // 2. Filtrer et double tri décroissant (Par Date décroissante, puis par ID décroissant)
+    const produtosNovidades = PRODUTOS_DATA
+        .filter(produto => produto.dataPublicacao >= dataSegundaFeira)
+        .sort((a, b) => {
+            const comparacaoData = b.dataPublicacao.localeCompare(a.dataPublicacao);
+            if (comparacaoData !== 0) return comparacaoData; 
+            return b.id - a.id; 
         });
 
-        function sincronizarEPesquisarMobile(val) {
-            document.getElementById("search-input").value = val;
-            filtrarProdutos();
-        }
+    const container = document.getElementById('container-novidades');
+    const badgeCount = document.getElementById('count-novidades');
+    const emptyState = document.getElementById('empty-novidades');
 
-        function controlarCarrossel(idSecao, direcao) {
-            const container = document.getElementById(`container-${idSecao}`);
-            if (container) container.scrollBy({ left: direcao * container.clientWidth * 0.8, behavior: "smooth" });
-        }
+    if (!container) return;
+    container.innerHTML = '';
 
-        function selecionarFiltroCategoria(categoria) {
-            filtroCategoriaAtual = categoria;
-            const botoes = {
-                todos: document.getElementById("cat-todos"),
-                eletronico: document.getElementById("cat-eletronico"),
-                moveis: document.getElementById("cat-moveis")
-            };
+    if (produtosNovidades.length === 0) {
+        if (emptyState) emptyState.classList.remove('hidden');
+        if (badgeCount) badgeCount.innerText = "0";
+        return; 
+    }
 
-            Object.keys(botoes).forEach(key => {
-                if(botoes[key]) {
-                    if(key === categoria) {
-                        botoes[key].className = "bg-slate-900 text-white font-bold px-4 py-1.5 rounded-lg text-xs transition-all cursor-pointer";
-                    } else {
-                        botoes[key].className = "bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold px-4 py-1.5 rounded-lg text-xs transition-all cursor-pointer";
-                    }
-                }
-            });
+    if (emptyState) emptyState.classList.add('hidden');
+    if (badgeCount) badgeCount.innerText = produtosNovidades.length;
 
-            if(categoria === "todos") {
-                document.getElementById("secao-novidades").classList.remove("hidden");
-                document.getElementById("secao-eletronico").classList.remove("hidden");
-                document.getElementById("secao-moveis").classList.remove("hidden");
-            } else if(categoria === "eletronico") {
-                document.getElementById("secao-novidades").classList.add("hidden");
-                document.getElementById("secao-eletronico").classList.remove("hidden");
-                document.getElementById("secao-moveis").classList.add("hidden");
-            } else if(categoria === "moveis") {
-                document.getElementById("secao-novidades").classList.add("hidden");
-                document.getElementById("secao-eletronico").classList.add("hidden");
-                document.getElementById("secao-moveis").classList.remove("hidden");
+    produtosNovidades.forEach(produto => {
+        let badgeHtml = produto.badge 
+            ? `<span class="absolute top-2 left-2 z-10 bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow-sm">${produto.badge}</span>` 
+            : '';
+
+        // Intégration du zoom (hover:scale-105) entouré par une div overflow-hidden + onclick pour l'affichage de la fenêtre zoomée
+        const cartaoHTML = `
+            <div class="snap-center shrink-0 w-48 bg-white border border-slate-100 p-2 rounded-xl shadow-sm relative overflow-hidden">
+                ${badgeHtml}
+                <div class="w-full h-32 overflow-hidden rounded-lg mb-2 bg-slate-50">
+                    <img src="${produto.imagem}" alt="${produto.nome}" 
+                         class="w-full h-full object-cover cursor-pointer transition-transform duration-300 hover:scale-105" 
+                         onclick="abrirDetalhesProduto(PRODUTOS_DATA.find(prod => prod.id === ${produto.id}))">
+                </div>
+                <div class="space-y-1">
+                    <p class="text-[10px] text-orange-500 font-bold uppercase tracking-wider">${produto.categoria}</p>
+                    <h3 class="text-xs font-bold text-slate-800 line-clamp-2 leading-tight">${produto.nome}</h3>
+                    <p class="text-sm font-black text-slate-900">${produto.preco.toLocaleString('pt-PT')} FCFA</p>
+                </div>
+            </div>
+        `;
+        container.innerHTML += cartaoHTML;
+    });
+}
+
+// ==========================================
+// 4. INTERFACES ET COMPOSANTS UTILISATEUR
+// ==========================================
+function mostrarMiniJanelaProduto(p) {
+    const container = document.getElementById("mini-window-container");
+    if (!container) return;
+    const windowId = "win-" + Date.now();
+    const card = document.createElement("div");
+    card.className = "bg-white border border-slate-200 rounded-xl shadow-2xl p-3 pointer-events-auto flex gap-3 max-w-sm relative overflow-hidden";
+    card.id = windowId;
+    card.innerHTML = `
+        <img src="${p.imagem}" class="w-16 h-16 object-cover cursor-pointer rounded" alt="${p.nome}" onclick="abrirDetalhesProduto(PRODUTOS_DATA.find(prod => prod.id === ${p.id}))">
+        <div class="flex-1 text-left">
+            <div class="text-[9px] uppercase font-bold text-orange-600">Adicionado ao carrinho</div>
+            <h4 class="text-xs font-bold text-slate-900 line-clamp-1">${p.nome}</h4>
+        </div>
+        <button onclick="document.getElementById('${windowId}').remove();" class="text-slate-400 hover:text-slate-600 font-bold ml-2">✕</button>
+    `;
+    container.appendChild(card);
+    setTimeout(() => { const el = document.getElementById(windowId); if (el) el.remove(); }, 3000);
+}
+
+function sincronizarEPesquisarMobile(val) {
+    document.getElementById("search-input").value = val;
+    filtrarProdutos();
+}
+
+function controlarCarrossel(idSecao, direcao) {
+    const container = document.getElementById(`container-${idSecao}`);
+    if (container) container.scrollBy({ left: direcao * container.clientWidth * 0.8, behavior: "smooth" });
+}
+
+function selecionarFiltroCategoria(categoria) {
+    filtroCategoriaAtual = categoria;
+    const botoes = {
+        todos: document.getElementById("cat-todos"),
+        eletronico: document.getElementById("cat-eletronico"),
+        moveis: document.getElementById("cat-moveis")
+    };
+
+    Object.keys(botoes).forEach(key => {
+        if(botoes[key]) {
+            if(key === categoria) {
+                botoes[key].className = "bg-slate-900 text-white font-bold px-4 py-1.5 rounded-lg text-xs transition-all cursor-pointer";
+            } else {
+                botoes[key].className = "bg-slate-100 text-slate-600 hover:bg-slate-200 font-semibold px-4 py-1.5 rounded-lg text-xs transition-all cursor-pointer";
             }
-            filtrarProdutos();
         }
+    });
+
+    if(categoria === "todos") {
+        document.getElementById("secao-novidades").classList.remove("hidden");
+        document.getElementById("secao-eletronico").classList.remove("hidden");
+        document.getElementById("secao-moveis").classList.remove("hidden");
+    } else if(categoria === "eletronico") {
+        document.getElementById("secao-novidades").classList.add("hidden");
+        document.getElementById("secao-eletronico").classList.remove("hidden");
+        document.getElementById("secao-moveis").classList.add("hidden");
+    } else if(categoria === "moveis") {
+        document.getElementById("secao-novidades").classList.add("hidden");
+        document.getElementById("secao-eletronico").classList.add("hidden");
+        document.getElementById("secao-moveis").classList.remove("hidden");
+    }
+    
+    filtrarProdutos();
+    
+    if(categoria === "todos") {
+        carregarNovidades();
+    }
+}
+
+// ==========================================
+// 5. INITIALISATION UNIQUE (DOM CONTENT LOADED)
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    verificarSessao();
+    filtrarProdutos();       
+    carregarNovidades();     
+    toggleInfoPagamento();
+
+    // SCRIPT POUR LE DÉFILEMENT AUTOMATIQUE DU HERO BANNER
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide-item");
+    if (slides.length > 0) {
+        setInterval(() => {
+            slides[currentSlide].classList.remove("opacity-100");
+            slides[currentSlide].classList.add("opacity-0");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.remove("opacity-0");
+            slides[currentSlide].classList.add("opacity-100");
+        }, 5000);
+    }
+});
 
         // MISE À JOUR TECHNIQUE : DÉFILEMENT INTELLIGENT ET DOTS DYNAMIQUES
         function sincronizarPontosIndicadores(idSecao, totalItens) {
@@ -935,7 +1028,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Avance vers le prochain groupe de produits
                 container.scrollBy({ left: container.clientWidth * 0.7, behavior: "smooth" });
             }
-        }, 6000); // Défilement toutes les 6 secondes
+        }, 10000); // Défilement toutes les 10 secondes
     });
 });
 
