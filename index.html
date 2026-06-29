@@ -497,25 +497,21 @@ function showToast(message) {
 }
 
 // ==========================================
-// 3. SCRIPT FILTRE ET TRI DE LA SEMAINE EN COURS
+// 3. SCRIPT FILTRE ET TRI DU MOIS EN COURS
 // ==========================================
 function carregarNovidades() {
-    console.log("La fonction carregarNovidades est exécutée !");
+    console.log("La fonction carregarNovidades est exécutée (Mois) !");
 
-    // 1. Calculer la date du Lundi de la semaine en cours
+    // 1. Calculer le premier jour du mois en cours
     const hoje = new Date();
-    const diaDaSemana = hoje.getDay(); 
-    const diferenca = hoje.getDate() - diaDaSemana + (diaDaSemana === 0 ? -6 : 1);
-    const segundaFeira = new Date(hoje.setDate(diferenca));
-    
-    const ano = segundaFeira.getFullYear();
-    const mes = String(segundaFeira.getMonth() + 1).padStart(2, '0');
-    const dia = String(segundaFeira.getDate()).padStart(2, '0');
-    const dataSegundaFeira = `${ano}-${mes}-${dia}`;
+    const ano = hoje.getFullYear();
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+    // On fixe le jour à "01" pour obtenir le début du mois
+    const dataInicioMes = `${ano}-${mes}-01`;
 
     // 2. Filtrer et double tri décroissant (Par Date décroissante, puis par ID décroissant)
     const produtosNovidades = PRODUTOS_DATA
-        .filter(produto => produto.dataPublicacao >= dataSegundaFeira)
+        .filter(produto => produto.dataPublicacao >= dataInicioMes)
         .sort((a, b) => {
             const comparacaoData = b.dataPublicacao.localeCompare(a.dataPublicacao);
             if (comparacaoData !== 0) return comparacaoData; 
@@ -543,7 +539,6 @@ function carregarNovidades() {
             ? `<span class="absolute top-2 left-2 z-10 bg-red-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow-sm">${produto.badge}</span>` 
             : '';
 
-        // Intégration du zoom (hover:scale-105) entouré par une div overflow-hidden + onclick pour l'affichage de la fenêtre zoomée
         const cartaoHTML = `
             <div class="snap-center shrink-0 w-48 bg-white border border-slate-100 p-2 rounded-xl shadow-sm relative overflow-hidden">
                 ${badgeHtml}
@@ -562,7 +557,6 @@ function carregarNovidades() {
         container.innerHTML += cartaoHTML;
     });
 }
-
 // ==========================================
 // 4. INTERFACES ET COMPOSANTS UTILISATEUR
 // ==========================================
